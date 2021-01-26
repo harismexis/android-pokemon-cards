@@ -1,4 +1,4 @@
-package com.example.jsonfeed.di
+package com.example.jsonfeed.workshared.di
 
 import com.example.jsonfeed.detail.ui.ItemDetailActivity
 import com.example.jsonfeed.home.ui.HomeActivity
