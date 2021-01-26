@@ -1,6 +1,7 @@
 buildscript {
 
     apply from: 'buildsystem/dependencies.gradle'
+    apply from: 'buildsystem/configurations.gradle'
 
     ext.kotlin_version = "1.4.21"
 
