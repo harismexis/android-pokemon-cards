@@ -13,9 +13,9 @@ class HomeViewModelTest : HomeViewModelTestSetup() {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-//        setupMocks()
-//        setupClassUnderTest()
-//        setupRxErrorHandler()
+        setupMocks()
+        setupClassUnderTest()
+        setupRxErrorHandler()
     }
 
     @Test
