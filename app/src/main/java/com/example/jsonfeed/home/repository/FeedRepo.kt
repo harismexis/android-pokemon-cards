@@ -8,8 +8,11 @@ import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
+import javax.inject.Singleton
 
-open class FeedRepo {
+@Singleton
+class FeedRepo @Inject constructor() {
 
     private val api: FeedApi
 
@@ -21,7 +24,7 @@ open class FeedRepo {
         return buildRetrofit().create(FeedApi::class.java)
     }
 
-    open fun buildRetrofit(): Retrofit {
+    private fun buildRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.FEED_BASE_URL)
             .client(createOkHttpClient())

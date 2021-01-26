@@ -4,18 +4,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.jsonfeed.home.repository.FeedRepo
 
 import com.example.jsonfeed.model.FeedItem
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeVm(
-//    var marsRepo: MRPRepo,
+class HomeVm @Inject constructor(
+    var feedRepo: FeedRepo
 //    var connectivity: ConnectivityMonitor,
 ) : ViewModel() {
 
     private val TAG = HomeVm::class.qualifiedName
-    private var jobGetMrp: Job? = null
+    private var jobFeed: Job? = null
 
     private val mModels = MutableLiveData<List<FeedItem>>()
     val models: LiveData<List<FeedItem>>
@@ -23,12 +25,12 @@ class HomeVm(
 
     override fun onCleared() {
         super.onCleared()
-        jobGetMrp?.cancel()
-        jobGetMrp = null
+        jobFeed?.cancel()
+        jobFeed = null
     }
 
     fun fetchJsonFeed() {
-        jobGetMrp = viewModelScope.launch {
+        jobFeed = viewModelScope.launch {
             try {
 //                val response = marsRepo.getCuriosityLatestMRP()
 //                mModels.value = response.toUiModel().mrpItems
