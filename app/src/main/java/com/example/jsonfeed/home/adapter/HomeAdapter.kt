@@ -3,7 +3,7 @@ package com.example.jsonfeed.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.jsonfeed.home.factory.createHomeViewHolder
+import com.example.jsonfeed.databinding.VhFeedItemBinding
 import com.example.jsonfeed.home.viewholder.FeedItemVh
 import com.example.jsonfeed.model.FeedItem
 
@@ -16,7 +16,10 @@ class HomeAdapter(
         parent: ViewGroup,
         viewType: Int
     ): FeedItemVh {
-        return createHomeViewHolder(LayoutInflater.from(parent.context), clickListener)
+        return FeedItemVh(
+            VhFeedItemBinding.inflate(LayoutInflater.from(parent.context)),
+            clickListener
+        )
     }
 
     override fun onBindViewHolder(

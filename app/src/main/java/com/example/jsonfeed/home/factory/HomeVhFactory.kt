@@ -9,7 +9,6 @@ fun createHomeViewHolder(
     inflater: LayoutInflater,
     clickListener: FeedItemVh.FeedItemClickListener
 ): FeedItemVh {
-
     return FeedItemVh(
         VhFeedItemBinding.inflate(inflater),
         clickListener

@@ -40,4 +40,17 @@ class HomeVm @Inject constructor(
         }
     }
 
+    fun fetchFakeItems() {
+        mModels.value = createFakeItems()
+    }
+
+    private fun createFakeItems(): List<FeedItem> {
+        val items = arrayListOf<FeedItem>()
+        items.add(FeedItem("Knife", "Tool to slash & stab"))
+        items.add(FeedItem("Stick", "Tool for breaking bones"))
+        items.add(FeedItem("Nunchuck", "Tool for self defense"))
+        items.add(FeedItem("Double Stick", "Tool to destroy my enemies"))
+        return items
+    }
+
 }
