@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseTxtv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/base_txt_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+    </style>
+
+    <style name="MarginTxtv" parent="BaseTxtv">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+    </style>
+
+    <style name="TitleTxtv" parent="MarginTxtv">
+        <item name="android:textSize">@dimen/large_txt</item>
+        <item name="android:fontFamily">@font/ubuntu_bold</item>
+    </style>
+
+    <style name="DateTxtv" parent="MarginTxtv">
+        <item name="android:textSize">@dimen/normal_txt</item>
+    </style>
+
+    <style name="MetaTxtv" parent="MarginTxtv">
+        <item name="android:textSize">@dimen/small_txt</item>
+    </style>
+
+    <style name="MiniTitleTxtv" parent="TitleTxtv">
+        <item name="android:textSize">@dimen/mini_large_txt</item>
+    </style>
+
+    <style name="MiniDateTxtv" parent="DateTxtv">
+        <item name="android:textSize">@dimen/mini_normal_txt</item>
+    </style>
+
+    <style name="MiniMetaTxtv" parent="MetaTxtv">
+        <item name="android:textSize">@dimen/mini_small_txt</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>
