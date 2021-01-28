@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 
@@ -16,14 +15,7 @@ import com.example.jsonfeed.home.viewmodel.HomeVm
 import com.example.jsonfeed.model.FeedItem
 import com.example.jsonfeed.workshared.activity.BaseActivity
 
-import dagger.android.AndroidInjection
-
-import javax.inject.Inject
-
 class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var viewModel: HomeVm
     private lateinit var binding: ActivityHomeBinding
@@ -31,7 +23,6 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
     private var feedItems: MutableList<FeedItem> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         observeLiveData()
         viewModel.fetchFakeItems()

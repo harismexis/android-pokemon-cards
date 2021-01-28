@@ -4,7 +4,9 @@ import com.example.jsonfeed.workshared.localdb.LocalDao
 import com.example.jsonfeed.workshared.localdb.LocalFeedItem
 
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class LocalRepository @Inject constructor(val dao: LocalDao) {
 
     suspend fun insertFeedItems(items: List<LocalFeedItem>) {

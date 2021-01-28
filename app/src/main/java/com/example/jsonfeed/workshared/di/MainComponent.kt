@@ -2,10 +2,12 @@ package com.example.jsonfeed.workshared.di
 
 import com.example.jsonfeed.workshared.application.MainApplication
 import com.example.jsonfeed.workshared.viewmodel.factory.ViewModelModule
+
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
+
 import javax.inject.Singleton
 
 @Singleton
