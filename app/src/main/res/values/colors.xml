@@ -1,10 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Palette -->
+    <color name="transparent">#00ffffff</color>
+
+    <color name="primary">#2196F3</color>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
+
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
+    <color name="blue_one">#0099F7</color>
+    <color name="blue_one_50">#800099F7</color>
+    <color name="blue_two">#007BC7</color>
+    <color name="blue_three">#0A68C7</color>
+    <color name="blue_four">#009DFF</color>
+    <color name="blue_facebook">#3b5998</color>
+    <color name="blue_five">#00a4ff</color>
+    <color name="blue_six">#2276e2</color>
+    <color name="blue_seven">#22a7f0</color>
+    <color name="blue_eight">#4183d7</color>
+
     <color name="black">#FF000000</color>
+    <color name="black_one">#000000</color>
+    <color name="black_one_50">#7f000000</color>
+    <color name="black_one_60">#99000000</color>
+    <color name="black_one_70">#B3000000</color>
+    <color name="black_one_85">#D9000000</color>
+    <color name="black_two_0">#00000000</color>
+    <color name="black_three">#262626</color>
+    <color name="black_three_5">#0D262626</color>
+    <color name="black_three_10">#1A262626</color>
+    <color name="black_three_15">#26262626</color>
+    <color name="black_three_35">#59262626</color>
+    <color name="black_four">#1a1a1a</color>
+    <color name="black_six">#222222</color>
+
     <color name="white">#FFFFFFFF</color>
+    <color name="white_one">#ffffff</color>
+    <color name="white_one_60">#99ffffff</color>
+    <color name="white_one_50">#80ffffff</color>
+    <color name="white_one_26">#42ffffff</color>
+    <color name="white_one_20">#33ffffff</color>
+    <color name="white_one_10">#1affffff</color>
+    <color name="white_two">#f0f0f0</color>
+    <color name="white_two_80">#CCf0f0f0</color>
+    <color name="white_three">#ECF0F1</color>
+    <color name="white_four">#dfdfdf</color>
+
+    <color name="grey_one">#4d4d4d</color>
+    <color name="grey_two">#525252</color>
+    <color name="grey_three">#cccccc</color>
+    <color name="grey_three_30">#4dcccccc</color>
+    <color name="grey_three_80">#80cccccc</color>
+    <color name="grey_four">#808080</color>
+    <color name="grey_five">#b6b6b6</color>
+    <color name="grey_six">#2a2a2a</color>
+    <color name="h7_hero_background">#80333333</color>
+    <color name="h7_sub_hero_1_background">#80393939</color>
+    <color name="h7_sub_hero_2_background">#80404040</color>
+
+    <color name="yellow_one">#ffc800</color>
+    <color name="yellow_two">#ffb200</color>
+
+    <!-- End Palette -->
+
+    <color name="default_background_color">@color/black_six</color>
+    <color name="default_text_color">@color/white</color>
+
+    <color name="txt_color_light">@color/white_one</color>
+    <color name="txt_color_warm">@color/grey_four</color>
+    <color name="txt_color_dark">@color/black</color>
+    <color name="txt_color_warm_dark">@color/grey_one</color>
+    <color name="txt_color_bright">@color/blue_one</color>
+    <color name="txt_color_light_grey">@color/grey_three</color>
+
 </resources>

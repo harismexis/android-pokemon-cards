@@ -2,17 +2,22 @@ package com.example.jsonfeed.home.ui
 
 import android.os.Bundle
 import android.view.View
+
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+
 import com.example.jsonfeed.databinding.ActivityHomeBinding
+import com.example.jsonfeed.detail.ui.ItemDetailActivity.Companion.startItemDetailActivity
 import com.example.jsonfeed.home.adapter.HomeAdapter
 import com.example.jsonfeed.home.viewholder.FeedItemVh
 import com.example.jsonfeed.home.viewmodel.HomeVm
 import com.example.jsonfeed.model.FeedItem
 import com.example.jsonfeed.workshared.activity.BaseActivity
+
 import dagger.android.AndroidInjection
+
 import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
@@ -49,7 +54,7 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
     }
 
     override fun onFeedItemClick(item: FeedItem, position: Int) {
-        // Handle Item Click here
+        startItemDetailActivity("456")
     }
 
     override fun getToolbar(): Toolbar? {

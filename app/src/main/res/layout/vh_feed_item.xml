@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/vh_feed_item_root_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="@dimen/vh_feed_item_row_root_padding">
 
     <ImageView
@@ -18,31 +19,17 @@
     <TextView
         android:id="@+id/txtTitle"
         style="@style/TitleTxtv"
+        android:text="Title of item"
         app:layout_constraintStart_toEndOf="@+id/imgContainer"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Title of item" />
 
     <TextView
         android:id="@+id/txtMeta"
         style="@style/MiniMetaTxtv"
+        android:text="Metadata of item"
         app:layout_constraintStart_toEndOf="@+id/imgContainer"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
-
-<!--    <TextView-->
-<!--        android:id="@+id/txtTitle"-->
-<!--        style="@style/TitleTxtv"-->
-<!--        app:layout_constrainedWidth="true"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/imgContainer"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/txtMeta"-->
-<!--        style="@style/MiniMetaTxtv"-->
-<!--        app:layout_constrainedWidth="true"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/imgContainer"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />-->
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+        tools:text="Metadata of item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
