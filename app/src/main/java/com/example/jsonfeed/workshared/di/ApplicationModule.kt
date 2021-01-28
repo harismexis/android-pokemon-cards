@@ -1,7 +1,6 @@
 package com.example.jsonfeed.workshared.di
 
-import android.app.Application
-
+import com.example.jsonfeed.workshared.application.MainApplication
 import com.example.jsonfeed.workshared.localdb.LocalDao
 import com.example.jsonfeed.workshared.localdb.LocalDatabase
 
@@ -12,8 +11,8 @@ import dagger.Provides
 class ApplicationModule {
 
     @Provides
-    fun provideLocalDao(app: Application): LocalDao {
-        return LocalDatabase.getDatabase(app).localDao()
+    fun provideLocalDao(app: MainApplication): LocalDao {
+        return LocalDatabase.getDatabase(app.applicationContext).localDao()
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.jsonfeed.home.repository
 
+
 import com.example.jsonfeed.BuildConfig
 import com.example.jsonfeed.home.api.FeedApi
 import com.example.jsonfeed.model.Feed
@@ -16,7 +17,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class FeedRepo @Inject constructor() {
+class FeedRepository @Inject constructor() {
 
     private val api: FeedApi
 

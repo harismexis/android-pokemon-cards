@@ -2,8 +2,9 @@ package com.example.jsonfeed.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 
-import com.example.jsonfeed.home.repository.FeedRepo
+import com.example.jsonfeed.home.repository.FeedRepository
 import com.example.jsonfeed.home.viewmodel.HomeVm
+import com.example.jsonfeed.workshared.localdb.repository.LocalRepository
 import com.example.jsonfeed.workshared.util.network.ConnectivityState
 import com.example.scoredonut.testutils.MainCoroutineScopeRule
 import com.jakewharton.rxrelay2.PublishRelay
@@ -23,14 +24,17 @@ open class HomeViewModelTestSetup {
     val coroutineScope = MainCoroutineScopeRule()
 
     @Mock
-    protected lateinit var mockFeedRepo: FeedRepo
+    protected lateinit var mockFeedRepo: FeedRepository
+
+    @Mock
+    protected lateinit var mockLocalRepo: LocalRepository
 
     protected val connectivityUpdates: PublishRelay<ConnectivityState> = PublishRelay.create()
 
     protected lateinit var homeVm: HomeVm
 
     protected fun setupClassUnderTest() {
-        homeVm = HomeVm(mockFeedRepo)
+        homeVm = HomeVm(mockFeedRepo, mockLocalRepo)
     }
 
     protected fun setupMocks() {
