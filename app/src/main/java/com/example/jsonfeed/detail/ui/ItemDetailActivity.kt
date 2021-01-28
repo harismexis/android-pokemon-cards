@@ -60,16 +60,17 @@ class ItemDetailActivity : BaseActivity() {
         binding = ActivityItemDetailBinding.inflate(layoutInflater)
     }
 
-    override fun initialiseView() {
-
-    }
-
     override fun getRootView(): View {
         return binding.root
     }
 
-    override fun getToolbar(): Toolbar? {
-        return null
+    override fun getToolbar(): Toolbar {
+        return binding.itemDetailToolbar
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 }
