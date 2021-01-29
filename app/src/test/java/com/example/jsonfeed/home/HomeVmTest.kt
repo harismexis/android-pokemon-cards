@@ -5,17 +5,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-import org.mockito.MockitoAnnotations
-
 @RunWith(JUnit4::class)
-class HomeViewModelTest : HomeViewModelTestSetup() {
+class HomeVmTest : HomeVmTestSetup() {
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
-        setupMocks()
-        setupClassUnderTest()
-        setupRxErrorHandler()
+        doBeforeTest()
     }
 
     @Test

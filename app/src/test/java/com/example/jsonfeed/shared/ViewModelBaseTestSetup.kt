@@ -1,9 +1,7 @@
-package com.example.jsonfeed.home
+package com.example.jsonfeed.shared
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 
-import com.example.jsonfeed.home.repository.FeedRepository
-import com.example.jsonfeed.home.viewmodel.HomeVm
 import com.example.jsonfeed.localdb.repository.LocalRepository
 import com.example.jsonfeed.util.network.ConnectivityState
 import com.example.jsonfeed.testutils.MainCoroutineScopeRule
@@ -15,9 +13,11 @@ import io.reactivex.plugins.RxJavaPlugins
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 import org.junit.Rule
-import org.mockito.Mock
 
-open class HomeViewModelTestSetup {
+import org.mockito.Mock
+import org.mockito.MockitoAnnotations
+
+abstract class ViewModelBaseTestSetup {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -27,30 +27,24 @@ open class HomeViewModelTestSetup {
     val coroutineScope = MainCoroutineScopeRule()
 
     @Mock
-    protected lateinit var mockFeedRepo: FeedRepository
-
-    @Mock
     protected lateinit var mockLocalRepo: LocalRepository
 
     protected val connectivityUpdates: PublishRelay<ConnectivityState> = PublishRelay.create()
 
-    protected lateinit var homeVm: HomeVm
+    abstract fun setupClassUnderTest()
 
-    protected fun setupClassUnderTest() {
-        homeVm = HomeVm(mockFeedRepo, mockLocalRepo)
-    }
+    abstract fun setupMocks()
 
-    protected fun setupMocks() {
-
-    }
-
-    protected fun setupMockFeedRepo() {
-
+    protected fun doBeforeTest() {
+        MockitoAnnotations.initMocks(this)
+        setupMocks()
+        setupClassUnderTest()
+        setupRxErrorHandler()
     }
 
     protected fun setupRxErrorHandler() {
         RxJavaPlugins.setErrorHandler {
-            // do nothing
+            // Do nothing
         }
     }
 
