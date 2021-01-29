@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- GENERIC -->
     <dimen name="large_txt">20sp</dimen>
     <dimen name="normal_txt">18sp</dimen>
@@ -16,6 +17,10 @@
     <!-- HOME -->
     <dimen name="activity_home_padding">6dp</dimen>
 
+    <!-- ITEM DETAIL -->
+    <dimen name="item_detail_img_size">100dp</dimen>
+    <dimen name="item_detail_root_padding">10dp</dimen>
+
     <!-- FEED ITEM VH -->
     <dimen name="vh_feed_item_padding">10dp</dimen>
     <dimen name="vh_feed_item_img_height">260dp</dimen>
@@ -24,21 +29,5 @@
     <dimen name="vh_feed_item_img_size">80dp</dimen>
     <dimen name="vh_feed_item_row_root_padding">10dp</dimen>
     <dimen name="vh_feed_item_view_padding">10dp</dimen>
-
-    <!-- APOD -->
-    <dimen name="apod_home_img_size">100dp</dimen>
-    <dimen name="apod_home_row_root_padding">10dp</dimen>
-    <dimen name="apod_view_padding">10dp</dimen>
-
-    <!-- MRP -->
-    <dimen name="activity_mrp_detail_padding">6dp</dimen>
-    <dimen name="mrp_home_img_size">100dp</dimen>
-    <dimen name="mrp_home_row_root_padding">10dp</dimen>
-
-    <!-- MRP ITEM VH -->
-    <dimen name="mrp_item_padding">10dp</dimen>
-    <dimen name="mrp_item_img_height">260dp</dimen>
-    <dimen name="mrp_item_meta_margin_horizontal">1dp</dimen>
-    <dimen name="mrp_item_meta_margin_top">10dp</dimen>
 
 </resources>

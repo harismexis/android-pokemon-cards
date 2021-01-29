@@ -49,7 +49,7 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
     }
 
     override fun getToolbar(): Toolbar? {
-        return null
+        return binding.homeToolbar
     }
 
     override fun observeLiveData() {

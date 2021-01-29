@@ -14,6 +14,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/item_detail_toolbar"
+            style="@style/AppToolbar"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,12 +25,9 @@
 
             <TextView
                 style="@style/BaseTxtv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:text="Selected Item"
-                android:textSize="@dimen/small_txt"
-                tools:text="Selected Item" />
+                android:text="@string/activity_item_detail_label"
+                tools:text="Toolbar title" />
 
         </androidx.appcompat.widget.Toolbar>
 

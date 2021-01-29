@@ -1,11 +1,7 @@
 package com.example.jsonfeed.detail
 
 import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
-import com.example.jsonfeed.home.repository.FeedRepository
-import com.example.jsonfeed.home.viewmodel.HomeVm
 import com.example.jsonfeed.shared.ViewModelBaseTestSetup
-
-import org.mockito.Mock
 
 abstract class ItemDetailVmTestSetup : ViewModelBaseTestSetup() {
 

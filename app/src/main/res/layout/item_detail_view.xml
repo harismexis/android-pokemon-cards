@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/default_background_color"
-    android:padding="@dimen/apod_view_padding">
+    android:padding="@dimen/item_detail_root_padding">
 
     <!--    <FrameLayout-->
     <!--        android:id="@+id/imgApodContainer"-->

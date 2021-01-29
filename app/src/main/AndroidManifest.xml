@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidJsonFeed">
 
-        <activity android:name=".home.ui.HomeActivity">
+        <activity
+            android:name=".home.ui.HomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
