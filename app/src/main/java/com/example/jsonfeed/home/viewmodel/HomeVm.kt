@@ -8,9 +8,9 @@ import androidx.lifecycle.viewModelScope
 
 import com.example.jsonfeed.home.repository.FeedRepository
 import com.example.jsonfeed.model.FeedItem
-import com.example.jsonfeed.workshared.extensions.getErrorMessage
-import com.example.jsonfeed.workshared.localdb.LocalFeedItem
-import com.example.jsonfeed.workshared.localdb.repository.LocalRepository
+import com.example.jsonfeed.extensions.getErrorMessage
+import com.example.jsonfeed.localdb.LocalFeedItem
+import com.example.jsonfeed.localdb.repository.LocalRepository
 
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch

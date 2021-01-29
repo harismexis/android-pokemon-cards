@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.jsonfeed.databinding.ActivityItemDetailBinding
 import com.example.jsonfeed.databinding.ItemDetailViewBinding
 import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
-import com.example.jsonfeed.workshared.activity.BaseActivity
-import com.example.jsonfeed.workshared.localdb.LocalFeedItem
+import com.example.jsonfeed.base.BaseActivity
+import com.example.jsonfeed.localdb.LocalFeedItem
 
 class ItemDetailActivity : BaseActivity() {
 

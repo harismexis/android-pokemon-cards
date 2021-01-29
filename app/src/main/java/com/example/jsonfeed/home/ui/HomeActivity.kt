@@ -13,7 +13,7 @@ import com.example.jsonfeed.home.adapter.HomeAdapter
 import com.example.jsonfeed.home.viewholder.FeedItemVh
 import com.example.jsonfeed.home.viewmodel.HomeVm
 import com.example.jsonfeed.model.FeedItem
-import com.example.jsonfeed.workshared.activity.BaseActivity
+import com.example.jsonfeed.base.BaseActivity
 
 class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 

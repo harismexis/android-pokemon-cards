@@ -5,10 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.jsonfeed.model.FeedItem
-import com.example.jsonfeed.workshared.extensions.getErrorMessage
-import com.example.jsonfeed.workshared.localdb.LocalFeedItem
-import com.example.jsonfeed.workshared.localdb.repository.LocalRepository
+import com.example.jsonfeed.extensions.getErrorMessage
+import com.example.jsonfeed.localdb.LocalFeedItem
+import com.example.jsonfeed.localdb.repository.LocalRepository
 import kotlinx.coroutines.launch
 
 import javax.inject.Inject
