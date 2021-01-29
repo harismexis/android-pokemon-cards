@@ -3,9 +3,12 @@ package com.example.jsonfeed.home.viewholder
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+
 import androidx.recyclerview.widget.RecyclerView
+
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+
 import com.example.jsonfeed.databinding.VhFeedItemBinding
 import com.example.jsonfeed.model.FeedItem
 

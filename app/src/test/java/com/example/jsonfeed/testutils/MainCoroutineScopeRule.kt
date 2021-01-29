@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.scoredonut.testutils
+package com.example.jsonfeed.testutils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

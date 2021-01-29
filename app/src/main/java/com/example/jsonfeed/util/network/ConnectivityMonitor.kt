@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.NetworkCallback
 import android.net.Network
+
 import com.jakewharton.rxrelay2.PublishRelay
 
 class ConnectivityMonitor (

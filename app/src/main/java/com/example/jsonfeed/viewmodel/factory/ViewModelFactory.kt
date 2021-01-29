@@ -1,16 +1,20 @@
-package com.example.jsonfeed.viewmodelfactory
+package com.example.jsonfeed.viewmodel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+
 import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.home.viewmodel.HomeVm
+
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
 import dagger.multibindings.IntoMap
+
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
+
 import kotlin.reflect.KClass
 
 @Singleton

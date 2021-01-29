@@ -1,7 +1,7 @@
 package com.example.jsonfeed.di
 
 import com.example.jsonfeed.application.MainApplication
-import com.example.jsonfeed.viewmodelfactory.ViewModelModule
+import com.example.jsonfeed.viewmodel.factory.ViewModelModule
 
 import dagger.BindsInstance
 import dagger.Component

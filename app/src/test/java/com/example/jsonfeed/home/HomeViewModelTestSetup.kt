@@ -6,9 +6,12 @@ import com.example.jsonfeed.home.repository.FeedRepository
 import com.example.jsonfeed.home.viewmodel.HomeVm
 import com.example.jsonfeed.localdb.repository.LocalRepository
 import com.example.jsonfeed.util.network.ConnectivityState
-import com.example.scoredonut.testutils.MainCoroutineScopeRule
+import com.example.jsonfeed.testutils.MainCoroutineScopeRule
+
 import com.jakewharton.rxrelay2.PublishRelay
+
 import io.reactivex.plugins.RxJavaPlugins
+
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 import org.junit.Rule
