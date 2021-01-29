@@ -17,7 +17,9 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class HomeVm @Inject constructor(
     var feedRepo: FeedRepository,
     var localRepo: LocalRepository
