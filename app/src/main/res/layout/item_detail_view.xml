@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/apod_root_view"
+    android:id="@+id/item_detail_root_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/default_background_color"
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtTitle"
+        android:id="@+id/txt_title"
         style="@style/TitleTxtv"
         android:text="Title of item"
         app:layout_constrainedWidth="true"
@@ -64,14 +64,14 @@
         tools:text="Title of item" />
 
     <TextView
-        android:id="@+id/txtMeta"
+        android:id="@+id/txt_meta"
         style="@style/MetaTxtv"
         android:text="Metadata of item"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title"
         tools:text="Metadata of item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

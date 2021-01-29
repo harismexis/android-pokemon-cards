@@ -19,10 +19,15 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
+        initialise()
+    }
+
+    open fun initialise() {
         initialiseViewBinding()
         setContentView(getRootView())
         initialiseView()
         initialiseViewModel()
+        observeLiveData()
     }
 
     abstract fun initialiseViewBinding()
@@ -32,6 +37,8 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun initialiseViewModel()
 
     abstract fun getToolbar(): Toolbar?
+
+    abstract fun observeLiveData()
 
     open fun initialiseView() {
         setupActionBar()

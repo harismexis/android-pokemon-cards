@@ -26,7 +26,7 @@ class FeedItemVh(
     ) {
         // populateImage(item.imgSrc)
         binding.txtTitle.text = item.name
-        binding.txtMeta.text = item.description
+        binding.txtMeta.text = item.metadata
         binding.root.setOnClickListener {
             itemClickListener.onFeedItemClick(item, position)
         }

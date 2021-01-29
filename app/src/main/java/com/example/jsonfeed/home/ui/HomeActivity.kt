@@ -24,7 +24,6 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        observeLiveData()
         viewModel.fetchFakeItems()
     }
 
@@ -45,14 +44,15 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
     }
 
     override fun onFeedItemClick(item: FeedItem, position: Int) {
-        startItemDetailActivity("456")
+        val itemId = position + 1
+        startItemDetailActivity(itemId)
     }
 
     override fun getToolbar(): Toolbar? {
         return null
     }
 
-    private fun observeLiveData() {
+    override fun observeLiveData() {
         viewModel.models.observe(this, {
             updateUI(it)
         })
@@ -66,7 +66,6 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 
     private fun initialiseRecycler() {
         adapter = HomeAdapter(feedItems, this)
-        // adapter.setHasStableIds(true)
         binding.homeList.layoutManager = LinearLayoutManager(this)
         binding.homeList.adapter = adapter
     }

@@ -1,5 +1,6 @@
 package com.example.jsonfeed.home.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 
 import com.example.jsonfeed.home.repository.FeedRepository
 import com.example.jsonfeed.model.FeedItem
+import com.example.jsonfeed.workshared.extensions.getErrorMessage
+import com.example.jsonfeed.workshared.localdb.LocalFeedItem
 import com.example.jsonfeed.workshared.localdb.repository.LocalRepository
 
 import kotlinx.coroutines.Job
@@ -43,8 +46,34 @@ class HomeVm @Inject constructor(
         }
     }
 
+    suspend fun saveItemsLocally_2(items: List<FeedItem>) {
+        localRepo.insertFeedItems(convertToLocalItems((items)))
+    }
+
     fun fetchFakeItems() {
-        mModels.value = createFakeItems()
+        val items = createFakeItems()
+        saveItemsLocally(items)
+        mModels.value = items
+    }
+
+    private fun saveItemsLocally(items: List<FeedItem>) {
+        viewModelScope.launch {
+            try {
+                localRepo.insertFeedItems(convertToLocalItems(items))
+            } catch (e: Exception) {
+                Log.d(TAG, e.getErrorMessage())
+            }
+        }
+    }
+
+    private fun convertToLocalItems(items: List<FeedItem>): List<LocalFeedItem> {
+        val localItems = mutableListOf<LocalFeedItem>()
+        var id = 1
+        for (item in items) {
+            localItems.add(LocalFeedItem(id, item.name, item.metadata))
+            id++
+        }
+        return localItems
     }
 
     private fun createFakeItems(): List<FeedItem> {
