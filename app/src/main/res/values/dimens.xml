@@ -15,19 +15,16 @@
     <dimen name="loading_progress_size">50dp</dimen>
 
     <!-- HOME -->
-    <dimen name="activity_home_padding">6dp</dimen>
+    <dimen name="home_list_padding_vertical">10dp</dimen>
+    <dimen name="home_list_padding_horizontal">20dp</dimen>
 
     <!-- ITEM DETAIL -->
     <dimen name="item_detail_img_size">100dp</dimen>
     <dimen name="item_detail_root_padding">10dp</dimen>
 
     <!-- FEED ITEM VH -->
-    <dimen name="vh_feed_item_padding">10dp</dimen>
-    <dimen name="vh_feed_item_img_height">260dp</dimen>
-    <dimen name="vh_feed_item_meta_margin_horizontal">1dp</dimen>
-    <dimen name="vh_feed_item_meta_margin_top">10dp</dimen>
+    <dimen name="vh_feed_item_padding_vertical">8dp</dimen>
+    <dimen name="vh_feed_item_padding_horizontal">16dp</dimen>
     <dimen name="vh_feed_item_img_size">50dp</dimen>
-    <dimen name="vh_feed_item_root_padding">10dp</dimen>
-    <dimen name="vh_feed_item_view_padding">10dp</dimen>
 
 </resources>

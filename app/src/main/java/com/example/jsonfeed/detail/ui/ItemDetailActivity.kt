@@ -3,7 +3,6 @@ package com.example.jsonfeed.detail.ui
 import android.content.Context
 import android.content.Intent
 import android.view.View
-import android.widget.Toast
 
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
@@ -80,13 +79,9 @@ class ItemDetailActivity : BaseActivity() {
         viewModel.retrieveItemById()
     }
 
-    private fun updateUI(model: LocalItem?) {
-        if (model != null) {
-            detailBinding.txtTitle.text = model.name
-            detailBinding.txtMeta.text = model.supertype
-        } else {
-            Toast.makeText(this, "Null Model!", Toast.LENGTH_LONG).show()
-        }
+    private fun updateUI(model: LocalItem) {
+        detailBinding.txtTitle.text = model.name
+        detailBinding.txtMeta.text = model.supertype
     }
 
 }

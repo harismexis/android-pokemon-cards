@@ -65,6 +65,7 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 
     private fun initialiseRecycler() {
         adapter = HomeAdapter(uiModels, this)
+        adapter.setHasStableIds(true)
         binding.homeList.layoutManager = LinearLayoutManager(this)
         binding.homeList.adapter = adapter
     }

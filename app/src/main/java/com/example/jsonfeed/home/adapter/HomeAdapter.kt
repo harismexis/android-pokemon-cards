@@ -19,7 +19,7 @@ class HomeAdapter(
         viewType: Int
     ): FeedItemVh {
         return FeedItemVh(
-            VhFeedItemBinding.inflate(LayoutInflater.from(parent.context)),
+            VhFeedItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
             clickListener
         )
     }
@@ -33,6 +33,10 @@ class HomeAdapter(
 
     override fun getItemCount(): Int {
         return models.size
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
     }
 
     override fun onViewDetachedFromWindow(holder: FeedItemVh) {

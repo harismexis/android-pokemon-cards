@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 import com.example.jsonfeed.databinding.VhFeedItemBinding
-import com.example.jsonfeed.datamodel.FeedItem
 import com.example.jsonfeed.uimodel.UiModel
 
 class FeedItemVh(
@@ -31,7 +30,7 @@ class FeedItemVh(
         populateImage(item.imageUrl)
         binding.txtTitle.text = item.name
         binding.txtMeta.text = item.supertype
-        binding.root.setOnClickListener {
+        itemView.setOnClickListener {
             itemClickListener.onFeedItemClick(item, position)
         }
     }
