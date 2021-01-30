@@ -1,7 +1,7 @@
 ext {
 
     common = [
-            FEED_BASE_URL : '\"' + "https://api.nasa.gov/planetary/" + '\"'
+            FEED_BASE_URL : '\"' + "https://api.pokemontcg.io/v1/" + '\"'
     ]
 
 }

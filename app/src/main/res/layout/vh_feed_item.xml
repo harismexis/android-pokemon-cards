@@ -10,9 +10,8 @@
     <ImageView
         android:id="@+id/imgContainer"
         android:layout_width="@dimen/vh_feed_item_img_size"
-        android:layout_height="@dimen/vh_feed_item_img_size"
+        android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -9,7 +9,7 @@ interface LocalDao {
     suspend fun insertItems(items: List<LocalFeedItem>)
 
     @Query("SELECT * FROM feed_table WHERE id = :itemId")
-    suspend fun getFeedItemById(itemId: Int): LocalFeedItem?
+    suspend fun getFeedItemById(itemId: String): LocalFeedItem?
 
     @Query("SELECT * FROM feed_table")
     suspend fun getFeedItems(): List<LocalFeedItem>?

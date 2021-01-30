@@ -20,20 +20,19 @@ class ItemDetailActivity : BaseActivity() {
     private lateinit var detailBinding: ItemDetailViewBinding
     private lateinit var viewModel: ItemDetailVm
 
-    private var selectedItemId: Int? = null
+    private lateinit var selectedItemId: String
 
     companion object {
 
-        private const val NO_ITEM_ID = -1
         private const val EXTRA_ITEM_ID = "item_id"
 
-        fun Context.startItemDetailActivity(value: Int?) {
+        fun Context.startItemDetailActivity(value: String) {
             this.startActivity(createIntent(this, value))
         }
 
         private fun createIntent(
             context: Context,
-            value: Int?
+            value: String
         ): Intent {
             return Intent(context, ItemDetailActivity::class.java).apply {
                 value?.let {
@@ -79,7 +78,7 @@ class ItemDetailActivity : BaseActivity() {
     }
 
     private fun retrieveIntentExtras() {
-        selectedItemId = intent.getIntExtra(EXTRA_ITEM_ID, NO_ITEM_ID)
+        selectedItemId = intent.getStringExtra(EXTRA_ITEM_ID)!!
     }
 
     private fun updateViewModel() {
@@ -93,9 +92,9 @@ class ItemDetailActivity : BaseActivity() {
     private fun updateUI(model: LocalFeedItem?) {
         if (model != null) {
             detailBinding.txtTitle.text = model.name
-            detailBinding.txtMeta.text = model.metadata
+            detailBinding.txtMeta.text = model.supertype
         } else {
-            Toast.makeText(this, "null item", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Null Model!", Toast.LENGTH_LONG).show()
         }
     }
 

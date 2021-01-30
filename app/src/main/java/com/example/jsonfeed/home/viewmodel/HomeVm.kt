@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
-import com.example.jsonfeed.home.repository.FeedRepository
-import com.example.jsonfeed.model.FeedItem
+import com.example.jsonfeed.datamodel.FeedItem
+import com.example.jsonfeed.repository.FeedRepository
 import com.example.jsonfeed.extensions.getErrorMessage
 import com.example.jsonfeed.localdb.LocalFeedItem
 import com.example.jsonfeed.localdb.repository.LocalRepository
@@ -50,51 +50,51 @@ class HomeVm @Inject constructor(
     fun fetchJsonFeed() {
         jobFeed = viewModelScope.launch {
             try {
-//                val response = marsRepo.getCuriosityLatestMRP()
-//                mModels.value = response.toUiModel().mrpItems
-            } catch (e: Exception) {
-//                Log.d(TAG, e.getErrorMessage())
-            }
-        }
-    }
-
-    suspend fun saveItemsLocally_2(items: List<FeedItem>) {
-        localRepo.insertFeedItems(convertToLocalItems((items)))
-    }
-
-    fun fetchFakeItems() {
-        val items = createFakeItems()
-        saveItemsLocally(items)
-        mModels.value = items
-    }
-
-    private fun saveItemsLocally(items: List<FeedItem>) {
-        jobSave = viewModelScope.launch {
-            try {
-                localRepo.insertFeedItems(convertToLocalItems(items))
+                val response = feedRepo.getJsonFeed()
+                response?.let { res ->
+                    res.cards?.let {
+                        mModels.value = it
+                        saveItemsLocally(it)
+                    }
+                }
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }
         }
     }
 
+    suspend fun saveItemsLocally(items: List<FeedItem>) {
+        localRepo.insertFeedItems(convertToLocalItems((items)))
+    }
+
     private fun convertToLocalItems(items: List<FeedItem>): List<LocalFeedItem> {
         val localItems = mutableListOf<LocalFeedItem>()
         var id = 1
         for (item in items) {
-            localItems.add(LocalFeedItem(id, item.name, item.metadata))
-            id++
+            item.id?.let {
+                val localItem = convertToLocalItem(item)
+                localItem?.let {
+                    localItems.add(it)
+                }
+                id++
+            }
         }
         return localItems
     }
 
-    private fun createFakeItems(): List<FeedItem> {
-        val items = arrayListOf<FeedItem>()
-        items.add(FeedItem("Knife", "Tool to slash & stab"))
-        items.add(FeedItem("Stick", "Tool for breaking bones"))
-        items.add(FeedItem("Nunchuck", "Tool for self defense"))
-        items.add(FeedItem("Double Stick", "Tool to destroy my enemies"))
-        return items
+    private fun convertToLocalItem(item: FeedItem): LocalFeedItem? {
+        item.id?.let {
+            return LocalFeedItem(
+                it,
+                item.name,
+                item.imageUrl,
+                item.imageUrlHiRes,
+                item.supertype,
+                item.subtype,
+                item.evolvesFrom
+            )
+        }
+        return null
     }
 
 }

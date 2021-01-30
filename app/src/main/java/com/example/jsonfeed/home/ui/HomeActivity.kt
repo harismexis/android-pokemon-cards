@@ -12,8 +12,8 @@ import com.example.jsonfeed.detail.ui.ItemDetailActivity.Companion.startItemDeta
 import com.example.jsonfeed.home.adapter.HomeAdapter
 import com.example.jsonfeed.home.viewholder.FeedItemVh
 import com.example.jsonfeed.home.viewmodel.HomeVm
-import com.example.jsonfeed.model.FeedItem
 import com.example.jsonfeed.base.BaseActivity
+import com.example.jsonfeed.datamodel.FeedItem
 
 class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 
@@ -24,7 +24,7 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.fetchFakeItems()
+        viewModel.fetchJsonFeed()
     }
 
     override fun initialiseViewModel() {
@@ -44,8 +44,9 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
     }
 
     override fun onFeedItemClick(item: FeedItem, position: Int) {
-        val itemId = position + 1
-        startItemDetailActivity(itemId)
+        item.id?.let {
+            startItemDetailActivity(it)
+        }
     }
 
     override fun getToolbar(): Toolbar? {

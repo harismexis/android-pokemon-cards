@@ -10,8 +10,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.jsonfeed.extensions.getErrorMessage
 import com.example.jsonfeed.localdb.LocalFeedItem
 import com.example.jsonfeed.localdb.repository.LocalRepository
-import kotlinx.coroutines.Job
 
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 import javax.inject.Inject
@@ -26,7 +26,7 @@ class ItemDetailVm @Inject constructor(
     val model: LiveData<LocalFeedItem?>
         get() = mModel
 
-    var itemId: Int? = null
+    lateinit var itemId: String
 
     private var jobGetLocalItem: Job? = null
 

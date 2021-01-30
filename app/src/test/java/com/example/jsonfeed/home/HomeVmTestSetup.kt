@@ -1,6 +1,6 @@
 package com.example.jsonfeed.home
 
-import com.example.jsonfeed.home.repository.FeedRepository
+import com.example.jsonfeed.repository.FeedRepository
 import com.example.jsonfeed.home.viewmodel.HomeVm
 import com.example.jsonfeed.shared.ViewModelBaseTestSetup
 

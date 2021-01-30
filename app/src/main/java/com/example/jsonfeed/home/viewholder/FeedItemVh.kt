@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 import com.example.jsonfeed.databinding.VhFeedItemBinding
-import com.example.jsonfeed.model.FeedItem
+import com.example.jsonfeed.datamodel.FeedItem
 
 class FeedItemVh(
     private var binding: VhFeedItemBinding,
@@ -27,9 +27,9 @@ class FeedItemVh(
         item: FeedItem,
         position: Int
     ) {
-        // populateImage(item.imgSrc)
+        populateImage(item.imageUrl)
         binding.txtTitle.text = item.name
-        binding.txtMeta.text = item.metadata
+        binding.txtMeta.text = item.supertype
         binding.root.setOnClickListener {
             itemClickListener.onFeedItemClick(item, position)
         }

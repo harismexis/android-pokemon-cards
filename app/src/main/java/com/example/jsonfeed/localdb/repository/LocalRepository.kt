@@ -14,7 +14,7 @@ class LocalRepository @Inject constructor(val dao: LocalDao) {
         dao.insertItems(items)
     }
 
-    suspend fun getFeedItemById(itemId: Int): LocalFeedItem? {
+    suspend fun getFeedItemById(itemId: String): LocalFeedItem? {
         return dao.getFeedItemById(itemId)
     }
 

@@ -1,8 +1,8 @@
-package com.example.jsonfeed.home.repository
+package com.example.jsonfeed.repository
 
 import com.example.jsonfeed.BuildConfig
-import com.example.jsonfeed.home.api.FeedApi
-import com.example.jsonfeed.model.Feed
+import com.example.jsonfeed.api.FeedApi
+import com.example.jsonfeed.datamodel.Feed
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -45,6 +45,6 @@ class FeedRepository @Inject constructor() {
     }
 
     suspend fun getJsonFeed(): Feed? {
-        return api.getJsonFeed()
+        return api.getPokemonCards()
     }
 }

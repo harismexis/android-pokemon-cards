@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.jsonfeed.databinding.VhFeedItemBinding
+import com.example.jsonfeed.datamodel.FeedItem
 import com.example.jsonfeed.home.viewholder.FeedItemVh
-import com.example.jsonfeed.model.FeedItem
 
 class HomeAdapter(
     private var models: List<FeedItem>,
