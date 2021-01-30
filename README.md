@@ -17,4 +17,8 @@ some utilities for setting up the tests with coroutines and live data. Also some
 network responses from real JSON data have been used. Also Instrumented Tests have been 
 added to test the Android related code of the application.
 
-&nbsp;
+#### Home
+![Alt text](screenshots/home/home-screen-emulator-2021-01-30-211655.png?raw=true "app screenshot")
+
+#### Picture of the day - photo
+![Alt text](screenshots/detail/item-detail-emulator-2021-01-30-211901.png?raw=true "app screenshot")
