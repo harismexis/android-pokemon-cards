@@ -13,14 +13,14 @@ import com.example.jsonfeed.home.adapter.HomeAdapter
 import com.example.jsonfeed.home.viewholder.FeedItemVh
 import com.example.jsonfeed.home.viewmodel.HomeVm
 import com.example.jsonfeed.base.BaseActivity
-import com.example.jsonfeed.datamodel.FeedItem
+import com.example.jsonfeed.uimodel.UiModel
 
 class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 
     private lateinit var viewModel: HomeVm
     private lateinit var binding: ActivityHomeBinding
     private lateinit var adapter: HomeAdapter
-    private var feedItems: MutableList<FeedItem> = mutableListOf()
+    private var uiModels: MutableList<UiModel> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,10 +43,8 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
         return binding.root
     }
 
-    override fun onFeedItemClick(item: FeedItem, position: Int) {
-        item.id?.let {
-            startItemDetailActivity(it)
-        }
+    override fun onFeedItemClick(item: UiModel, position: Int) {
+        startItemDetailActivity(item.id)
     }
 
     override fun getToolbar(): Toolbar? {
@@ -59,14 +57,14 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
         })
     }
 
-    private fun updateUI(models: List<FeedItem>) {
-        feedItems.clear()
-        feedItems.addAll(models)
+    private fun updateUI(models: List<UiModel>) {
+        uiModels.clear()
+        uiModels.addAll(models)
         adapter.notifyDataSetChanged()
     }
 
     private fun initialiseRecycler() {
-        adapter = HomeAdapter(feedItems, this)
+        adapter = HomeAdapter(uiModels, this)
         binding.homeList.layoutManager = LinearLayoutManager(this)
         binding.homeList.adapter = adapter
     }

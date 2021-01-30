@@ -1,7 +1,7 @@
 package com.example.jsonfeed.localdb.repository
 
 import com.example.jsonfeed.localdb.LocalDao
-import com.example.jsonfeed.localdb.LocalFeedItem
+import com.example.jsonfeed.localdb.LocalItem
 
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -9,16 +9,16 @@ import javax.inject.Singleton
 @Singleton
 class LocalRepository @Inject constructor(val dao: LocalDao) {
 
-    suspend fun insertFeedItems(items: List<LocalFeedItem>) {
+    suspend fun insertItems(items: List<LocalItem>) {
         dao.deleteAll()
         dao.insertItems(items)
     }
 
-    suspend fun getFeedItemById(itemId: String): LocalFeedItem? {
+    suspend fun getItemById(itemId: String): LocalItem? {
         return dao.getFeedItemById(itemId)
     }
 
-    suspend fun getFeedItems(): List<LocalFeedItem>? {
+    suspend fun getAllItems(): List<LocalItem>? {
         return dao.getFeedItems()
     }
 

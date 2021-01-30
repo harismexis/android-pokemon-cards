@@ -12,18 +12,16 @@ import com.example.jsonfeed.databinding.ActivityItemDetailBinding
 import com.example.jsonfeed.databinding.ItemDetailViewBinding
 import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.base.BaseActivity
-import com.example.jsonfeed.localdb.LocalFeedItem
+import com.example.jsonfeed.localdb.LocalItem
 
 class ItemDetailActivity : BaseActivity() {
 
     private lateinit var binding: ActivityItemDetailBinding
     private lateinit var detailBinding: ItemDetailViewBinding
     private lateinit var viewModel: ItemDetailVm
-
     private lateinit var selectedItemId: String
 
     companion object {
-
         private const val EXTRA_ITEM_ID = "item_id"
 
         fun Context.startItemDetailActivity(value: String) {
@@ -34,19 +32,15 @@ class ItemDetailActivity : BaseActivity() {
             context: Context,
             value: String
         ): Intent {
-            return Intent(context, ItemDetailActivity::class.java).apply {
-                value?.let {
-                    putExtra(EXTRA_ITEM_ID, value)
-                }
-            }
+            return Intent(context, ItemDetailActivity::class.java)
+                .apply { putExtra(EXTRA_ITEM_ID, value) }
         }
     }
 
     override fun initialise() {
         super.initialise()
         retrieveIntentExtras()
-        updateViewModel()
-        retrieveItem()
+        retrieveSelectedItem()
     }
 
     override fun observeLiveData() {
@@ -81,15 +75,12 @@ class ItemDetailActivity : BaseActivity() {
         selectedItemId = intent.getStringExtra(EXTRA_ITEM_ID)!!
     }
 
-    private fun updateViewModel() {
+    private fun retrieveSelectedItem() {
         viewModel.itemId = selectedItemId
-    }
-
-    private fun retrieveItem() {
         viewModel.retrieveItemById()
     }
 
-    private fun updateUI(model: LocalFeedItem?) {
+    private fun updateUI(model: LocalItem?) {
         if (model != null) {
             detailBinding.txtTitle.text = model.name
             detailBinding.txtMeta.text = model.supertype

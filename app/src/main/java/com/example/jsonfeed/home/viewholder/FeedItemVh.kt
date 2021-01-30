@@ -11,6 +11,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 import com.example.jsonfeed.databinding.VhFeedItemBinding
 import com.example.jsonfeed.datamodel.FeedItem
+import com.example.jsonfeed.uimodel.UiModel
 
 class FeedItemVh(
     private var binding: VhFeedItemBinding,
@@ -20,11 +21,11 @@ class FeedItemVh(
     private val tag = FeedItemVh::class.qualifiedName
 
     interface FeedItemClickListener {
-        fun onFeedItemClick(item: FeedItem, position: Int)
+        fun onFeedItemClick(item: UiModel, position: Int)
     }
 
     fun bind(
-        item: FeedItem,
+        item: UiModel,
         position: Int
     ) {
         populateImage(item.imageUrl)
