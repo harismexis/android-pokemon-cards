@@ -1,6 +1,7 @@
 package com.example.jsonfeed.home.api
 
 import com.example.jsonfeed.model.Feed
+
 import retrofit2.http.GET
 import retrofit2.http.Query
 

@@ -1,6 +1,5 @@
 package com.example.jsonfeed.home.repository
 
-
 import com.example.jsonfeed.BuildConfig
 import com.example.jsonfeed.home.api.FeedApi
 import com.example.jsonfeed.model.Feed

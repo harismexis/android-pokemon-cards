@@ -2,11 +2,14 @@ package com.example.jsonfeed.application
 
 import com.example.jsonfeed.di.DaggerMainComponent
 import com.example.jsonfeed.di.MainComponent
+
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import dagger.android.support.DaggerApplication
+
 import io.reactivex.plugins.RxJavaPlugins
+
 import javax.inject.Inject
 
 class MainApplication : DaggerApplication(), HasAndroidInjector {
@@ -32,8 +35,8 @@ class MainApplication : DaggerApplication(), HasAndroidInjector {
     }
 
     private fun initRxErrorHandler() {
-        RxJavaPlugins.setErrorHandler { ex: Throwable ->
-
+        RxJavaPlugins.setErrorHandler {
+            // Do nothing
         }
     }
 

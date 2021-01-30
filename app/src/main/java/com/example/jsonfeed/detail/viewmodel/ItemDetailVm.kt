@@ -10,37 +10,48 @@ import androidx.lifecycle.viewModelScope
 import com.example.jsonfeed.extensions.getErrorMessage
 import com.example.jsonfeed.localdb.LocalFeedItem
 import com.example.jsonfeed.localdb.repository.LocalRepository
+import kotlinx.coroutines.Job
 
 import kotlinx.coroutines.launch
 
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class ItemDetailVm @Inject constructor(
     var localRepo: LocalRepository
 ) : ViewModel() {
 
     private val tag = ItemDetailVm::class.qualifiedName
 
-    private val mModel = MutableLiveData<LocalFeedItem>()
-    val model: LiveData<LocalFeedItem>
+    private val mModel = MutableLiveData<LocalFeedItem?>()
+    val model: LiveData<LocalFeedItem?>
         get() = mModel
 
     var itemId: Int? = null
 
+    private var jobGetLocalItem: Job? = null
+
     fun retrieveItemById() {
         itemId?.let {
-            viewModelScope.launch {
+            jobGetLocalItem = viewModelScope.launch {
                 try {
-                    mModel.value = localRepo.getFeedItemById(it)
+                    val item = localRepo.getFeedItemById(it)
+                    mModel.value = item
+                    Log.d(tag, mModel.value?.id.toString())
                 } catch (e: Exception) {
                     Log.d(tag, e.getErrorMessage())
                 }
             }
         }
-
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        cancelJobGetLocalItem()
+    }
+
+    private fun cancelJobGetLocalItem() {
+        jobGetLocalItem?.cancel()
+        jobGetLocalItem = null
+    }
 
 }

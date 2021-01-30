@@ -55,7 +55,6 @@
     <TextView
         android:id="@+id/txt_title"
         style="@style/TitleTxtv"
-        android:text="Title of item"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -66,7 +65,6 @@
     <TextView
         android:id="@+id/txt_meta"
         style="@style/MetaTxtv"
-        android:text="Metadata of item"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"

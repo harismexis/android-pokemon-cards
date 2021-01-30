@@ -17,9 +17,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 class HomeVm @Inject constructor(
     var feedRepo: FeedRepository,
     var localRepo: LocalRepository
@@ -27,6 +25,7 @@ class HomeVm @Inject constructor(
 
     private val TAG = HomeVm::class.qualifiedName
     private var jobFeed: Job? = null
+    private var jobSave: Job? = null
 
     private val mModels = MutableLiveData<List<FeedItem>>()
     val models: LiveData<List<FeedItem>>
@@ -34,8 +33,18 @@ class HomeVm @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
+        cancelJobFeed()
+        cancelJobSave()
+    }
+
+    private fun cancelJobFeed() {
         jobFeed?.cancel()
         jobFeed = null
+    }
+
+    private fun cancelJobSave() {
+        jobSave?.cancel()
+        jobSave = null
     }
 
     fun fetchJsonFeed() {
@@ -60,7 +69,7 @@ class HomeVm @Inject constructor(
     }
 
     private fun saveItemsLocally(items: List<FeedItem>) {
-        viewModelScope.launch {
+        jobSave = viewModelScope.launch {
             try {
                 localRepo.insertFeedItems(convertToLocalItems(items))
             } catch (e: Exception) {

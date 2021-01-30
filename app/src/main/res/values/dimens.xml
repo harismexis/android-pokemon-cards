@@ -27,7 +27,7 @@
     <dimen name="vh_feed_item_meta_margin_horizontal">1dp</dimen>
     <dimen name="vh_feed_item_meta_margin_top">10dp</dimen>
     <dimen name="vh_feed_item_img_size">80dp</dimen>
-    <dimen name="vh_feed_item_row_root_padding">10dp</dimen>
+    <dimen name="vh_feed_item_root_padding">10dp</dimen>
     <dimen name="vh_feed_item_view_padding">10dp</dimen>
 
 </resources>

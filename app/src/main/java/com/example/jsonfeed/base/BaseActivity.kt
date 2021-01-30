@@ -48,4 +48,5 @@ abstract class BaseActivity : AppCompatActivity() {
         setSupportActionBar(getToolbar())
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
+
 }
