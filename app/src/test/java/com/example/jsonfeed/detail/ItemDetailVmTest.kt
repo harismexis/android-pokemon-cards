@@ -1,10 +1,7 @@
 package com.example.jsonfeed.detail
 
-import com.example.jsonfeed.extensions.toLocalItem
 import com.example.jsonfeed.extensions.toUiModel
-import com.example.jsonfeed.extensions.toUiModels
-import com.example.jsonfeed.testutils.mockprovider.provideMockFeedValid
-import com.example.jsonfeed.testutils.mockprovider.provideMockLocalItemsValid
+import com.example.jsonfeed.mockprovider.provideMockLocalItemsValid
 
 import com.nhaarman.mockitokotlin2.verify
 

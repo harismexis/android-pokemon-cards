@@ -1,4 +1,4 @@
-package com.example.jsonfeed.testutils.mockprovider
+package com.example.jsonfeed.mockprovider
 
 fun getMockFeedValid(): String {
     return "{\n" +

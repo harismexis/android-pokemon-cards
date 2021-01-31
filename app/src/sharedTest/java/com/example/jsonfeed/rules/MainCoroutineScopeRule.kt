@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.jsonfeed.testutils
+package com.example.jsonfeed.rules
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,4 +1,4 @@
-package com.example.jsonfeed.testutils.mockprovider
+package com.example.jsonfeed.mockprovider
 
 import com.example.jsonfeed.datamodel.Feed
 import com.example.jsonfeed.datamodel.FeedItem
