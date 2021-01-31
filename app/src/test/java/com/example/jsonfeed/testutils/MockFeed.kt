@@ -1,6 +1,6 @@
 package com.example.jsonfeed.testutils
 
-fun getMockFeedNoFilter(): String {
+fun getMockFeedValid(): String {
     return "{\n" +
             "  \"cards\": [\n" +
             "    {\n" +

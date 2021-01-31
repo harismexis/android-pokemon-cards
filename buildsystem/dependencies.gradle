@@ -34,7 +34,7 @@ ext {
     def cardview = '1.0.0'
     def glide = '4.11.0'
     def rx_relay = '2.1.1'
-    def mockito = '3.3.0'
+    // def mockito = '3.3.0'
     def mockk = '1.10.3-jdk8'
     def mockk_android = '1.10.3-jdk8'
 
@@ -98,8 +98,8 @@ ext {
             work_testing    : "androidx.work:work-testing:$work",
             coroutines_test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android",
 
-            mockito_android : "org.mockito:mockito-android:$mockito",
-            mockito_core    : "org.mockito:mockito-core:$mockito",
+//            mockito_android : "org.mockito:mockito-android:$mockito",
+//            mockito_core    : "org.mockito:mockito-core:$mockito",
     ]
 
     daggerDependancies = [
