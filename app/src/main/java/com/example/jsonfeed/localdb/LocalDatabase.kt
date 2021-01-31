@@ -31,4 +31,5 @@ abstract class LocalDatabase : RoomDatabase() {
     }
 
     abstract fun localDao(): LocalDao
+
 }

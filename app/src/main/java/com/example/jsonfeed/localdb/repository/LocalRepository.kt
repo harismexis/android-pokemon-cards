@@ -15,11 +15,11 @@ class LocalRepository @Inject constructor(val dao: LocalDao) {
     }
 
     suspend fun getItemById(itemId: String): LocalItem? {
-        return dao.getFeedItemById(itemId)
+        return dao.getLocalItemById(itemId)
     }
 
     suspend fun getAllItems(): List<LocalItem>? {
-        return dao.getFeedItems()
+        return dao.getAllItems()
     }
 
 }
