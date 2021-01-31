@@ -19,6 +19,7 @@ import com.example.jsonfeed.databinding.ActivityItemDetailBinding
 import com.example.jsonfeed.databinding.ItemDetailViewBinding
 import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.base.BaseActivity
+import com.example.jsonfeed.extensions.setTextOrUnknown
 import com.example.jsonfeed.localdb.LocalItem
 import com.example.jsonfeed.uimodel.UiModel
 
@@ -92,8 +93,14 @@ class ItemDetailActivity : BaseActivity() {
         model.imageUrlHiRes?.let {
             populateImage(it)
         }
-        detailBinding.txtTitle.text = model.name
-        detailBinding.txtMeta.text = model.supertype
+        detailBinding.txtName.setTextOrUnknown(model.name)
+        detailBinding.txtSupertype.setTextOrUnknown(model.supertype)
+        detailBinding.txtSubtype.setTextOrUnknown(model.subtype)
+        detailBinding.txtArtist.setTextOrUnknown(model.artist)
+        detailBinding.txtRarity.setTextOrUnknown(model.rarity)
+        detailBinding.txtSeries.setTextOrUnknown(model.series)
+        detailBinding.txtSet.setTextOrUnknown(model.set)
+        detailBinding.txtSetCode.setTextOrUnknown(model.setCode)
     }
 
     private fun populateImage(imgUrl: String) {

@@ -42,9 +42,9 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/txt_title"
+        android:id="@+id/txt_name"
         style="@style/TitleTxtv"
-        android:layout_marginTop="@dimen/item_detail_title_margin_top"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -52,15 +52,179 @@
         app:layout_constraintTop_toBottomOf="@+id/imgContainer"
         tools:text="Title of item" />
 
+    <!-- supertype -->
+
     <TextView
-        android:id="@+id/txt_meta"
-        style="@style/MetaTxtv"
-        android:layout_marginTop="@dimen/item_detail_txt_meta_top"
+        android:id="@+id/txt_supertype_label"
+        style="@style/MiniMetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_supertype"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_title"
-        tools:text="Metadata of item" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_name"
+        tools:text="Supertype label" />
+
+    <TextView
+        android:id="@+id/txt_supertype"
+        style="@style/MetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_supertype_label"
+        tools:text="Supertype" />
+
+    <!-- subtype -->
+
+    <TextView
+        android:id="@+id/txt_subtype_label"
+        style="@style/MiniMetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_subtype"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_supertype"
+        tools:text="Subtype label" />
+
+    <TextView
+        android:id="@+id/txt_subtype"
+        style="@style/MetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_subtype_label"
+        tools:text="Subtype" />
+
+    <!-- artist -->
+
+    <TextView
+        android:id="@+id/txt_artist_label"
+        style="@style/MiniMetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_artist"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_subtype"
+        tools:text="Artist label" />
+
+    <TextView
+        android:id="@+id/txt_artist"
+        style="@style/MetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_artist_label"
+        tools:text="Artist" />
+
+    <!-- rarity -->
+
+    <TextView
+        android:id="@+id/txt_rarity_label"
+        style="@style/MiniMetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_rarity"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_artist"
+        tools:text="rarity label" />
+
+    <TextView
+        android:id="@+id/txt_rarity"
+        style="@style/MetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_rarity_label"
+        tools:text="rarity" />
+
+    <!-- series -->
+
+    <TextView
+        android:id="@+id/txt_series_label"
+        style="@style/MiniMetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_series"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_rarity"
+        tools:text="series label" />
+
+    <TextView
+        android:id="@+id/txt_series"
+        style="@style/MetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_series_label"
+        tools:text="series" />
+
+    <!-- set -->
+
+    <TextView
+        android:id="@+id/txt_set_label"
+        style="@style/MiniMetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_set"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_series"
+        tools:text="set label" />
+
+    <TextView
+        android:id="@+id/txt_set"
+        style="@style/MetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_set_label"
+        tools:text="set" />
+
+    <!-- setCode -->
+
+    <TextView
+        android:id="@+id/txt_set_code_label"
+        style="@style/MiniMetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        android:text="@string/label_set_code"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_set"
+        tools:text="set code label" />
+
+    <TextView
+        android:id="@+id/txt_set_code"
+        style="@style/MetaTxtv"
+        android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_set_code_label"
+        tools:text="set code" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

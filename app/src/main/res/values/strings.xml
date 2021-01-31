@@ -5,4 +5,16 @@
     <string name="activity_home_label">Home</string>
     <string name="activity_item_detail_label">Item Detail</string>
 
+    <!-- Item Detail -->
+    <string name="label_name">Name:</string>
+    <string name="label_supertype">Supertype:</string>
+    <string name="label_subtype">Subtype:</string>
+    <string name="label_artist">Artist:</string>
+    <string name="label_rarity">Rarity:</string>
+    <string name="label_series">Series:</string>
+    <string name="label_set">Set:</string>
+    <string name="label_set_code">Set code:</string>
+    <string name="unknown">[missing]</string>
+
+
 </resources>
