@@ -9,7 +9,6 @@ import androidx.lifecycle.viewModelScope
 
 import com.example.jsonfeed.extensions.getErrorMessage
 import com.example.jsonfeed.extensions.toUiModel
-import com.example.jsonfeed.localdb.LocalItem
 import com.example.jsonfeed.localdb.repository.LocalRepository
 import com.example.jsonfeed.uimodel.UiModel
 
