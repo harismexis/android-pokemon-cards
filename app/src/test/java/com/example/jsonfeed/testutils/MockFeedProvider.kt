@@ -13,5 +13,5 @@ private fun convertToCreditResponse(jsonString: String?): Feed {
 }
 
 fun provideMockFeed(): Feed {
-    return convertToCreditResponse(getMockFeed())
+    return convertToCreditResponse(getMockFeedNoFilter())
 }

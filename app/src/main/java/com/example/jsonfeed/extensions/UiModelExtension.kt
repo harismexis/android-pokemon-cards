@@ -3,18 +3,18 @@ package com.example.jsonfeed.extensions
 import com.example.jsonfeed.localdb.LocalItem
 import com.example.jsonfeed.uimodel.UiModel
 
-fun List<UiModel>?.convertToLocalItems(): List<LocalItem> {
-    val locals = mutableListOf<LocalItem>()
-    if (this == null) return locals
+fun List<LocalItem>?.toUiModels(): List<UiModel> {
+    val models = mutableListOf<UiModel>()
+    if (this == null) return models
     for (item in this) {
-        val localItem = item.convertToLocalItem()
-        locals.add(localItem)
+        val model = item.toUiModel()
+        models.add(model)
     }
-    return locals
+    return models
 }
 
-fun UiModel.convertToLocalItem(): LocalItem {
-    return LocalItem(
+fun LocalItem.toUiModel(): UiModel {
+    return UiModel(
         this.id,
         this.name,
         this.imageUrl,

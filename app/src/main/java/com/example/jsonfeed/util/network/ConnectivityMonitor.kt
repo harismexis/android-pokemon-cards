@@ -4,13 +4,16 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.NetworkCallback
 import android.net.Network
+import android.net.NetworkInfo
 
 import com.jakewharton.rxrelay2.PublishRelay
+import javax.inject.Inject
 
-class ConnectivityMonitor (
+
+class ConnectivityMonitor @Inject constructor(
     var appContext: Context,
-    var requestProvider: ConnectivityRequestProvider
-) : NetworkCallback() {
+    var requestProvider: ConnectivityRequestProvider,
+    ) : NetworkCallback() {
 
     private val connectivityUpdates: PublishRelay<ConnectivityState> =
         PublishRelay.create()
@@ -39,6 +42,13 @@ class ConnectivityMonitor (
 
     fun getConnectivityUpdates(): PublishRelay<ConnectivityState> {
         return connectivityUpdates
+    }
+
+    fun isOnline(): Boolean {
+        val connMgr = appContext.applicationContext
+            .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo: NetworkInfo? = connMgr.activeNetworkInfo
+        return networkInfo?.isConnected == true
     }
 
 }

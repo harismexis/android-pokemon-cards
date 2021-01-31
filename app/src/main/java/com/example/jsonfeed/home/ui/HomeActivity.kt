@@ -24,7 +24,7 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.fetchJsonFeed()
+        viewModel.bind()
     }
 
     override fun initialiseViewModel() {
@@ -47,7 +47,7 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
         startItemDetailActivity(item.id)
     }
 
-    override fun getToolbar(): Toolbar? {
+    override fun getToolbar(): Toolbar {
         return binding.homeToolbar
     }
 

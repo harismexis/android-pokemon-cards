@@ -2,8 +2,9 @@ package com.example.jsonfeed.util.network
 
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
+import javax.inject.Inject
 
-class ConnectivityRequestProvider {
+class ConnectivityRequestProvider @Inject constructor() {
 
     fun provideNetworkRequest(): NetworkRequest {
         return NetworkRequest.Builder()

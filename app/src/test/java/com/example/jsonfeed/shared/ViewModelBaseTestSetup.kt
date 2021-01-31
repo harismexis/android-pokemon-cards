@@ -5,6 +5,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.jsonfeed.localdb.repository.LocalRepository
 import com.example.jsonfeed.util.network.ConnectivityState
 import com.example.jsonfeed.testutils.MainCoroutineScopeRule
+import com.example.jsonfeed.util.network.ConnectivityMonitor
 
 import com.jakewharton.rxrelay2.PublishRelay
 
