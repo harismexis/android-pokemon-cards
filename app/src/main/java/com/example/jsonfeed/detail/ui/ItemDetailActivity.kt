@@ -20,6 +20,7 @@ import com.example.jsonfeed.databinding.ItemDetailViewBinding
 import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.base.BaseActivity
 import com.example.jsonfeed.localdb.LocalItem
+import com.example.jsonfeed.uimodel.UiModel
 
 class ItemDetailActivity : BaseActivity() {
 
@@ -87,9 +88,9 @@ class ItemDetailActivity : BaseActivity() {
         viewModel.retrieveItemById()
     }
 
-    private fun updateUI(model: LocalItem) {
+    private fun updateUI(model: UiModel) {
         model.imageUrlHiRes?.let {
-            populateImage(model.imageUrlHiRes)
+            populateImage(it)
         }
         detailBinding.txtTitle.text = model.name
         detailBinding.txtMeta.text = model.supertype

@@ -2,10 +2,8 @@ package com.example.jsonfeed.home
 
 import com.example.jsonfeed.extensions.toLocalItems
 import com.example.jsonfeed.extensions.toUiModels
-import com.example.jsonfeed.testutils.getMockFeedValid
-import com.example.jsonfeed.testutils.provideMockFeedValid
-import com.example.jsonfeed.testutils.provideMockLocalItemsValid
-import com.nhaarman.mockitokotlin2.never
+import com.example.jsonfeed.testutils.mockprovider.provideMockFeedValid
+import com.example.jsonfeed.testutils.mockprovider.provideMockLocalItemsValid
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Before

@@ -1,6 +1,7 @@
-package com.example.jsonfeed.testutils
+package com.example.jsonfeed.testutils.mockprovider
 
 import com.example.jsonfeed.datamodel.Feed
+import com.example.jsonfeed.datamodel.FeedItem
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -15,3 +16,4 @@ private fun convertToFeed(jsonString: String?): Feed {
 fun provideMockFeedValid(): Feed {
     return convertToFeed(getMockFeedValid())
 }
+

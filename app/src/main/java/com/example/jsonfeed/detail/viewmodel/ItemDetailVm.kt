@@ -8,8 +8,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
 import com.example.jsonfeed.extensions.getErrorMessage
+import com.example.jsonfeed.extensions.toUiModel
 import com.example.jsonfeed.localdb.LocalItem
 import com.example.jsonfeed.localdb.repository.LocalRepository
+import com.example.jsonfeed.uimodel.UiModel
 
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -24,8 +26,8 @@ class ItemDetailVm @Inject constructor(
 
     lateinit var itemId: String
     private var jobGetLocalItem: Job? = null
-    private val mModel = MutableLiveData<LocalItem>()
-    val model: LiveData<LocalItem>
+    private val mModel = MutableLiveData<UiModel>()
+    val model: LiveData<UiModel>
         get() = mModel
 
     fun retrieveItemById() {
@@ -33,7 +35,7 @@ class ItemDetailVm @Inject constructor(
             try {
                 val item = localRepo.getItemById(itemId)
                 item?.let {
-                    mModel.value = it
+                    mModel.value = it.toUiModel()
                 }
             } catch (e: Exception) {
                 Log.d(tag, e.getErrorMessage())
