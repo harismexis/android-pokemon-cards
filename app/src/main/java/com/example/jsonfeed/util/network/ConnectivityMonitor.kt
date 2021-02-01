@@ -8,8 +8,9 @@ import android.net.NetworkInfo
 
 import com.jakewharton.rxrelay2.PublishRelay
 import javax.inject.Inject
+import javax.inject.Singleton
 
-
+@Singleton
 class ConnectivityMonitor @Inject constructor(
     var appContext: Context,
     var requestProvider: ConnectivityRequestProvider,

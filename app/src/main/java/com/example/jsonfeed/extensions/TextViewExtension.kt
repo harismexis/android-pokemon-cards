@@ -14,5 +14,5 @@ fun TextView?.setTextOrDefault(value: String?, defaultValue: String) {
 
 fun TextView?.setTextOrUnknown(value: String?) {
     if (this == null) return
-    this.setTextOrDefault(value, this.context.getString(R.string.unknown))
+    this.setTextOrDefault(value, this.context.getString(R.string.missing_value))
 }

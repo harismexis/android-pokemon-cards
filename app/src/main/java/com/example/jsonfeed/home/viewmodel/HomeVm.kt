@@ -25,18 +25,10 @@ class HomeVm @Inject constructor(
 ) : ViewModel() {
 
     private val TAG = HomeVm::class.qualifiedName
-    private var jobFeed: Job? = null
-    private var jobSave: Job? = null
 
     private val mModels = MutableLiveData<List<UiModel>>()
     val models: LiveData<List<UiModel>>
         get() = mModels
-
-    override fun onCleared() {
-        super.onCleared()
-        cancelJobFeed()
-        cancelJobSave()
-    }
 
     fun bind() {
         if (connectivity.isOnline()) {
@@ -47,7 +39,7 @@ class HomeVm @Inject constructor(
     }
 
     private fun fetchRemoteFeed() {
-        jobFeed = viewModelScope.launch {
+        viewModelScope.launch {
             try {
                 val response = feedRepo.getJsonFeed()
                 val uiModels = response.toUiModels()
@@ -61,7 +53,7 @@ class HomeVm @Inject constructor(
     }
 
     private fun fetchLocalFeed() {
-        jobFeed = viewModelScope.launch {
+        viewModelScope.launch {
             try {
                 val localItems = localRepo.getAllItems()
                 val uiModels = localItems.toUiModels()
@@ -70,16 +62,6 @@ class HomeVm @Inject constructor(
                 Log.d(TAG, e.getErrorMessage())
             }
         }
-    }
-
-    private fun cancelJobFeed() {
-        jobFeed?.cancel()
-        jobFeed = null
-    }
-
-    private fun cancelJobSave() {
-        jobSave?.cancel()
-        jobSave = null
     }
 
 }

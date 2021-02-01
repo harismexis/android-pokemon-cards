@@ -24,13 +24,12 @@ class ItemDetailVm @Inject constructor(
     private val tag = ItemDetailVm::class.qualifiedName
 
     lateinit var itemId: String
-    private var jobGetLocalItem: Job? = null
     private val mModel = MutableLiveData<UiModel>()
     val model: LiveData<UiModel>
         get() = mModel
 
     fun retrieveItemById() {
-        jobGetLocalItem = viewModelScope.launch {
+        viewModelScope.launch {
             try {
                 val item = localRepo.getItemById(itemId)
                 item?.let {
@@ -40,16 +39,6 @@ class ItemDetailVm @Inject constructor(
                 Log.d(tag, e.getErrorMessage())
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        cancelJobGetLocalItem()
-    }
-
-    private fun cancelJobGetLocalItem() {
-        jobGetLocalItem?.cancel()
-        jobGetLocalItem = null
     }
 
 }

@@ -14,6 +14,7 @@
         android:id="@+id/imgContainer"
         android:layout_width="@dimen/vh_feed_item_img_size"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/cd_card_image"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
