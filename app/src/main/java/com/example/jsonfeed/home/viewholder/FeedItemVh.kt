@@ -38,12 +38,11 @@ class FeedItemVh(
     fun unbind() {}
 
     private fun populateImage(url: String?) {
-        binding.imgContainer.layout(0, 0, 0, 0)
         Glide.with(itemView.context)
             .load(Uri.parse(url))
-            .override(binding.imgContainer.height)
             .error(ColorDrawable(Color.BLACK))
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .fallback(ColorDrawable(Color.BLACK))
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .into(binding.imgContainer)
     }
 }
