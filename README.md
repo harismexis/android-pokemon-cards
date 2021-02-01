@@ -21,4 +21,4 @@ added to test the Android related code of the application.
 ![Alt text](screenshots/home/home-screen-emulator-2021-01-30-211655.png?raw=true "app screenshot")
 
 #### Picture of the day - photo
-![Alt text](screenshots/detail/item-detail-emulator-2021-01-30-211901.png?raw=true "app screenshot")
+![Alt text](screenshots/detail/item-detail-phone-2021-02-01-021431.png?raw=true "app screenshot")
