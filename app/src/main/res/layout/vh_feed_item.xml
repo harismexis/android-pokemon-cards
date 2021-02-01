@@ -12,16 +12,16 @@
 
     <ImageView
         android:id="@+id/imgContainer"
-        android:layout_width="@dimen/vh_feed_item_img_size"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/vh_feed_item_img_width"
+        android:layout_height="@dimen/vh_feed_item_img_height"
         android:contentDescription="@string/cd_card_image"
-        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtTitle"
         style="@style/TitleTxtv"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toEndOf="@+id/imgContainer"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Title of item" />

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.jsonfeed.R
 
 import com.example.jsonfeed.databinding.VhFeedItemBinding
 import com.example.jsonfeed.uimodel.UiModel
@@ -16,8 +17,6 @@ class FeedItemVh(
     private var binding: VhFeedItemBinding,
     private var itemClickListener: FeedItemClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
-
-    private val tag = FeedItemVh::class.qualifiedName
 
     interface FeedItemClickListener {
         fun onFeedItemClick(item: UiModel, position: Int)
@@ -41,8 +40,8 @@ class FeedItemVh(
         Glide.with(itemView.context)
             .load(Uri.parse(url))
             .error(ColorDrawable(Color.BLACK))
-            .fallback(ColorDrawable(Color.BLACK))
-            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+            .placeholder(R.drawable.loading_animation)
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .into(binding.imgContainer)
     }
 }

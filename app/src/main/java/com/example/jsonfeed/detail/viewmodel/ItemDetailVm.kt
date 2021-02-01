@@ -12,7 +12,6 @@ import com.example.jsonfeed.extensions.toUiModel
 import com.example.jsonfeed.localdb.repository.LocalRepository
 import com.example.jsonfeed.uimodel.UiModel
 
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 import javax.inject.Inject
@@ -23,12 +22,11 @@ class ItemDetailVm @Inject constructor(
 
     private val tag = ItemDetailVm::class.qualifiedName
 
-    lateinit var itemId: String
     private val mModel = MutableLiveData<UiModel>()
     val model: LiveData<UiModel>
         get() = mModel
 
-    fun retrieveItemById() {
+    fun retrieveItemById(itemId: String) {
         viewModelScope.launch {
             try {
                 val item = localRepo.getItemById(itemId)

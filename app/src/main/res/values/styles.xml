@@ -6,6 +6,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/base_txt_size</item>
         <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:ellipsize">end</item>
         <item name="android:fontFamily">@font/ubuntu_regular</item>
     </style>
 

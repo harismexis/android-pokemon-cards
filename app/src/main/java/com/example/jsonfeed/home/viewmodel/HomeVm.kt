@@ -11,9 +11,9 @@ import com.example.jsonfeed.extensions.*
 import com.example.jsonfeed.localdb.repository.LocalRepository
 import com.example.jsonfeed.repository.FeedRepository
 import com.example.jsonfeed.uimodel.UiModel
+import com.example.jsonfeed.util.functional.Action1
 import com.example.jsonfeed.util.network.ConnectivityMonitor
 
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 import javax.inject.Inject
@@ -35,6 +35,14 @@ class HomeVm @Inject constructor(
             fetchRemoteFeed()
         } else {
             fetchLocalFeed()
+        }
+    }
+
+    fun refresh(callback: Action1<Boolean>) {
+        val canRefresh = connectivity.isOnline()
+        callback.call(canRefresh)
+        if (canRefresh) {
+            fetchRemoteFeed()
         }
     }
 

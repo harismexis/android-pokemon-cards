@@ -3,27 +3,25 @@ package com.example.jsonfeed.detail.ui
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.view.View
-import androidx.annotation.Nullable
 
+import androidx.annotation.Nullable
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
+
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.example.jsonfeed.R
 
+import com.example.jsonfeed.R
 import com.example.jsonfeed.databinding.ActivityItemDetailBinding
 import com.example.jsonfeed.databinding.ItemDetailViewBinding
 import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.base.BaseActivity
 import com.example.jsonfeed.extensions.setTextOrUnknown
-import com.example.jsonfeed.localdb.LocalItem
 import com.example.jsonfeed.uimodel.UiModel
 
 class ItemDetailActivity : BaseActivity() {
@@ -31,7 +29,6 @@ class ItemDetailActivity : BaseActivity() {
     private lateinit var binding: ActivityItemDetailBinding
     private lateinit var detailBinding: ItemDetailViewBinding
     private lateinit var viewModel: ItemDetailVm
-    private lateinit var selectedItemId: String
 
     companion object {
         private const val EXTRA_ITEM_ID = "item_id"
@@ -51,7 +48,6 @@ class ItemDetailActivity : BaseActivity() {
 
     override fun initialise() {
         super.initialise()
-        retrieveIntentExtras()
         retrieveSelectedItem()
     }
 
@@ -83,13 +79,11 @@ class ItemDetailActivity : BaseActivity() {
         return true
     }
 
-    private fun retrieveIntentExtras() {
-        selectedItemId = intent.getStringExtra(EXTRA_ITEM_ID)!!
-    }
-
     private fun retrieveSelectedItem() {
-        viewModel.itemId = selectedItemId
-        viewModel.retrieveItemById()
+        val selectedItemId = intent.getStringExtra(EXTRA_ITEM_ID)
+        selectedItemId?.let {
+            viewModel.retrieveItemById(it)
+        }
     }
 
     private fun updateUI(model: UiModel) {

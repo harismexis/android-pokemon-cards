@@ -1,6 +1,5 @@
 package com.example.jsonfeed.home.ui
 
-import android.os.Bundle
 import android.view.View
 
 import androidx.appcompat.widget.Toolbar
@@ -22,8 +21,9 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
     private lateinit var adapter: HomeAdapter
     private var uiModels: MutableList<UiModel> = mutableListOf()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initialise() {
+        super.initialise()
+        setupSwipeToRefresh()
         viewModel.bind()
     }
 
@@ -58,6 +58,7 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
     }
 
     private fun updateUI(models: List<UiModel>) {
+        binding.homeSwipeRefresh.isRefreshing = false
         uiModels.clear()
         uiModels.addAll(models)
         adapter.notifyDataSetChanged()
@@ -68,6 +69,17 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
         adapter.setHasStableIds(true)
         binding.homeList.layoutManager = LinearLayoutManager(this)
         binding.homeList.adapter = adapter
+    }
+
+    private fun setupSwipeToRefresh() {
+        binding.homeSwipeRefresh.setOnRefreshListener {
+            binding.homeSwipeRefresh.isRefreshing = true
+            viewModel.refresh { canRefresh ->
+                if (!canRefresh) {
+                    binding.homeSwipeRefresh.isRefreshing = false
+                }
+            }
+        }
     }
 
 }
