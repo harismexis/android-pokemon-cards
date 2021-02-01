@@ -16,4 +16,10 @@ fun verifyUiModelAgainstFeedItem(
     Assert.assertEquals(model.supertype, card.supertype)
     Assert.assertEquals(model.subtype, card.subtype)
     Assert.assertEquals(model.evolvesFrom, card.evolvesFrom)
+    Assert.assertEquals(model.artist, card.artist)
+    Assert.assertEquals(model.rarity, card.rarity)
+    Assert.assertEquals(model.series, card.series)
+    Assert.assertEquals(model.set, card.set)
+    Assert.assertEquals(model.setCode, card.setCode)
+
 }

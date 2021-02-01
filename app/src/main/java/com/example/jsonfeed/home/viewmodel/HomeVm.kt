@@ -1,12 +1,13 @@
 package com.example.jsonfeed.home.viewmodel
 
 import android.util.Log
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.jsonfeed.extensions.*
 
+import com.example.jsonfeed.extensions.*
 import com.example.jsonfeed.localdb.repository.LocalRepository
 import com.example.jsonfeed.repository.FeedRepository
 import com.example.jsonfeed.uimodel.UiModel
