@@ -16,3 +16,7 @@ fun provideMockFeedValid(): Feed {
     return convertToFeed(getMockFeedValid())
 }
 
+fun provideMockFeedAllIdsMissing(): Feed {
+    return convertToFeed(getMockFeedAllIdsMissing())
+}
+

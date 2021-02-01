@@ -12,7 +12,6 @@ data class LocalItem(
     @ColumnInfo(name = "imageUrlHiRes") val imageUrlHiRes: String?,
     @ColumnInfo(name = "supertype") val supertype: String?,
     @ColumnInfo(name = "subtype") val subtype: String?,
-    @ColumnInfo(name = "evolvesFrom") val evolvesFrom: String?,
     @ColumnInfo(name = "artist") val artist: String?,
     @ColumnInfo(name = "rarity") val rarity: String?,
     @ColumnInfo(name = "series") val series: String?,

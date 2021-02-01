@@ -21,7 +21,6 @@ fun LocalItem.toUiModel(): UiModel {
         this.imageUrlHiRes,
         this.supertype,
         this.subtype,
-        this.evolvesFrom,
         this.artist,
         this.rarity,
         this.series,

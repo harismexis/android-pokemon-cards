@@ -15,7 +15,6 @@ fun verifyLocalItemAgainstFeedItem(
     Assert.assertEquals(expected.imageUrlHiRes, actual.imageUrlHiRes)
     Assert.assertEquals(expected.supertype, actual.supertype)
     Assert.assertEquals(expected.subtype, actual.subtype)
-    Assert.assertEquals(expected.evolvesFrom, actual.evolvesFrom)
     Assert.assertEquals(expected.artist, actual.artist)
     Assert.assertEquals(expected.rarity, actual.rarity)
     Assert.assertEquals(expected.series, actual.series)

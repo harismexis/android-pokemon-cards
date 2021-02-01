@@ -30,7 +30,7 @@ abstract class HomeVmTestSetup : ViewModelBaseTestSetup() {
 
     protected lateinit var homeVm: HomeVm
 
-    override fun setupClassUnderTest() {
+    override fun initialiseClassUnderTest() {
         homeVm = HomeVm(mockFeedRepo, mockLocalRepo, mockConnectivity)
         homeVm.models.observeForever(observer)
     }

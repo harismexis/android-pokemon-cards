@@ -33,7 +33,7 @@ abstract class ViewModelBaseTestSetup {
 
     protected fun doBeforeTest() {
         MockitoAnnotations.initMocks(this)
-        setupClassUnderTest()
+        initialiseClassUnderTest()
         setupRxErrorHandler()
     }
 
@@ -43,6 +43,6 @@ abstract class ViewModelBaseTestSetup {
         }
     }
 
-    abstract fun setupClassUnderTest()
+    abstract fun initialiseClassUnderTest()
 
 }

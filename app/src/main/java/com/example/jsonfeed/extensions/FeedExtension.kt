@@ -28,7 +28,6 @@ private fun FeedItem.toLocalItem(id: String): LocalItem {
         this.imageUrlHiRes,
         this.supertype,
         this.subtype,
-        this.evolvesFrom,
         this.artist,
         this.rarity,
         this.series,

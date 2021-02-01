@@ -10,7 +10,6 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import org.mockito.Mockito
 
 @RunWith(JUnit4::class)
 class ItemDetailVmTest : ItemDetailVmTestSetup() {
@@ -24,21 +23,16 @@ class ItemDetailVmTest : ItemDetailVmTestSetup() {
     fun selectedIdIsSet_localItemIsRetrieved() {
         // given
         val mockLocalItem = provideMockLocalItems()[0]
-        val id = mockLocalItem.id
+        val localItemId = mockLocalItem.id
         val expectedUIModel = mockLocalItem.toUiModel()
-
-        runBlocking {
-            Mockito.`when`(mockLocalRepo.getItemById(id)).thenReturn(mockLocalItem)
-        }
+        mockLocalItemCall(localItemId, mockLocalItem)
 
         // when
-        detailVm.retrieveItemById(id)
+        detailVm.retrieveItemById(localItemId)
 
         // then
-        runBlocking {
-            verify(mockLocalRepo, Mockito.times(1)).getItemById(id)
-            verify(observer).onChanged(expectedUIModel)
-        }
+        verifyLocalItemRetrieved(localItemId)
+        verifyLiveDataChanged(expectedUIModel)
     }
 
 }

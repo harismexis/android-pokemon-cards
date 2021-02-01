@@ -7,7 +7,6 @@ data class FeedItem(
     var imageUrlHiRes: String?,
     var supertype: String?,
     var subtype: String?,
-    var evolvesFrom: String?,
     var artist: String?,
     var rarity: String?,
     var series: String?,
