@@ -9,6 +9,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 
 import com.example.jsonfeed.extensions.toLocalItems
 import com.example.jsonfeed.extensions.toUiModels
+import com.example.jsonfeed.mockprovider.provideMockFeedAllIdsMissing
 import com.example.jsonfeed.mockprovider.provideMockFeedValid
 
 import kotlinx.coroutines.runBlocking
@@ -56,6 +57,22 @@ class LocalDaoTest {
         Assert.assertNotNull(retrievedItems)
         Assert.assertNotEquals(0, retrievedItems!!.size)
         Assert.assertEquals(savedItems.size, retrievedItems.size)
+        Assert.assertEquals(savedItems, retrievedItems)
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun savingFeedItemsWithNoIds_noLocalItemsRetrieved() = runBlocking {
+        // given
+        val savedItems = provideMockFeedAllIdsMissing().toLocalItems()
+
+        // when
+        dao.insertItems(savedItems)
+        val retrievedItems = dao.getAllItems()
+
+        // then
+        Assert.assertNotNull(retrievedItems)
+        Assert.assertEquals(0, retrievedItems!!.size)
         Assert.assertEquals(savedItems.size, retrievedItems.size)
         Assert.assertEquals(savedItems, retrievedItems)
     }
