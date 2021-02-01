@@ -1,8 +1,7 @@
 package com.example.jsonfeed.detail
 
 import com.example.jsonfeed.extensions.toUiModel
-import com.example.jsonfeed.mockprovider.provideMockLocalItemsValid
-
+import com.example.jsonfeed.mockprovider.provideMockLocalItems
 import com.nhaarman.mockitokotlin2.verify
 
 import kotlinx.coroutines.runBlocking
@@ -24,7 +23,7 @@ class ItemDetailVmTest : ItemDetailVmTestSetup() {
     @Test
     fun selectedIdIsSet_localItemIsRetrieved() {
         // given
-        val mockLocalItem = provideMockLocalItemsValid()[0]
+        val mockLocalItem = provideMockLocalItems()[0]
         val id = mockLocalItem.id
         val expectedUIModel = mockLocalItem.toUiModel()
 

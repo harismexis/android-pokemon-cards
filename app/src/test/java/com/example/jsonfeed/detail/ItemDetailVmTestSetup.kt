@@ -18,20 +18,4 @@ abstract class ItemDetailVmTestSetup : ViewModelBaseTestSetup() {
         detailVm.model.observeForever(observer)
     }
 
-    override fun setupMocks() {
-
-    }
-
-    protected fun setupMockFeedRepo() {
-
-    }
-
-    private fun setupMockConnectivity() {
-
-    }
-
-    private fun setupMockResponse() {
-
-    }
-
 }

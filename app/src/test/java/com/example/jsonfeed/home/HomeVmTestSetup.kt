@@ -1,6 +1,7 @@
 package com.example.jsonfeed.home
 
 import androidx.lifecycle.Observer
+
 import com.example.jsonfeed.datamodel.Feed
 import com.example.jsonfeed.repository.FeedRepository
 import com.example.jsonfeed.home.viewmodel.HomeVm
@@ -8,7 +9,9 @@ import com.example.jsonfeed.localdb.LocalItem
 import com.example.jsonfeed.shared.ViewModelBaseTestSetup
 import com.example.jsonfeed.uimodel.UiModel
 import com.example.jsonfeed.util.network.ConnectivityMonitor
+
 import com.nhaarman.mockitokotlin2.verify
+
 import kotlinx.coroutines.runBlocking
 
 import org.mockito.Mock
@@ -30,10 +33,6 @@ abstract class HomeVmTestSetup : ViewModelBaseTestSetup() {
     override fun setupClassUnderTest() {
         homeVm = HomeVm(mockFeedRepo, mockLocalRepo, mockConnectivity)
         homeVm.models.observeForever(observer)
-    }
-
-    override fun setupMocks() {
-
     }
 
     protected fun mockInternetActive(active: Boolean) {

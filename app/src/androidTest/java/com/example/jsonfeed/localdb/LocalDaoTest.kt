@@ -46,8 +46,7 @@ class LocalDaoTest {
     @Throws(Exception::class)
     fun savingItems_correctItemsAreRetrieved() = runBlocking {
         // given
-        val uiModels = provideMockFeedValid().toUiModels()
-        val savedItems = uiModels.toLocalItems()
+        val savedItems = provideMockFeedValid().toLocalItems()
 
         // when
         dao.insertItems(savedItems)
@@ -56,7 +55,7 @@ class LocalDaoTest {
         // then
         Assert.assertNotNull(retrievedItems)
         Assert.assertNotEquals(0, retrievedItems!!.size)
-        Assert.assertEquals(uiModels.size, retrievedItems.size)
+        Assert.assertEquals(savedItems.size, retrievedItems.size)
         Assert.assertEquals(savedItems.size, retrievedItems.size)
         Assert.assertEquals(savedItems, retrievedItems)
     }

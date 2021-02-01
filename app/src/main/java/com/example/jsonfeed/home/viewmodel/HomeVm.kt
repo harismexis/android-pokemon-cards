@@ -50,9 +50,9 @@ class HomeVm @Inject constructor(
         viewModelScope.launch {
             try {
                 val response = feedRepo.getJsonFeed()
-                val uiModels = response.toUiModels()
+                val localItems = response.toLocalItems()
+                val uiModels = localItems.toUiModels()
                 mModels.value = uiModels
-                val localItems = uiModels.toLocalItems()
                 localRepo.insertItems(localItems)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())

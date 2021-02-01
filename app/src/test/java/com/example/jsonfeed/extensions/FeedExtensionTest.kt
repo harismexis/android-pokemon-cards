@@ -1,7 +1,8 @@
 package com.example.jsonfeed.extensions
 
 import com.example.jsonfeed.mockprovider.provideMockFeedValid
-import com.example.jsonfeed.utils.verifyUiModelAgainstFeedItem
+import com.example.jsonfeed.utils.verifyLocalItemAgainstFeedItem
+
 import org.junit.Assert
 import org.junit.Test
 
@@ -13,13 +14,13 @@ class FeedExtensionTest {
         val feed = provideMockFeedValid()
 
         // when
-        val uiModels = feed.toUiModels()
+        val localItems = feed.toLocalItems()
 
         // then
-        Assert.assertEquals(feed.cards!!.size, uiModels.size)
+        Assert.assertEquals(feed.cards!!.size, localItems.size)
         feed.cards!!.forEachIndexed { index, card ->
-            val uiModel = uiModels[index]
-            verifyUiModelAgainstFeedItem(uiModel, card!!)
+            val localItem = localItems[index]
+            verifyLocalItemAgainstFeedItem(card!!, localItem)
         }
     }
 

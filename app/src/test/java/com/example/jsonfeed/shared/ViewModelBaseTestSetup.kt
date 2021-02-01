@@ -31,29 +31,18 @@ abstract class ViewModelBaseTestSetup {
 
     protected val connectivityUpdates: PublishRelay<ConnectivityState> = PublishRelay.create()
 
-    abstract fun setupClassUnderTest()
-
-    abstract fun setupMocks()
-
     protected fun doBeforeTest() {
         MockitoAnnotations.initMocks(this)
-        setupMocks()
         setupClassUnderTest()
         setupRxErrorHandler()
     }
 
-    protected fun setupRxErrorHandler() {
+    private fun setupRxErrorHandler() {
         RxJavaPlugins.setErrorHandler {
             // Do nothing
         }
     }
 
-    private fun setupMockConnectivity() {
-
-    }
-
-    private fun setupMockResponse() {
-
-    }
+    abstract fun setupClassUnderTest()
 
 }

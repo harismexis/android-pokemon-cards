@@ -3,7 +3,7 @@ package com.example.jsonfeed.home
 import com.example.jsonfeed.extensions.toLocalItems
 import com.example.jsonfeed.extensions.toUiModels
 import com.example.jsonfeed.mockprovider.provideMockFeedValid
-import com.example.jsonfeed.mockprovider.provideMockLocalItemsValid
+import com.example.jsonfeed.mockprovider.provideMockLocalItems
 
 import org.junit.Before
 import org.junit.Test
@@ -22,8 +22,9 @@ class HomeVmTest : HomeVmTestSetup() {
     fun internetIsOnAndFeedIsValid_remoteCallIsDoneAndDataIsStoredLocallyAndLiveDataIsUpdated() {
         // given
         val mockFeedValid = provideMockFeedValid()
-        val expectedUiModels = mockFeedValid.toUiModels()
-        val expectedLocalItems = expectedUiModels.toLocalItems()
+        val expectedLocalItems = mockFeedValid.toLocalItems()
+        val expectedUiModels = expectedLocalItems.toUiModels()
+
         mockInternetActive(true)
         mockFeedNetworkCall(mockFeedValid)
 
@@ -39,7 +40,7 @@ class HomeVmTest : HomeVmTestSetup() {
     @Test
     fun internetIsOffAndLocalStorageHasItems_localItemsAreFetchedAndLiveDataIsUpdated() {
         // given
-        val mockLocalItems = provideMockLocalItemsValid()
+        val mockLocalItems = provideMockLocalItems()
         val expectedUiModels = mockLocalItems.toUiModels()
         mockInternetActive(false)
         mockLocalItemsCall(mockLocalItems)
@@ -56,8 +57,9 @@ class HomeVmTest : HomeVmTestSetup() {
     fun onRefresh_dataRefreshedIfInternetActive() {
         // given
         val mockFeedValid = provideMockFeedValid()
-        val expectedUiModels = mockFeedValid.toUiModels()
-        val expectedLocalItems = expectedUiModels.toLocalItems()
+        val expectedLocalItems = mockFeedValid.toLocalItems()
+        val expectedUiModels = expectedLocalItems.toUiModels()
+
         mockInternetActive(true)
         mockFeedNetworkCall(mockFeedValid)
 

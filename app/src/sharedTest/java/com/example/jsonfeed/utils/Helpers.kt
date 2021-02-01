@@ -1,25 +1,24 @@
 package com.example.jsonfeed.utils
 
 import com.example.jsonfeed.datamodel.FeedItem
-import com.example.jsonfeed.uimodel.UiModel
+import com.example.jsonfeed.localdb.LocalItem
 
 import org.junit.Assert
 
-fun verifyUiModelAgainstFeedItem(
-    model: UiModel,
-    card: FeedItem
+fun verifyLocalItemAgainstFeedItem(
+    expected: FeedItem,
+    actual: LocalItem
 ) {
-    Assert.assertEquals(model.id, card.id)
-    Assert.assertEquals(model.name, card.name)
-    Assert.assertEquals(model.imageUrl, card.imageUrl)
-    Assert.assertEquals(model.imageUrlHiRes, card.imageUrlHiRes)
-    Assert.assertEquals(model.supertype, card.supertype)
-    Assert.assertEquals(model.subtype, card.subtype)
-    Assert.assertEquals(model.evolvesFrom, card.evolvesFrom)
-    Assert.assertEquals(model.artist, card.artist)
-    Assert.assertEquals(model.rarity, card.rarity)
-    Assert.assertEquals(model.series, card.series)
-    Assert.assertEquals(model.set, card.set)
-    Assert.assertEquals(model.setCode, card.setCode)
-
+    Assert.assertEquals(expected.id, actual.id)
+    Assert.assertEquals(expected.name, actual.name)
+    Assert.assertEquals(expected.imageUrl, actual.imageUrl)
+    Assert.assertEquals(expected.imageUrlHiRes, actual.imageUrlHiRes)
+    Assert.assertEquals(expected.supertype, actual.supertype)
+    Assert.assertEquals(expected.subtype, actual.subtype)
+    Assert.assertEquals(expected.evolvesFrom, actual.evolvesFrom)
+    Assert.assertEquals(expected.artist, actual.artist)
+    Assert.assertEquals(expected.rarity, actual.rarity)
+    Assert.assertEquals(expected.series, actual.series)
+    Assert.assertEquals(expected.set, actual.set)
+    Assert.assertEquals(expected.setCode, actual.setCode)
 }

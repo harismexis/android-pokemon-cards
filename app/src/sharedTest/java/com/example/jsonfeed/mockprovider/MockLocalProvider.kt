@@ -1,9 +1,8 @@
 package com.example.jsonfeed.mockprovider
 
 import com.example.jsonfeed.extensions.toLocalItems
-import com.example.jsonfeed.extensions.toUiModels
 import com.example.jsonfeed.localdb.LocalItem
 
-fun provideMockLocalItemsValid(): List<LocalItem> {
-    return provideMockFeedValid().toUiModels().toLocalItems()
+fun provideMockLocalItems(): List<LocalItem> {
+    return provideMockFeedValid().toLocalItems()
 }
