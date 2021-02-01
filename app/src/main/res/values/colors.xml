@@ -2,6 +2,7 @@
 <resources>
 
     <!-- Palette -->
+
     <color name="transparent">#00ffffff</color>
     <color name="primary">#2196F3</color>
     <color name="purple_200">#FFBB86FC</color>

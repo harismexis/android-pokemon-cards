@@ -33,8 +33,7 @@ class ItemDetailVmTest : ItemDetailVmTestSetup() {
         }
 
         // when
-        detailVm.itemId = id
-        detailVm.retrieveItemById()
+        detailVm.retrieveItemById(id)
 
         // then
         runBlocking {

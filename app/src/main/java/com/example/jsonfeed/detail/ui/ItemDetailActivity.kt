@@ -2,25 +2,16 @@ package com.example.jsonfeed.detail.ui
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.view.View
 
-import androidx.annotation.Nullable
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
-
-import com.example.jsonfeed.R
 import com.example.jsonfeed.databinding.ActivityItemDetailBinding
 import com.example.jsonfeed.databinding.ItemDetailViewBinding
 import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.base.BaseActivity
+import com.example.jsonfeed.extensions.populateWithGlide
 import com.example.jsonfeed.extensions.setTextOrUnknown
 import com.example.jsonfeed.uimodel.UiModel
 
@@ -88,7 +79,7 @@ class ItemDetailActivity : BaseActivity() {
 
     private fun updateUI(model: UiModel) {
         model.imageUrlHiRes?.let {
-            populateImage(it)
+            this.populateWithGlide(detailBinding.img, it)
         }
         detailBinding.txtName.setTextOrUnknown(model.name)
         detailBinding.txtSupertype.setTextOrUnknown(model.supertype)
@@ -98,40 +89,6 @@ class ItemDetailActivity : BaseActivity() {
         detailBinding.txtSeries.setTextOrUnknown(model.series)
         detailBinding.txtSet.setTextOrUnknown(model.set)
         detailBinding.txtSetCode.setTextOrUnknown(model.setCode)
-    }
-
-    private fun populateImage(imgUrl: String) {
-        showLoadingView(true)
-        Glide.with(this)
-            .asBitmap()
-            .load(Uri.parse(imgUrl))
-            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-            .into(object : CustomTarget<Bitmap?>() {
-                override fun onResourceReady(
-                    resource: Bitmap,
-                    transition: Transition<in Bitmap?>?
-                ) {
-                    showLoadingView(false)
-                    detailBinding.img.setImageBitmap(resource)
-                }
-
-                override fun onLoadFailed(errorDrawable: Drawable?) {
-                    showLoadingView(false)
-                    detailBinding.img.setImageResource(R.mipmap.ic_launcher)
-                }
-
-                override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
-            })
-    }
-
-    private fun showLoadingView(show: Boolean) {
-        if (show) {
-            detailBinding.img.visibility = View.GONE
-            detailBinding.progressContainer.visibility = View.VISIBLE
-        } else {
-            detailBinding.img.visibility = View.VISIBLE
-            detailBinding.progressContainer.visibility = View.GONE
-        }
     }
 
 }
