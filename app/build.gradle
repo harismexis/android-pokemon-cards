@@ -17,7 +17,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "com.example.jsonfeed.runner.InstrumentedRunner"
-        // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "FEED_BASE_URL", commonValues.FEED_BASE_URL
     }
 
@@ -73,9 +72,8 @@ dependencies {
     testImplementation testLibraries.values()
 
     androidTestImplementation androidTestLibraries.values()
-    androidTestImplementation mockkDependencies.mockk_android
 
     kaptAndroidTest annotationProcessorsDependencies.dagger_compiler
-    kaptAndroidTest  annotationProcessorsDependencies.dagger_android_processor
+    kaptAndroidTest annotationProcessorsDependencies.dagger_android_processor
 
 }

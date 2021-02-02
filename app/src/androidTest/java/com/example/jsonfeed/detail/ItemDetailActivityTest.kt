@@ -14,7 +14,9 @@ import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.extensions.toLocalItems
 import com.example.jsonfeed.extensions.toUiModels
 import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
+import com.example.jsonfeed.mockproviders.MockHomeVmProvider
 import com.example.jsonfeed.mockproviders.MockItemDetailVmProvider
+import com.example.jsonfeed.uimodel.UiModel
 
 import io.mockk.every
 
@@ -24,30 +26,30 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class ItemDetailActivityTest: BaseTestSetup() {
+class ItemDetailActivityTest : BaseTestSetup() {
 
     @get:Rule
     val testRule: ActivityTestRule<ItemDetailActivity> =
-        ActivityTestRule(ItemDetailActivity::class.java,
-            false, false)
+        ActivityTestRule(
+            ItemDetailActivity::class.java,
+            false, false
+        )
 
     lateinit var mockItemDetailVm: ItemDetailVm
+    lateinit var mockUiModel: UiModel
 
     @Before
     fun setup() {
         mockItemDetailVm = MockItemDetailVmProvider.provideMockItemDetailVm()
         every { mockItemDetailVm.retrieveItemById(any()) } returns Unit
-        every { mockItemDetailVm.model } returns MockItemDetailVmProvider.model
+        mockUiModel = getMockFeedAllIdsValid().toLocalItems().toUiModels()[0]
     }
 
     @Test
-    fun viewModelUpdatesLiveData_UiIsUpdatedWithCreditScoreData() {
+    fun liveDataChanges_uiIsUpdatedWithCorrectData() {
         // given
-        val mockUiModel = getMockFeedAllIdsValid().toLocalItems().toUiModels()[0]
-        testRule.launchActivity(null)
-        testRule.activity.runOnUiThread {
-            MockItemDetailVmProvider.mModel.value = mockUiModel
-        }
+        every { mockItemDetailVm.model } returns MockItemDetailVmProvider.model
+        launchActivityAndMockLiveData()
 
         // then
         onView(withId(R.id.img)).check(matches(isDisplayed()))
@@ -66,6 +68,13 @@ class ItemDetailActivityTest: BaseTestSetup() {
         onView(withId(R.id.txt_set)).check(matches(withText(mockUiModel.set)))
         onView(withId(R.id.txt_set_code_label)).check(matches(withText(getString(R.string.label_set_code))))
         onView(withId(R.id.txt_set_code)).check(matches(withText(mockUiModel.setCode)))
+    }
+
+    private fun launchActivityAndMockLiveData() {
+        testRule.launchActivity(null)
+        testRule.activity.runOnUiThread {
+            MockItemDetailVmProvider.mModel.value = mockUiModel
+        }
     }
 
     private fun getString(id: Int): String {

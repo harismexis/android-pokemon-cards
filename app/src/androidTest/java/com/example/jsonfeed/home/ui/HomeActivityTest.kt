@@ -32,7 +32,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class HomeActivityTest: BaseTestSetup() {
+class HomeActivityTest : BaseTestSetup() {
 
     @get:Rule
     val testRule: ActivityTestRule<HomeActivity> =
@@ -42,54 +42,59 @@ class HomeActivityTest: BaseTestSetup() {
         )
 
     lateinit var mockHomeVm: HomeVm
-    lateinit var expectedUiModels: List<UiModel>
+    lateinit var mockUiModels: List<UiModel>
 
     @Before
     fun doBeforeTest() {
         Intents.init()
+        mockUiModels = getMockFeedAllIdsValid().toLocalItems().toUiModels()
         mockHomeVm = MockHomeVmProvider.provideMockHomeVm()
         every { mockHomeVm.bind() } returns Unit
-        every { mockHomeVm.models } returns MockHomeVmProvider.models
-        expectedUiModels = getMockFeedAllIdsValid().toLocalItems().toUiModels()
     }
 
     @Test
-    fun viewModelsGivesMockUiModels_homeListHasCorrectNumberOfItems() {
+    fun liveDataIsUpdated_homeListHasCorrectNumberOfItems() {
         // given
-        launchHomeActivityAndMockLiveData()
+        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        launchActivityAndMockLiveData()
 
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(expectedUiModels.size))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockUiModels.size))
     }
 
     @Test
     fun clickOnHomeListItem_opensItemDetailActivity() {
         // given
-        launchHomeActivityAndMockLiveData()
+        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        launchActivityAndMockLiveData()
 
         // when
-        onView(withId(R.id.home_list)).perform(
-            actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                0,
-                click()
-            )
-        )
+        clickRecyclerAt(0)
 
         // then
         intended(hasComponent(ItemDetailActivity::class.java.name))
     }
 
+    private fun clickRecyclerAt(position: Int) {
+        onView(withId(R.id.home_list)).perform(
+            actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                position,
+                click()
+            )
+        )
+    }
+
+    private fun launchActivityAndMockLiveData() {
+        testRule.launchActivity(null)
+        testRule.activity.runOnUiThread {
+            MockHomeVmProvider.mModels.value = mockUiModels
+        }
+    }
+
     @After
     fun doAfterTest() {
         Intents.release()
-    }
-
-    private fun launchHomeActivityAndMockLiveData() {
-        testRule.launchActivity(null)
-        testRule.activity.runOnUiThread {
-            MockHomeVmProvider.mModels.value = expectedUiModels
-        }
     }
 
 }
