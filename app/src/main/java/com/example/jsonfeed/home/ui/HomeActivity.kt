@@ -59,6 +59,8 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 
     private fun updateUI(models: List<UiModel>) {
         binding.homeSwipeRefresh.isRefreshing = false
+        binding.loadingProgressBar.visibility = View.GONE
+        binding.homeList.visibility = View.VISIBLE
         uiModels.clear()
         uiModels.addAll(models)
         adapter.notifyDataSetChanged()
