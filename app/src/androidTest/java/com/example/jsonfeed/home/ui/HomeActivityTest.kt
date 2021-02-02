@@ -1,6 +1,5 @@
 package com.example.jsonfeed.home.ui
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -14,6 +13,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 
 import com.example.jsonfeed.R
+import com.example.jsonfeed.base.BaseTestSetup
 import com.example.jsonfeed.detail.ui.ItemDetailActivity
 import com.example.jsonfeed.extensions.toLocalItems
 import com.example.jsonfeed.extensions.toUiModels
@@ -32,10 +32,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class HomeActivityTest {
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
+class HomeActivityTest: BaseTestSetup() {
 
     @get:Rule
     val testRule: ActivityTestRule<HomeActivity> =

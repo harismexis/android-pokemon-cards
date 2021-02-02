@@ -1,6 +1,5 @@
-package com.example.jsonfeed.home.ui
+package com.example.jsonfeed.detail
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -9,6 +8,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 
 import com.example.jsonfeed.R
+import com.example.jsonfeed.base.BaseTestSetup
 import com.example.jsonfeed.detail.ui.ItemDetailActivity
 import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.extensions.toLocalItems
@@ -24,10 +24,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class ItemDetailActivityTest {
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
+class ItemDetailActivityTest: BaseTestSetup() {
 
     @get:Rule
     val testRule: ActivityTestRule<ItemDetailActivity> =
