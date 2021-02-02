@@ -2,28 +2,22 @@ package com.example.jsonfeed.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 
-import com.example.jsonfeed.home.viewmodel.HomeVm
-import com.example.jsonfeed.mocks.MockProvider
+import com.example.jsonfeed.mockproviders.provideMockVmMap
 
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
-import dagger.multibindings.IntoMap
 
 import javax.inject.Inject
-import javax.inject.Provider
 import javax.inject.Singleton
 
 import kotlin.reflect.KClass
 
 @Singleton
-class InstrumentedViewModelFactory @Inject constructor(
-    val viewModel: HomeVm
-) : ViewModelProvider.Factory {
+class InstrumentedViewModelFactory @Inject constructor() : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>) =
-        MockProvider.provideMockViewModel() as T
+        provideMockVmMap()[modelClass]?.get() as T
 }
 
 @Target(
@@ -39,12 +33,5 @@ internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
 abstract class InstrumentedViewModelModule {
 
     @Binds
-    internal abstract fun bindViewModelFactory(factory: InstrumentedViewModelFactory):
-            ViewModelProvider.Factory
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(HomeVm::class)
-    internal abstract fun homeViewModel(viewModel: HomeVm): ViewModel
-
+    internal abstract fun bindViewModelFactory(factory: InstrumentedViewModelFactory): ViewModelProvider.Factory
 }

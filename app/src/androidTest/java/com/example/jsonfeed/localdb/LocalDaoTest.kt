@@ -8,7 +8,6 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
 import com.example.jsonfeed.extensions.toLocalItems
-import com.example.jsonfeed.extensions.toUiModels
 import com.example.jsonfeed.mockprovider.provideMockFeedAllIdsMissing
 import com.example.jsonfeed.mockprovider.provideMockFeedValid
 
