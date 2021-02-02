@@ -10,22 +10,16 @@
         <item name="android:fontFamily">@font/ubuntu_regular</item>
     </style>
 
-    <style name="MarginTxtv" parent="BaseTxtv">
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginStart">10dp</item>
-        <item name="android:layout_marginEnd">10dp</item>
-    </style>
-
-    <style name="TitleTxtv" parent="MarginTxtv">
+    <style name="TitleTxtv" parent="BaseTxtv">
         <item name="android:textSize">@dimen/large_txt</item>
         <item name="android:fontFamily">@font/ubuntu_bold</item>
     </style>
 
-    <style name="DateTxtv" parent="MarginTxtv">
+    <style name="NormalTxtv" parent="BaseTxtv">
         <item name="android:textSize">@dimen/normal_txt</item>
     </style>
 
-    <style name="MetaTxtv" parent="MarginTxtv">
+    <style name="MetaTxtv" parent="BaseTxtv">
         <item name="android:textSize">@dimen/small_txt</item>
     </style>
 
@@ -33,12 +27,13 @@
         <item name="android:textSize">@dimen/mini_large_txt</item>
     </style>
 
-    <style name="MiniDateTxtv" parent="DateTxtv">
+    <style name="MiniNormalTxtv" parent="NormalTxtv">
         <item name="android:textSize">@dimen/mini_normal_txt</item>
     </style>
 
     <style name="MiniMetaTxtv" parent="MetaTxtv">
         <item name="android:textSize">@dimen/mini_small_txt</item>
+        <item name="android:textColor">@color/yellow_one</item>
     </style>
 
     <style name="AppToolbar">

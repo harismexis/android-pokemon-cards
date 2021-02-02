@@ -44,7 +44,7 @@ class ItemDetailActivity : BaseActivity() {
 
     override fun observeLiveData() {
         viewModel.model.observe(this, {
-            updateUI(it)
+            populate(it)
         })
     }
 
@@ -77,7 +77,7 @@ class ItemDetailActivity : BaseActivity() {
         }
     }
 
-    private fun updateUI(model: UiModel) {
+    private fun populate(model: UiModel) {
         model.imageUrlHiRes?.let {
             this.populateWithGlide(detailBinding.img, it)
         }

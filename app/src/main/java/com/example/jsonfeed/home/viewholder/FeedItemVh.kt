@@ -20,7 +20,7 @@ class FeedItemVh(
         position: Int
     ) {
         itemView.context.populateWithGlide(binding.imgContainer, item.imageUrl)
-        binding.txtTitle.text = item.name
+        binding.txtName.text = item.name
         binding.txtMeta.text = item.supertype
         itemView.setOnClickListener {
             itemClickListener.onFeedItemClick(item, position)

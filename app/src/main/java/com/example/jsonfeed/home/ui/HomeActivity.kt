@@ -53,11 +53,11 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 
     override fun observeLiveData() {
         viewModel.models.observe(this, {
-            updateUI(it)
+            populate(it)
         })
     }
 
-    private fun updateUI(models: List<UiModel>) {
+    private fun populate(models: List<UiModel>) {
         binding.homeSwipeRefresh.isRefreshing = false
         binding.loadingProgressBar.visibility = View.GONE
         binding.homeList.visibility = View.VISIBLE

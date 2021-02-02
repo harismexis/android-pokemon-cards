@@ -18,18 +18,21 @@
     <dimen name="home_list_padding_vertical">10dp</dimen>
     <dimen name="home_list_padding_horizontal">20dp</dimen>
 
-    <!-- FEED ITEM VH -->
+    <!-- ITEM VH -->
     <dimen name="vh_feed_item_padding_vertical">8dp</dimen>
     <dimen name="vh_feed_item_padding_horizontal">16dp</dimen>
     <dimen name="vh_feed_item_img_width">80dp</dimen>
     <dimen name="vh_feed_item_img_height">100dp</dimen>
+    <dimen name="vh_feed_item_txt_margin_start">16dp</dimen>
+    <dimen name="vh_feed_item_txt_name_margin_top">24dp</dimen>
+    <dimen name="vh_feed_item_txt_meta_margin_top">14dp</dimen>
 
     <!-- ITEM DETAIL -->
     <dimen name="item_detail_img_margin_top">14dp</dimen>
     <dimen name="item_detail_img_height">300dp</dimen>
     <dimen name="item_detail_title_margin_top">40dp</dimen>
-    <dimen name="item_detail_txt_label_margin_top">30dp</dimen>
-    <dimen name="item_detail_txt_meta_margin_top">8dp</dimen>
+    <dimen name="item_detail_txt_label_margin_top">32dp</dimen>
+    <dimen name="item_detail_txt_meta_margin_top">10dp</dimen>
     <dimen name="item_detail_root_padding">16dp</dimen>
     <dimen name="item_detail_progress_container_min_height">300dp</dimen>
 
