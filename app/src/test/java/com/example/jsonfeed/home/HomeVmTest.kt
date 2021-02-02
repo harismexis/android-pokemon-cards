@@ -2,8 +2,11 @@ package com.example.jsonfeed.home
 
 import com.example.jsonfeed.extensions.toLocalItems
 import com.example.jsonfeed.extensions.toUiModels
+import com.example.jsonfeed.localdb.LocalItem
 import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
 import com.example.jsonfeed.mockprovider.getMockLocalItemsFromFeedAllIdsValid
+import com.example.jsonfeed.uimodel.UiModel
+import com.nhaarman.mockitokotlin2.verifyZeroInteractions
 
 import org.junit.Before
 import org.junit.Test
@@ -19,7 +22,7 @@ class HomeVmTest : HomeVmTestSetup() {
     }
 
     @Test
-    fun internetIsOnAndAllFeedItemIdsValid_remoteCallIsDoneAndDataIsStoredLocallyAndLiveDataIsUpdated() {
+    fun internetOn_remoteCallDoneAndDataStoredAndLiveDataUpdated() {
         // given
         val mockFeed = getMockFeedAllIdsValid()
         val mockLocalItems = mockFeed.toLocalItems()
@@ -32,13 +35,11 @@ class HomeVmTest : HomeVmTestSetup() {
         homeVm.bind()
 
         // then
-        verifyRemoteDataRetrieved()
-        verifyLiveDataChanged(mockUiModels)
-        verifyDataStoredLocally(mockLocalItems)
+        verifyRemoteDataFetched(mockUiModels, mockLocalItems)
     }
 
     @Test
-    fun internetIsOffAndLocalStorageHasItems_localItemsAreFetchedAndLiveDataIsUpdated() {
+    fun internetOff_localItemsFetchedAndLiveDataUpdated() {
         // given
         val mockLocalItems = getMockLocalItemsFromFeedAllIdsValid()
         val mockUiModels = mockLocalItems.toUiModels()
@@ -49,12 +50,13 @@ class HomeVmTest : HomeVmTestSetup() {
         homeVm.bind()
 
         // then
+        verifyInternetChecked()
         verifyLocalItemsRetrieved()
         verifyLiveDataChanged(mockUiModels)
     }
 
     @Test
-    fun onRefresh_dataRefreshedIfInternetActive() {
+    fun onRefreshAndInternetOn_dataRefreshed() {
         // given
         val mockFeed = getMockFeedAllIdsValid()
         val mockLocalItems = mockFeed.toLocalItems()
@@ -67,9 +69,31 @@ class HomeVmTest : HomeVmTestSetup() {
         homeVm.refresh {}
 
         // then
+        verifyRemoteDataFetched(mockUiModels, mockLocalItems)
+    }
+
+    @Test
+    fun onRefreshAndInternetOff_nothingHappens() {
+        // given
+        mockInternetActive(false)
+
+        // when
+        homeVm.refresh {}
+
+        // then
+        verifyInternetChecked()
+        verifyZeroInteractions(mockFeedRepo)
+        verifyZeroInteractions(mockLocalRepo)
+    }
+
+    private fun verifyRemoteDataFetched(
+        uiModels: List<UiModel>,
+        localItems: List<LocalItem>
+    ) {
+        verifyInternetChecked()
         verifyRemoteDataRetrieved()
-        verifyLiveDataChanged(mockUiModels)
-        verifyDataStoredLocally(mockLocalItems)
+        verifyLiveDataChanged(uiModels)
+        verifyDataStoredLocally(localItems)
     }
 
 }

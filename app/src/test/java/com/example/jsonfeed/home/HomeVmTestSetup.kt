@@ -11,6 +11,7 @@ import com.example.jsonfeed.uimodel.UiModel
 import com.example.jsonfeed.util.network.ConnectivityMonitor
 
 import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.verifyZeroInteractions
 
 import kotlinx.coroutines.runBlocking
 
@@ -74,6 +75,10 @@ abstract class HomeVmTestSetup : ViewModelBaseTestSetup() {
         runBlocking {
             verify(mockLocalRepo, Mockito.times(1)).insertItems(expectedLocalItems)
         }
+    }
+
+    protected fun verifyInternetChecked() {
+        verify(mockConnectivity, Mockito.times(1)).isOnline()
     }
 
 }

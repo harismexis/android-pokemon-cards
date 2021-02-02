@@ -17,7 +17,7 @@ class ItemDetailVmTest : ItemDetailVmTestSetup() {
     }
 
     @Test
-    fun selectedIdIsSet_localItemIsRetrieved() {
+    fun retrievingLocalItem_localItemRetrievedAndLiveDataUpdated() {
         // given
         val mockLocalItem = getMockLocalItemsFromFeedAllIdsValid()[0]
         val mockId = mockLocalItem.id
