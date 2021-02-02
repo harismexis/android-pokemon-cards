@@ -84,8 +84,9 @@ class FeedExtensionTest : BaseTestSetup() {
         localItems: List<LocalItem>
     ) {
         feed.cards!!.forEachIndexed lit@{ _, feedItem ->
+            if (feedItem == null) return@lit
             localItems.forEachIndexed { _, localItem ->
-                feedItem?.id?.let {
+                feedItem.id?.let {
                     if (it == localItem.id) {
                         verifyLocalItemAgainstFeedItem(feedItem, localItem)
                         return@lit
