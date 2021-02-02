@@ -12,11 +12,15 @@ private fun convertToFeed(jsonString: String?): Feed {
     return Gson().fromJson(json, Feed::class.java)
 }
 
-fun provideMockFeedValid(): Feed {
-    return convertToFeed(getMockFeedValid())
+fun getMockFeedAllIdsValid(): Feed {
+    return convertToFeed(mockFeedAllIdsValid())
 }
 
-fun provideMockFeedAllIdsMissing(): Feed {
-    return convertToFeed(getMockFeedAllIdsMissing())
+fun getMockFeedSomeIdsAbsent(): Feed {
+    return convertToFeed(mockFeedSomeIdsAbsent())
+}
+
+fun getMockFeedAllIdsAbsent(): Feed {
+    return convertToFeed(mockFeedAllIdsAbsent())
 }
 

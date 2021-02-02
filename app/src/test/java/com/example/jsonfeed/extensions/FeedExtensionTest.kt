@@ -1,23 +1,26 @@
 package com.example.jsonfeed.extensions
 
-import com.example.jsonfeed.mockprovider.provideMockFeedValid
+import com.example.jsonfeed.base.BaseTestSetup
+import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
 import com.example.jsonfeed.utils.verifyLocalItemAgainstFeedItem
 
-import org.junit.Assert
 import org.junit.Test
 
-class FeedExtensionTest {
+class FeedExtensionTest : BaseTestSetup() {
 
     @Test
-    fun feedContainsValidItems_conversionToUiModelsIsCorrect() {
+    fun feedContainsValidItems_conversionToLocalItemsIsCorrect() {
         // given
-        val feed = provideMockFeedValid()
+        val feed = getMockFeedAllIdsValid()
 
         // when
         val localItems = feed.toLocalItems()
 
         // then
-        Assert.assertEquals(feed.cards!!.size, localItems.size)
+        verifyListsHaveSameSize(feed.cards!!, localItems)
+        verifyListSizeWhenAllIdsValid(feed.cards!!)
+        verifyListSizeWhenAllIdsValid(localItems)
+
         feed.cards!!.forEachIndexed { index, card ->
             val localItem = localItems[index]
             verifyLocalItemAgainstFeedItem(card!!, localItem)

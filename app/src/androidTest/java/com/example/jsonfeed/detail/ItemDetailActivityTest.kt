@@ -13,7 +13,7 @@ import com.example.jsonfeed.detail.ui.ItemDetailActivity
 import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.extensions.toLocalItems
 import com.example.jsonfeed.extensions.toUiModels
-import com.example.jsonfeed.mockprovider.provideMockFeedValid
+import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
 import com.example.jsonfeed.mockproviders.MockItemDetailVmProvider
 
 import io.mockk.every
@@ -43,7 +43,7 @@ class ItemDetailActivityTest: BaseTestSetup() {
     @Test
     fun viewModelUpdatesLiveData_UiIsUpdatedWithCreditScoreData() {
         // given
-        val mockUiModel = provideMockFeedValid().toLocalItems().toUiModels()[0]
+        val mockUiModel = getMockFeedAllIdsValid().toLocalItems().toUiModels()[0]
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
             MockItemDetailVmProvider.mModel.value = mockUiModel

@@ -1,10 +1,7 @@
 package com.example.jsonfeed.detail
 
 import com.example.jsonfeed.extensions.toUiModel
-import com.example.jsonfeed.mockprovider.provideMockLocalItems
-import com.nhaarman.mockitokotlin2.verify
-
-import kotlinx.coroutines.runBlocking
+import com.example.jsonfeed.mockprovider.getMockLocalItemsFromFeedAllIdsValid
 
 import org.junit.Before
 import org.junit.Test
@@ -22,17 +19,17 @@ class ItemDetailVmTest : ItemDetailVmTestSetup() {
     @Test
     fun selectedIdIsSet_localItemIsRetrieved() {
         // given
-        val mockLocalItem = provideMockLocalItems()[0]
-        val localItemId = mockLocalItem.id
-        val expectedUIModel = mockLocalItem.toUiModel()
-        mockLocalItemCall(localItemId, mockLocalItem)
+        val mockLocalItem = getMockLocalItemsFromFeedAllIdsValid()[0]
+        val mockId = mockLocalItem.id
+        val mockUiModel = mockLocalItem.toUiModel()
+        mockLocalItemCall(mockId, mockLocalItem)
 
         // when
-        detailVm.retrieveItemById(localItemId)
+        detailVm.retrieveItemById(mockId)
 
         // then
-        verifyLocalItemRetrieved(localItemId)
-        verifyLiveDataChanged(expectedUIModel)
+        verifyLocalItemRetrieved(mockId)
+        verifyLiveDataChanged(mockUiModel)
     }
 
 }

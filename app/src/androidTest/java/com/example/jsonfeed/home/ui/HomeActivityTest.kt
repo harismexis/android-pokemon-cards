@@ -18,7 +18,7 @@ import com.example.jsonfeed.detail.ui.ItemDetailActivity
 import com.example.jsonfeed.extensions.toLocalItems
 import com.example.jsonfeed.extensions.toUiModels
 import com.example.jsonfeed.home.viewmodel.HomeVm
-import com.example.jsonfeed.mockprovider.provideMockFeedValid
+import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
 import com.example.jsonfeed.mockproviders.MockHomeVmProvider
 import com.example.jsonfeed.uimodel.UiModel
 import com.example.jsonfeed.utils.RecyclerViewItemCountAssertion
@@ -50,7 +50,7 @@ class HomeActivityTest: BaseTestSetup() {
         mockHomeVm = MockHomeVmProvider.provideMockHomeVm()
         every { mockHomeVm.bind() } returns Unit
         every { mockHomeVm.models } returns MockHomeVmProvider.models
-        expectedUiModels = provideMockFeedValid().toLocalItems().toUiModels()
+        expectedUiModels = getMockFeedAllIdsValid().toLocalItems().toUiModels()
     }
 
     @Test
