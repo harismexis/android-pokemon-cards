@@ -242,6 +242,7 @@ fun mockFeedSomeIdsAbsent(): String {
     return "{\n" +
             "  \"cards\": [\n" +
             "    {\n" +
+            "      \"id\": \"\",\n" + // Set Id to empty
 //            "      \"id\": \"xy7-10\",\n" +
             "      \"name\": \"Vespiquen\",\n" +
             "      \"nationalPokedexNumber\": 416,\n" +

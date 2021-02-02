@@ -11,8 +11,10 @@ fun Feed?.toLocalItems(): List<LocalItem> {
         for (item in cards) {
             item?.let { currentItem ->
                 currentItem.id?.let { id ->
-                    val localItem = currentItem.toLocalItem(id)
-                    localItems.add(localItem)
+                    if (id.isNotBlank()) {
+                        val localItem = currentItem.toLocalItem(id)
+                        localItems.add(localItem)
+                    }
                 }
             }
         }

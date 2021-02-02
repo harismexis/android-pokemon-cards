@@ -9,7 +9,7 @@ import org.junit.Test
 class LocalExtensionTest : BaseTestSetup() {
 
     @Test
-    fun localItemsFromFeedWithAllIdsValid_conversionToUiModelsIsCorrect() {
+    fun localItemsAreConvertedToUiModels_uiModelsAreCorrect() {
         // given
         val localItems = getMockLocalItemsFromFeedAllIdsValid()
 
