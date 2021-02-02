@@ -24,3 +24,11 @@ fun getMockFeedAllIdsAbsent(): Feed {
     return convertToFeed(mockFeedAllIdsAbsent())
 }
 
+fun getMockFeedSomeItemsEmpty(): Feed {
+    return convertToFeed(mockFeedSomeItemsEmpty())
+}
+
+fun getMockFeedEmptyJson(): Feed {
+    return convertToFeed(mockFeedEmptyJson())
+}
+

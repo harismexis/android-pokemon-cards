@@ -22,6 +22,8 @@ abstract class BaseTestSetup {
         const val EXPECTED_NUM_MODELS_ALL_FEED_IDS_VALID = 5
         const val EXPECTED_NUM_MODELS_SOME_FEED_IDS_ABSENT = 3
         const val EXPECTED_NUM_MODELS_ALL_FEED_IDS_ABSENT = 0
+        const val EXPECTED_NUM_MODELS_SOME_FEED_ITEMS_EMPTY = 2
+        const val EXPECTED_NUM_MODELS_EMPTY_JSON = 0
     }
 
     protected fun <T, P> verifyListsHaveSameSize(
@@ -48,6 +50,14 @@ abstract class BaseTestSetup {
 
     protected fun <T> verifyListSizeWhenAllIdsAbsent(items: List<T>) {
         verifyListSize(EXPECTED_NUM_MODELS_ALL_FEED_IDS_ABSENT, items)
+    }
+
+    protected fun <T> verifyListSizeWhenSomeItemsEmpty(items: List<T>) {
+        verifyListSize(EXPECTED_NUM_MODELS_SOME_FEED_ITEMS_EMPTY, items)
+    }
+
+    protected fun <T> verifyListSizeWhenJsonIsEmpty(items: List<T>) {
+        verifyListSize(EXPECTED_NUM_MODELS_EMPTY_JSON, items)
     }
 
 }

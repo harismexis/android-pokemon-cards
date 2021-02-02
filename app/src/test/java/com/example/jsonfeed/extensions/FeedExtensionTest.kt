@@ -1,9 +1,9 @@
 package com.example.jsonfeed.extensions
 
 import com.example.jsonfeed.base.BaseTestSetup
-import com.example.jsonfeed.mockprovider.getMockFeedAllIdsAbsent
-import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
-import com.example.jsonfeed.mockprovider.getMockFeedSomeIdsAbsent
+import com.example.jsonfeed.datamodel.Feed
+import com.example.jsonfeed.localdb.LocalItem
+import com.example.jsonfeed.mockprovider.*
 import com.example.jsonfeed.utils.verifyLocalItemAgainstFeedItem
 
 import org.junit.Test
@@ -39,16 +39,7 @@ class FeedExtensionTest : BaseTestSetup() {
 
         // then
         verifyListSizeWhenSomeIdsAbsent(localItems)
-        feed.cards!!.forEachIndexed lit@{ _, feedItem ->
-            localItems.forEachIndexed { _, localItem ->
-                feedItem?.id?.let {
-                    if (it == localItem.id) {
-                        verifyLocalItemAgainstFeedItem(feedItem, localItem)
-                        return@lit
-                    }
-                }
-            }
-        }
+        verifyLocalItemsAgainstFeedItems(feed, localItems)
     }
 
     @Test
@@ -63,5 +54,45 @@ class FeedExtensionTest : BaseTestSetup() {
         verifyListSizeWhenAllIdsAbsent(localItems)
     }
 
+    @Test
+    fun feedHasSomeEmptyItems_conversionToLocalItemsIsCorrect() {
+        // given
+        val feed = getMockFeedSomeItemsEmpty()
+
+        // when
+        val localItems = feed.toLocalItems()
+
+        // then
+        verifyListSizeWhenSomeItemsEmpty(localItems)
+        verifyLocalItemsAgainstFeedItems(feed, localItems)
+    }
+
+    @Test
+    fun feedIsEmptyJson_conversionToLocalItemsIsCorrect() {
+        // given
+        val feed = getMockFeedEmptyJson()
+
+        // when
+        val localItems = feed.toLocalItems()
+
+        // then
+        verifyListSizeWhenJsonIsEmpty(localItems)
+    }
+
+    private fun verifyLocalItemsAgainstFeedItems(
+        feed: Feed,
+        localItems: List<LocalItem>
+    ) {
+        feed.cards!!.forEachIndexed lit@{ _, feedItem ->
+            localItems.forEachIndexed { _, localItem ->
+                feedItem?.id?.let {
+                    if (it == localItem.id) {
+                        verifyLocalItemAgainstFeedItem(feedItem, localItem)
+                        return@lit
+                    }
+                }
+            }
+        }
+    }
 
 }
