@@ -105,6 +105,134 @@ fun mockFeedAllIdsValid(): String {
             "          \"value\": \"+10\"\n" +
             "        }\n" +
             "      ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"id\": \"swsh4-175\",\n" +
+            "      \"name\": \"Drapion V\",\n" +
+            "      \"nationalPokedexNumber\": 452,\n" +
+            "      \"imageUrl\": \"https://images.pokemontcg.io/swsh4/175.png\",\n" +
+            "      \"imageUrlHiRes\": \"https://images.pokemontcg.io/swsh4/175_hires.png\",\n" +
+            "      \"types\": [\n" +
+            "        \"Darkness\"\n" +
+            "      ],\n" +
+            "      \"supertype\": \"Pokémon\",\n" +
+            "      \"subtype\": \"V\",\n" +
+            "      \"hp\": \"210\",\n" +
+            "      \"retreatCost\": [\n" +
+            "        \"Colorless\",\n" +
+            "        \"Colorless\",\n" +
+            "        \"Colorless\"\n" +
+            "      ],\n" +
+            "      \"convertedRetreatCost\": 3,\n" +
+            "      \"number\": \"175\",\n" +
+            "      \"artist\": \"Eske Yoshinob\",\n" +
+            "      \"rarity\": \"Rare Holo V\",\n" +
+            "      \"series\": \"Sword & Shield\",\n" +
+            "      \"set\": \"Vivid Voltage\",\n" +
+            "      \"setCode\": \"swsh4\",\n" +
+            "      \"text\": [\n" +
+            "        \"V rule: When your Pokémon V is Knocked Out, your opponent takes 2 Prize cards.\"\n" +
+            "      ],\n" +
+            "      \"attacks\": [\n" +
+            "        {\n" +
+            "          \"cost\": [\n" +
+            "            \"Darkness\",\n" +
+            "            \"Colorless\",\n" +
+            "            \"Colorless\"\n" +
+            "          ],\n" +
+            "          \"name\": \"Wrack Down\",\n" +
+            "          \"text\": \"\",\n" +
+            "          \"damage\": \"70\",\n" +
+            "          \"convertedEnergyCost\": 3\n" +
+            "        },\n" +
+            "        {\n" +
+            "          \"cost\": [\n" +
+            "            \"Darkness\",\n" +
+            "            \"Colorless\",\n" +
+            "            \"Colorless\",\n" +
+            "            \"Colorless\"\n" +
+            "          ],\n" +
+            "          \"name\": \"Hazardous Claws\",\n" +
+            "          \"text\": \"Discard 2 Energy from this Pokémon. Your opponent's Active Pokémon is now Paralyzed and Poisoned.\",\n" +
+            "          \"damage\": \"130\",\n" +
+            "          \"convertedEnergyCost\": 4\n" +
+            "        }\n" +
+            "      ],\n" +
+            "      \"weaknesses\": [\n" +
+            "        {\n" +
+            "          \"type\": \"Fighting\",\n" +
+            "          \"value\": \"×2\"\n" +
+            "        }\n" +
+            "      ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"id\": \"ex14-85\",\n" +
+            "      \"name\": \"Windstorm\",\n" +
+            "      \"imageUrl\": \"https://images.pokemontcg.io/ex14/85.png\",\n" +
+            "      \"imageUrlHiRes\": \"https://images.pokemontcg.io/ex14/85_hires.png\",\n" +
+            "      \"supertype\": \"Trainer\",\n" +
+            "      \"subtype\": \"Item\",\n" +
+            "      \"hp\": \"None\",\n" +
+            "      \"number\": \"85\",\n" +
+            "      \"artist\": \"Ryo Ueda\",\n" +
+            "      \"rarity\": \"Uncommon\",\n" +
+            "      \"series\": \"EX\",\n" +
+            "      \"set\": \"Crystal Guardians\",\n" +
+            "      \"setCode\": \"ex14\",\n" +
+            "      \"text\": [\n" +
+            "        \"Choose up to 2 in any combination of Pokémon Tool cards and Stadium cards in play (both yours and your opponent's) and discard them.\"\n" +
+            "      ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"id\": \"pl2-103\",\n" +
+            "      \"name\": \"Alakazam 4\",\n" +
+            "      \"nationalPokedexNumber\": 65,\n" +
+            "      \"imageUrl\": \"https://images.pokemontcg.io/pl2/103.png\",\n" +
+            "      \"imageUrlHiRes\": \"https://images.pokemontcg.io/pl2/103_hires.png\",\n" +
+            "      \"types\": [\n" +
+            "        \"Psychic\"\n" +
+            "      ],\n" +
+            "      \"supertype\": \"Pokémon\",\n" +
+            "      \"subtype\": \"Level Up\",\n" +
+            "      \"ability\": {\n" +
+            "        \"name\": \"Damage Switch\",\n" +
+            "        \"text\": \"As often as you like during your turn (before your attack), you may move 1 damage counter from 1 of your Pokémon SP to another of your Pokémon SP. This power can't be used if Alakazam 4 is affected by a Special Condition.\",\n" +
+            "        \"type\": \"Poké-Power\"\n" +
+            "      },\n" +
+            "      \"hp\": \"100\",\n" +
+            "      \"retreatCost\": [\n" +
+            "        \"Colorless\",\n" +
+            "        \"Colorless\"\n" +
+            "      ],\n" +
+            "      \"convertedRetreatCost\": 2,\n" +
+            "      \"number\": \"103\",\n" +
+            "      \"artist\": \"Ryo Ueda\",\n" +
+            "      \"rarity\": \"Rare Holo Lv.X\",\n" +
+            "      \"series\": \"Platinum\",\n" +
+            "      \"set\": \"Rising Rivals\",\n" +
+            "      \"setCode\": \"pl2\",\n" +
+            "      \"text\": [\n" +
+            "        \"Put this card onto your Active Alakazam 4. Alakazam 4 LV.X can use any attack, Poké-Power, or Poké-Body from its previous Level.\"\n" +
+            "      ],\n" +
+            "      \"attacks\": [\n" +
+            "        {\n" +
+            "          \"cost\": [\n" +
+            "            \"Psychic\",\n" +
+            "            \"Psychic\",\n" +
+            "            \"Colorless\"\n" +
+            "          ],\n" +
+            "          \"name\": \"Mind Shock\",\n" +
+            "          \"text\": \"This attack's damage isn't affected by Weakness or Resistance.\",\n" +
+            "          \"damage\": \"50\",\n" +
+            "          \"convertedEnergyCost\": 3\n" +
+            "        }\n" +
+            "      ],\n" +
+            "      \"weaknesses\": [\n" +
+            "        {\n" +
+            "          \"type\": \"Psychic\",\n" +
+            "          \"value\": \"×2\"\n" +
+            "        }\n" +
+            "      ]\n" +
             "    }\n" +
             "  ]\n" +
             "}"
@@ -161,7 +289,7 @@ fun mockFeedSomeIdsAbsent(): String {
             "      ]\n" +
             "    },\n" +
             "    {\n" +
-            "      \"id\": \"dp6-90\",\n" + // This item has ID
+            "      \"id\": \"dp6-90\",\n" +
             "      \"name\": \"Cubone\",\n" +
             "      \"nationalPokedexNumber\": 104,\n" +
             "      \"imageUrl\": \"https://images.pokemontcg.io/dp6/90.png\",\n" +
@@ -213,6 +341,134 @@ fun mockFeedSomeIdsAbsent(): String {
             "        {\n" +
             "          \"type\": \"Water\",\n" +
             "          \"value\": \"+10\"\n" +
+            "        }\n" +
+            "      ]\n" +
+            "    },\n" +
+            "    {\n" +
+//            "      \"id\": \"swsh4-175\",\n" +
+            "      \"name\": \"Drapion V\",\n" +
+            "      \"nationalPokedexNumber\": 452,\n" +
+            "      \"imageUrl\": \"https://images.pokemontcg.io/swsh4/175.png\",\n" +
+            "      \"imageUrlHiRes\": \"https://images.pokemontcg.io/swsh4/175_hires.png\",\n" +
+            "      \"types\": [\n" +
+            "        \"Darkness\"\n" +
+            "      ],\n" +
+            "      \"supertype\": \"Pokémon\",\n" +
+            "      \"subtype\": \"V\",\n" +
+            "      \"hp\": \"210\",\n" +
+            "      \"retreatCost\": [\n" +
+            "        \"Colorless\",\n" +
+            "        \"Colorless\",\n" +
+            "        \"Colorless\"\n" +
+            "      ],\n" +
+            "      \"convertedRetreatCost\": 3,\n" +
+            "      \"number\": \"175\",\n" +
+            "      \"artist\": \"Eske Yoshinob\",\n" +
+            "      \"rarity\": \"Rare Holo V\",\n" +
+            "      \"series\": \"Sword & Shield\",\n" +
+            "      \"set\": \"Vivid Voltage\",\n" +
+            "      \"setCode\": \"swsh4\",\n" +
+            "      \"text\": [\n" +
+            "        \"V rule: When your Pokémon V is Knocked Out, your opponent takes 2 Prize cards.\"\n" +
+            "      ],\n" +
+            "      \"attacks\": [\n" +
+            "        {\n" +
+            "          \"cost\": [\n" +
+            "            \"Darkness\",\n" +
+            "            \"Colorless\",\n" +
+            "            \"Colorless\"\n" +
+            "          ],\n" +
+            "          \"name\": \"Wrack Down\",\n" +
+            "          \"text\": \"\",\n" +
+            "          \"damage\": \"70\",\n" +
+            "          \"convertedEnergyCost\": 3\n" +
+            "        },\n" +
+            "        {\n" +
+            "          \"cost\": [\n" +
+            "            \"Darkness\",\n" +
+            "            \"Colorless\",\n" +
+            "            \"Colorless\",\n" +
+            "            \"Colorless\"\n" +
+            "          ],\n" +
+            "          \"name\": \"Hazardous Claws\",\n" +
+            "          \"text\": \"Discard 2 Energy from this Pokémon. Your opponent's Active Pokémon is now Paralyzed and Poisoned.\",\n" +
+            "          \"damage\": \"130\",\n" +
+            "          \"convertedEnergyCost\": 4\n" +
+            "        }\n" +
+            "      ],\n" +
+            "      \"weaknesses\": [\n" +
+            "        {\n" +
+            "          \"type\": \"Fighting\",\n" +
+            "          \"value\": \"×2\"\n" +
+            "        }\n" +
+            "      ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"id\": \"ex14-85\",\n" +
+            "      \"name\": \"Windstorm\",\n" +
+            "      \"imageUrl\": \"https://images.pokemontcg.io/ex14/85.png\",\n" +
+            "      \"imageUrlHiRes\": \"https://images.pokemontcg.io/ex14/85_hires.png\",\n" +
+            "      \"supertype\": \"Trainer\",\n" +
+            "      \"subtype\": \"Item\",\n" +
+            "      \"hp\": \"None\",\n" +
+            "      \"number\": \"85\",\n" +
+            "      \"artist\": \"Ryo Ueda\",\n" +
+            "      \"rarity\": \"Uncommon\",\n" +
+            "      \"series\": \"EX\",\n" +
+            "      \"set\": \"Crystal Guardians\",\n" +
+            "      \"setCode\": \"ex14\",\n" +
+            "      \"text\": [\n" +
+            "        \"Choose up to 2 in any combination of Pokémon Tool cards and Stadium cards in play (both yours and your opponent's) and discard them.\"\n" +
+            "      ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"id\": \"pl2-103\",\n" +
+            "      \"name\": \"Alakazam 4\",\n" +
+            "      \"nationalPokedexNumber\": 65,\n" +
+            "      \"imageUrl\": \"https://images.pokemontcg.io/pl2/103.png\",\n" +
+            "      \"imageUrlHiRes\": \"https://images.pokemontcg.io/pl2/103_hires.png\",\n" +
+            "      \"types\": [\n" +
+            "        \"Psychic\"\n" +
+            "      ],\n" +
+            "      \"supertype\": \"Pokémon\",\n" +
+            "      \"subtype\": \"Level Up\",\n" +
+            "      \"ability\": {\n" +
+            "        \"name\": \"Damage Switch\",\n" +
+            "        \"text\": \"As often as you like during your turn (before your attack), you may move 1 damage counter from 1 of your Pokémon SP to another of your Pokémon SP. This power can't be used if Alakazam 4 is affected by a Special Condition.\",\n" +
+            "        \"type\": \"Poké-Power\"\n" +
+            "      },\n" +
+            "      \"hp\": \"100\",\n" +
+            "      \"retreatCost\": [\n" +
+            "        \"Colorless\",\n" +
+            "        \"Colorless\"\n" +
+            "      ],\n" +
+            "      \"convertedRetreatCost\": 2,\n" +
+            "      \"number\": \"103\",\n" +
+            "      \"artist\": \"Ryo Ueda\",\n" +
+            "      \"rarity\": \"Rare Holo Lv.X\",\n" +
+            "      \"series\": \"Platinum\",\n" +
+            "      \"set\": \"Rising Rivals\",\n" +
+            "      \"setCode\": \"pl2\",\n" +
+            "      \"text\": [\n" +
+            "        \"Put this card onto your Active Alakazam 4. Alakazam 4 LV.X can use any attack, Poké-Power, or Poké-Body from its previous Level.\"\n" +
+            "      ],\n" +
+            "      \"attacks\": [\n" +
+            "        {\n" +
+            "          \"cost\": [\n" +
+            "            \"Psychic\",\n" +
+            "            \"Psychic\",\n" +
+            "            \"Colorless\"\n" +
+            "          ],\n" +
+            "          \"name\": \"Mind Shock\",\n" +
+            "          \"text\": \"This attack's damage isn't affected by Weakness or Resistance.\",\n" +
+            "          \"damage\": \"50\",\n" +
+            "          \"convertedEnergyCost\": 3\n" +
+            "        }\n" +
+            "      ],\n" +
+            "      \"weaknesses\": [\n" +
+            "        {\n" +
+            "          \"type\": \"Psychic\",\n" +
+            "          \"value\": \"×2\"\n" +
             "        }\n" +
             "      ]\n" +
             "    }\n" +
@@ -325,8 +581,138 @@ fun mockFeedAllIdsAbsent(): String {
             "          \"value\": \"+10\"\n" +
             "        }\n" +
             "      ]\n" +
+            "    },\n" +
+            "    {\n" +
+//            "      \"id\": \"swsh4-175\",\n" +
+            "      \"name\": \"Drapion V\",\n" +
+            "      \"nationalPokedexNumber\": 452,\n" +
+            "      \"imageUrl\": \"https://images.pokemontcg.io/swsh4/175.png\",\n" +
+            "      \"imageUrlHiRes\": \"https://images.pokemontcg.io/swsh4/175_hires.png\",\n" +
+            "      \"types\": [\n" +
+            "        \"Darkness\"\n" +
+            "      ],\n" +
+            "      \"supertype\": \"Pokémon\",\n" +
+            "      \"subtype\": \"V\",\n" +
+            "      \"hp\": \"210\",\n" +
+            "      \"retreatCost\": [\n" +
+            "        \"Colorless\",\n" +
+            "        \"Colorless\",\n" +
+            "        \"Colorless\"\n" +
+            "      ],\n" +
+            "      \"convertedRetreatCost\": 3,\n" +
+            "      \"number\": \"175\",\n" +
+            "      \"artist\": \"Eske Yoshinob\",\n" +
+            "      \"rarity\": \"Rare Holo V\",\n" +
+            "      \"series\": \"Sword & Shield\",\n" +
+            "      \"set\": \"Vivid Voltage\",\n" +
+            "      \"setCode\": \"swsh4\",\n" +
+            "      \"text\": [\n" +
+            "        \"V rule: When your Pokémon V is Knocked Out, your opponent takes 2 Prize cards.\"\n" +
+            "      ],\n" +
+            "      \"attacks\": [\n" +
+            "        {\n" +
+            "          \"cost\": [\n" +
+            "            \"Darkness\",\n" +
+            "            \"Colorless\",\n" +
+            "            \"Colorless\"\n" +
+            "          ],\n" +
+            "          \"name\": \"Wrack Down\",\n" +
+            "          \"text\": \"\",\n" +
+            "          \"damage\": \"70\",\n" +
+            "          \"convertedEnergyCost\": 3\n" +
+            "        },\n" +
+            "        {\n" +
+            "          \"cost\": [\n" +
+            "            \"Darkness\",\n" +
+            "            \"Colorless\",\n" +
+            "            \"Colorless\",\n" +
+            "            \"Colorless\"\n" +
+            "          ],\n" +
+            "          \"name\": \"Hazardous Claws\",\n" +
+            "          \"text\": \"Discard 2 Energy from this Pokémon. Your opponent's Active Pokémon is now Paralyzed and Poisoned.\",\n" +
+            "          \"damage\": \"130\",\n" +
+            "          \"convertedEnergyCost\": 4\n" +
+            "        }\n" +
+            "      ],\n" +
+            "      \"weaknesses\": [\n" +
+            "        {\n" +
+            "          \"type\": \"Fighting\",\n" +
+            "          \"value\": \"×2\"\n" +
+            "        }\n" +
+            "      ]\n" +
+            "    },\n" +
+            "    {\n" +
+//            "      \"id\": \"ex14-85\",\n" +
+            "      \"name\": \"Windstorm\",\n" +
+            "      \"imageUrl\": \"https://images.pokemontcg.io/ex14/85.png\",\n" +
+            "      \"imageUrlHiRes\": \"https://images.pokemontcg.io/ex14/85_hires.png\",\n" +
+            "      \"supertype\": \"Trainer\",\n" +
+            "      \"subtype\": \"Item\",\n" +
+            "      \"hp\": \"None\",\n" +
+            "      \"number\": \"85\",\n" +
+            "      \"artist\": \"Ryo Ueda\",\n" +
+            "      \"rarity\": \"Uncommon\",\n" +
+            "      \"series\": \"EX\",\n" +
+            "      \"set\": \"Crystal Guardians\",\n" +
+            "      \"setCode\": \"ex14\",\n" +
+            "      \"text\": [\n" +
+            "        \"Choose up to 2 in any combination of Pokémon Tool cards and Stadium cards in play (both yours and your opponent's) and discard them.\"\n" +
+            "      ]\n" +
+            "    },\n" +
+            "    {\n" +
+//            "      \"id\": \"pl2-103\",\n" +
+            "      \"name\": \"Alakazam 4\",\n" +
+            "      \"nationalPokedexNumber\": 65,\n" +
+            "      \"imageUrl\": \"https://images.pokemontcg.io/pl2/103.png\",\n" +
+            "      \"imageUrlHiRes\": \"https://images.pokemontcg.io/pl2/103_hires.png\",\n" +
+            "      \"types\": [\n" +
+            "        \"Psychic\"\n" +
+            "      ],\n" +
+            "      \"supertype\": \"Pokémon\",\n" +
+            "      \"subtype\": \"Level Up\",\n" +
+            "      \"ability\": {\n" +
+            "        \"name\": \"Damage Switch\",\n" +
+            "        \"text\": \"As often as you like during your turn (before your attack), you may move 1 damage counter from 1 of your Pokémon SP to another of your Pokémon SP. This power can't be used if Alakazam 4 is affected by a Special Condition.\",\n" +
+            "        \"type\": \"Poké-Power\"\n" +
+            "      },\n" +
+            "      \"hp\": \"100\",\n" +
+            "      \"retreatCost\": [\n" +
+            "        \"Colorless\",\n" +
+            "        \"Colorless\"\n" +
+            "      ],\n" +
+            "      \"convertedRetreatCost\": 2,\n" +
+            "      \"number\": \"103\",\n" +
+            "      \"artist\": \"Ryo Ueda\",\n" +
+            "      \"rarity\": \"Rare Holo Lv.X\",\n" +
+            "      \"series\": \"Platinum\",\n" +
+            "      \"set\": \"Rising Rivals\",\n" +
+            "      \"setCode\": \"pl2\",\n" +
+            "      \"text\": [\n" +
+            "        \"Put this card onto your Active Alakazam 4. Alakazam 4 LV.X can use any attack, Poké-Power, or Poké-Body from its previous Level.\"\n" +
+            "      ],\n" +
+            "      \"attacks\": [\n" +
+            "        {\n" +
+            "          \"cost\": [\n" +
+            "            \"Psychic\",\n" +
+            "            \"Psychic\",\n" +
+            "            \"Colorless\"\n" +
+            "          ],\n" +
+            "          \"name\": \"Mind Shock\",\n" +
+            "          \"text\": \"This attack's damage isn't affected by Weakness or Resistance.\",\n" +
+            "          \"damage\": \"50\",\n" +
+            "          \"convertedEnergyCost\": 3\n" +
+            "        }\n" +
+            "      ],\n" +
+            "      \"weaknesses\": [\n" +
+            "        {\n" +
+            "          \"type\": \"Psychic\",\n" +
+            "          \"value\": \"×2\"\n" +
+            "        }\n" +
+            "      ]\n" +
             "    }\n" +
             "  ]\n" +
             "}"
 }
+
+
 

@@ -19,9 +19,9 @@ abstract class BaseTestSetup {
     val coroutineScope = MainCoroutineScopeRule()
 
     companion object {
-        const val NUM_MODELS_ALL_IDS_VALID = 2
-        const val NUM_MODELS_SOME_IDS_MISSING = 1
-        const val NUM_MODELS_ALL_IDS_MISSING = 0
+        const val EXPECTED_NUM_MODELS_ALL_FEED_IDS_VALID = 5
+        const val EXPECTED_NUM_MODELS_SOME_FEED_IDS_ABSENT = 3
+        const val EXPECTED_NUM_MODELS_ALL_FEED_IDS_ABSENT = 0
     }
 
     protected fun <T, P> verifyListsHaveSameSize(
@@ -39,15 +39,15 @@ abstract class BaseTestSetup {
     }
 
     protected fun <T> verifyListSizeWhenAllIdsValid(items: List<T>) {
-        verifyListSize(NUM_MODELS_ALL_IDS_VALID, items)
+        verifyListSize(EXPECTED_NUM_MODELS_ALL_FEED_IDS_VALID, items)
     }
 
     protected fun <T> verifyListSizeWhenSomeIdsAbsent(items: List<T>) {
-        verifyListSize(NUM_MODELS_SOME_IDS_MISSING, items)
+        verifyListSize(EXPECTED_NUM_MODELS_SOME_FEED_IDS_ABSENT, items)
     }
 
     protected fun <T> verifyListSizeWhenAllIdsAbsent(items: List<T>) {
-        verifyListSize(NUM_MODELS_ALL_IDS_MISSING, items)
+        verifyListSize(EXPECTED_NUM_MODELS_ALL_FEED_IDS_ABSENT, items)
     }
 
 }
