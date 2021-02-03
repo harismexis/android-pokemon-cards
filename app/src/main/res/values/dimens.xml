@@ -29,7 +29,7 @@
 
     <!-- ITEM DETAIL -->
     <dimen name="item_detail_img_margin_top">14dp</dimen>
-    <dimen name="item_detail_img_height">300dp</dimen>
+    <dimen name="item_detail_img_height">400dp</dimen>
     <dimen name="item_detail_title_margin_top">40dp</dimen>
     <dimen name="item_detail_txt_label_margin_top">32dp</dimen>
     <dimen name="item_detail_txt_meta_margin_top">10dp</dimen>
