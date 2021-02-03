@@ -26,8 +26,6 @@
         app:layout_constraintTop_toBottomOf="@+id/img"
         tools:text="Title of item" />
 
-    <!-- supertype -->
-
     <TextView
         android:id="@+id/txt_supertype_label"
         style="@style/ItemDetailLabel"
@@ -44,8 +42,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_supertype_label"
         tools:text="Supertype" />
-
-    <!-- subtype -->
 
     <TextView
         android:id="@+id/txt_subtype_label"
@@ -64,8 +60,6 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_subtype_label"
         tools:text="Subtype" />
 
-    <!-- artist -->
-
     <TextView
         android:id="@+id/txt_artist_label"
         style="@style/ItemDetailLabel"
@@ -82,8 +76,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_artist_label"
         tools:text="Artist" />
-
-    <!-- rarity -->
 
     <TextView
         android:id="@+id/txt_rarity_label"
@@ -102,8 +94,6 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_rarity_label"
         tools:text="rarity" />
 
-    <!-- series -->
-
     <TextView
         android:id="@+id/txt_series_label"
         style="@style/ItemDetailLabel"
@@ -121,8 +111,6 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_series_label"
         tools:text="series" />
 
-    <!-- set -->
-
     <TextView
         android:id="@+id/txt_set_label"
         style="@style/ItemDetailLabel"
@@ -139,8 +127,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_set_label"
         tools:text="set" />
-
-    <!-- setCode -->
 
     <TextView
         android:id="@+id/txt_set_code_label"
