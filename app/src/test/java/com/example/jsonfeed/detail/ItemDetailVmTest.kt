@@ -19,10 +19,10 @@ class ItemDetailVmTest : ItemDetailVmTestSetup() {
     @Test
     fun retrievingLocalItem_localItemRetrievedAndLiveDataUpdated() {
         // given
-        val mockLocalItem = getMockLocalItemsFromFeedAllIdsValid()[0]
-        val mockId = mockLocalItem.id
-        val mockUiModel = mockLocalItem.toUiModel()
-        mockLocalItemCall(mockId, mockLocalItem)
+        val mockItem = getMockLocalItemsFromFeedAllIdsValid()[0]
+        val mockId = mockItem.id
+        val mockUiModel = mockItem.toUiModel()
+        mockLocalItemCall(mockId, mockItem)
 
         // when
         detailVm.retrieveItemById(mockId)
@@ -30,6 +30,21 @@ class ItemDetailVmTest : ItemDetailVmTestSetup() {
         // then
         verifyLocalItemRetrieved(mockId)
         verifyLiveDataChanged(mockUiModel)
+    }
+
+    @Test
+    fun retrievingLocalItemThrowsError_nothingHappens() {
+        // given
+        val mockItem = getMockLocalItemsFromFeedAllIdsValid()[0]
+        val mockId = mockItem.id
+        mockLocalItemCallThrowsError()
+
+        // when
+        detailVm.retrieveItemById(mockId)
+
+        // then
+        verifyLocalItemRetrieved(mockId)
+        verifyLiveDataNotChanged()
     }
 
 }

@@ -7,11 +7,13 @@ import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
 import com.example.jsonfeed.mockprovider.getMockLocalItemsFromFeedAllIdsValid
 import com.example.jsonfeed.uimodel.UiModel
 import com.nhaarman.mockitokotlin2.verifyZeroInteractions
+import kotlinx.coroutines.runBlocking
 
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.mockito.Mockito
 
 @RunWith(JUnit4::class)
 class HomeVmTest : HomeVmTestSetup() {
@@ -29,13 +31,13 @@ class HomeVmTest : HomeVmTestSetup() {
         val mockUiModels = mockLocalItems.toUiModels()
 
         mockInternetActive(true)
-        mockFeedNetworkCall(mockFeed)
+        mockRemoteFeedCall(mockFeed)
 
         // when
         homeVm.bind()
 
         // then
-        verifyRemoteDataFetched(mockUiModels, mockLocalItems)
+        verifyRemoteFeedCallDoneAndDataStoredAndLiveDataUpdated(mockUiModels, mockLocalItems)
     }
 
     @Test
@@ -44,14 +46,16 @@ class HomeVmTest : HomeVmTestSetup() {
         val mockLocalItems = getMockLocalItemsFromFeedAllIdsValid()
         val mockUiModels = mockLocalItems.toUiModels()
         mockInternetActive(false)
-        mockLocalItemsCall(mockLocalItems)
+        mockLocalFeedCall(mockLocalItems)
 
         // when
         homeVm.bind()
 
         // then
         verifyInternetChecked()
-        verifyLocalItemsRetrieved()
+        verifyLocalFeedCallDone()
+        verifyRemoteFeedCallNotDone()
+        verifyDataNotStoredLocally()
         verifyLiveDataChanged(mockUiModels)
     }
 
@@ -63,13 +67,13 @@ class HomeVmTest : HomeVmTestSetup() {
         val mockUiModels = mockLocalItems.toUiModels()
 
         mockInternetActive(true)
-        mockFeedNetworkCall(mockFeed)
+        mockRemoteFeedCall(mockFeed)
 
         // when
         homeVm.refresh {}
 
         // then
-        verifyRemoteDataFetched(mockUiModels, mockLocalItems)
+        verifyRemoteFeedCallDoneAndDataStoredAndLiveDataUpdated(mockUiModels, mockLocalItems)
     }
 
     @Test
@@ -84,14 +88,48 @@ class HomeVmTest : HomeVmTestSetup() {
         verifyInternetChecked()
         verifyZeroInteractions(mockFeedRepo)
         verifyZeroInteractions(mockLocalRepo)
+        verifyLiveDataNotChanged()
     }
 
-    private fun verifyRemoteDataFetched(
+    @Test
+    fun remoteFeedCallThrowsError_nothingHappens() {
+        // given
+        mockInternetActive(true)
+        mockRemoteFeedCallThrowsError()
+
+        // when
+        homeVm.bind()
+
+        // then
+        verifyInternetChecked()
+        verifyRemoteFeedCallDone()
+        verifyLiveDataNotChanged()
+        verifyZeroInteractions(mockLocalRepo)
+    }
+
+    @Test
+    fun localFeedCallThrowsError_nothingHappens() {
+        // given
+        mockInternetActive(false)
+        mockLocalFeedCallThrowsError()
+
+        // when
+        homeVm.bind()
+
+        // then
+        verifyInternetChecked()
+        verifyLocalFeedCallDone()
+        verifyLiveDataNotChanged()
+        verifyZeroInteractions(mockFeedRepo)
+    }
+
+    private fun verifyRemoteFeedCallDoneAndDataStoredAndLiveDataUpdated(
         uiModels: List<UiModel>,
         localItems: List<LocalItem>
     ) {
         verifyInternetChecked()
-        verifyRemoteDataRetrieved()
+        verifyRemoteFeedCallDone()
+        verifyLocalFeedCallNotDone()
         verifyLiveDataChanged(uiModels)
         verifyDataStoredLocally(localItems)
     }

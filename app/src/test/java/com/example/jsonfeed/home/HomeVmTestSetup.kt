@@ -9,6 +9,7 @@ import com.example.jsonfeed.localdb.LocalItem
 import com.example.jsonfeed.shared.ViewModelBaseTestSetup
 import com.example.jsonfeed.uimodel.UiModel
 import com.example.jsonfeed.util.network.ConnectivityMonitor
+import com.nhaarman.mockitokotlin2.any
 
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.verifyZeroInteractions
@@ -40,40 +41,74 @@ abstract class HomeVmTestSetup : ViewModelBaseTestSetup() {
         Mockito.`when`(mockConnectivity.isOnline()).thenReturn(active)
     }
 
-    protected fun mockFeedNetworkCall(feed: Feed) {
+    protected fun mockRemoteFeedCall(feed: Feed) {
         runBlocking {
             Mockito.`when`(mockFeedRepo.getJsonFeed()).thenReturn(feed)
         }
     }
 
-    protected fun mockLocalItemsCall(localItems: List<LocalItem>) {
+    protected fun mockRemoteFeedCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockLocalRepo.getAllItems()).thenReturn(localItems)
+            Mockito.`when`(mockFeedRepo.getJsonFeed())
+                .thenThrow(IllegalStateException("Error"))
         }
     }
 
-    protected fun verifyLocalItemsRetrieved() {
+    protected fun mockLocalFeedCall(items: List<LocalItem>) {
         runBlocking {
-            verify(mockFeedRepo, Mockito.never()).getJsonFeed()
-            verify(mockLocalRepo, Mockito.times(1)).getAllItems()
-            verify(mockLocalRepo, Mockito.never()).insertItems(com.nhaarman.mockitokotlin2.any())
+            Mockito.`when`(mockLocalRepo.getAllItems()).thenReturn(items)
         }
     }
 
-    protected fun verifyRemoteDataRetrieved() {
+    protected fun mockLocalFeedCallThrowsError() {
+        runBlocking {
+            Mockito.`when`(mockLocalRepo.getAllItems())
+                .thenThrow(IllegalStateException("Error"))
+        }
+    }
+
+    protected fun verifyRemoteFeedCallDone() {
         runBlocking {
             verify(mockFeedRepo, Mockito.times(1)).getJsonFeed()
+        }
+    }
+
+    protected fun verifyRemoteFeedCallNotDone() {
+        runBlocking {
+            verify(mockFeedRepo, Mockito.never()).getJsonFeed()
+        }
+    }
+
+    protected fun verifyLocalFeedCallDone() {
+        runBlocking {
+            verify(mockLocalRepo, Mockito.times(1)).getAllItems()
+        }
+    }
+
+    protected fun verifyLocalFeedCallNotDone() {
+        runBlocking {
             verify(mockLocalRepo, Mockito.never()).getAllItems()
         }
     }
 
-    protected fun verifyLiveDataChanged(uiModels: List<UiModel>) {
-        verify(observer).onChanged(uiModels)
+    protected fun verifyLiveDataChanged(models: List<UiModel>) {
+        verify(observer).onChanged(models)
     }
 
-    protected fun verifyDataStoredLocally(expectedLocalItems: List<LocalItem>) {
+    protected fun verifyLiveDataNotChanged() {
+        verify(observer, Mockito.never()).onChanged(any())
+        verifyZeroInteractions(observer)
+    }
+
+    protected fun verifyDataStoredLocally(items: List<LocalItem>) {
         runBlocking {
-            verify(mockLocalRepo, Mockito.times(1)).insertItems(expectedLocalItems)
+            verify(mockLocalRepo, Mockito.times(1)).insertItems(items)
+        }
+    }
+
+    protected fun verifyDataNotStoredLocally() {
+        runBlocking {
+            verify(mockLocalRepo, Mockito.never()).insertItems(any())
         }
     }
 
