@@ -14,7 +14,6 @@ import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.extensions.toLocalItems
 import com.example.jsonfeed.extensions.toUiModels
 import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
-import com.example.jsonfeed.mockproviders.MockHomeVmProvider
 import com.example.jsonfeed.mockproviders.MockItemDetailVmProvider
 import com.example.jsonfeed.uimodel.UiModel
 

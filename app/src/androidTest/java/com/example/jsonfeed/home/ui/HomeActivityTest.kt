@@ -5,13 +5,13 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-
 import com.example.jsonfeed.R
 import com.example.jsonfeed.base.BaseTestSetup
 import com.example.jsonfeed.detail.ui.ItemDetailActivity
@@ -22,14 +22,14 @@ import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
 import com.example.jsonfeed.mockproviders.MockHomeVmProvider
 import com.example.jsonfeed.uimodel.UiModel
 import com.example.jsonfeed.utils.RecyclerViewItemCountAssertion
-
+import com.example.jsonfeed.utils.RecyclerViewMatcher
 import io.mockk.every
-
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
 
 @RunWith(AndroidJUnit4::class)
 class HomeActivityTest : BaseTestSetup() {
@@ -53,7 +53,7 @@ class HomeActivityTest : BaseTestSetup() {
     }
 
     @Test
-    fun liveDataIsUpdated_homeListHasCorrectNumberOfItems() {
+    fun liveDataUpdatedFromFeedWithAllItemsValid_homeListHasCorrectNumberOfItems() {
         // given
         every { mockHomeVm.models } returns MockHomeVmProvider.models
         launchActivityAndMockLiveData()
@@ -61,6 +61,10 @@ class HomeActivityTest : BaseTestSetup() {
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
         onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockUiModels.size))
+        onView(withId(R.id.home_list)).check(
+            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_ALL_FEED_IDS_VALID)
+        )
+        verifyViewHoldersShowCorrectData()
     }
 
     @Test
@@ -83,6 +87,23 @@ class HomeActivityTest : BaseTestSetup() {
                 click()
             )
         )
+    }
+
+    private fun verifyViewHoldersShowCorrectData() {
+        mockUiModels.forEachIndexed { index, uiModel ->
+            // scroll to item to make sure it's visible
+            onView(withId(R.id.home_list)).perform(scrollToPosition<RecyclerView.ViewHolder>(index))
+            // check name text
+            onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_name))
+                .check(matches(withText(uiModel.name)))
+            // check meta text
+            onView(withRecyclerView(R.id.home_list).atPositionOnView(index, R.id.txt_meta))
+                .check(matches(withText(uiModel.supertype)))
+        }
+    }
+
+    private fun withRecyclerView(recyclerViewId: Int): RecyclerViewMatcher {
+        return RecyclerViewMatcher(recyclerViewId)
     }
 
     private fun launchActivityAndMockLiveData() {
