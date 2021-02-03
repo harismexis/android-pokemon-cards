@@ -23,7 +23,7 @@ from real JSON data have been used. The Tests share some common resources which 
 the sharedTest folder.
 
 #### Home
-![Alt text](screenshots/home/home-poco-f1-2021-02-03-010025.png?raw=true "app screenshot")
+![Alt text](screenshots/home/home-poco-f1.png?raw=true "app screenshot")
 
 #### Picture of the day - photo
-![Alt text](screenshots/detail/detail-poco-f1-2021-02-03-010114.png?raw=true "app screenshot")
+![Alt text](screenshots/detail/item-detail-poco-f1.png?raw=true "app screenshot")
