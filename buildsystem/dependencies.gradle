@@ -38,6 +38,7 @@ ext {
     def mockk = '1.9.3' //1.10.3-jdk8
     def mockk_android = '1.9.3' // 1.10.3-jdk8
     def swipe_refresh_layout = '1.1.0'
+    def google_truth = '0.42'
 
     libraries = [
             kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
@@ -80,23 +81,30 @@ ext {
     ]
 
     testLibraries = [
-            junit          : "androidx.test.ext:junit:$androidx_junit",
-            coroutines_test: "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android",
-            mockito_kotlin : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin",
-            core_testing   : "androidx.arch.core:core-testing:$lifecycle"
+            junit           : "androidx.test.ext:junit:$androidx_junit",
+            coroutines_test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_android",
+            mockito_kotlin  : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin",
+            core_testing    : "androidx.arch.core:core-testing:$lifecycle"
     ]
 
     androidTestLibraries = [
-            test_core       : "androidx.test:core:1.0.0",
-            junit           : "androidx.test.ext:junit:$androidx_junit",
+            test_core       : "androidx.test:core:$androidx_test",
 
             runner          : "androidx.test:runner:$androidx_test",
             rules           : "androidx.test:rules:$androidx_test",
             // orchestrator    : "androidx.test:orchestrator:$androidx_test",
 
-            espresso_core   : "androidx.test.espresso:espresso-core:$espresso",
-            espresso_contrib: "androidx.test.espresso:espresso-contrib:$espresso",
-            espresso_intents: "androidx.test.espresso:espresso-intents:$espresso",
+            junit           : "androidx.test.ext:junit:$androidx_junit",
+            truth           : "androidx.test.ext:truth:$androidx_test",
+            google_truth    : "com.google.truth:truth:$google_truth",
+
+            espresso_core               : "androidx.test.espresso:espresso-core:$espresso",
+            espresso_contrib            : "androidx.test.espresso:espresso-contrib:$espresso",
+            espresso_intents            : "androidx.test.espresso:espresso-intents:$espresso",
+            espresso_accessibility      : "androidx.test.espresso:espresso-accessibility:$espresso",
+            espresso_web                : "androidx.test.espresso:espresso-web:$espresso",
+            idling_concurrent           : "androidx.test.espresso.idling:idling-concurrent:$espresso",
+            espresso_idling_resource    : "androidx.test.espresso:espresso-idling-resource:$espresso",
 
             arch_core       : "androidx.arch.core:core-testing:$lifecycle",
             work_testing    : "androidx.work:work-testing:$work",

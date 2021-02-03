@@ -54,6 +54,7 @@ android {
             resources.srcDirs += "src/sharedTest/resources"
         }
     }
+
 }
 
 dependencies {
