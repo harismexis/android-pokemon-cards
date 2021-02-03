@@ -6,6 +6,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.jsonfeed.base.BaseTestSetup.Companion.EXPECTED_NUM_MODELS_ALL_FEED_IDS_VALID
 
 import com.example.jsonfeed.extensions.toLocalItems
 import com.example.jsonfeed.mockprovider.getMockFeedAllIdsAbsent
@@ -57,6 +58,7 @@ class LocalDaoTest {
         Assert.assertNotEquals(0, retrievedItems!!.size)
         Assert.assertEquals(savedItems.size, retrievedItems.size)
         Assert.assertEquals(savedItems, retrievedItems)
+        Assert.assertEquals(EXPECTED_NUM_MODELS_ALL_FEED_IDS_VALID, retrievedItems.size)
     }
 
     @Test
