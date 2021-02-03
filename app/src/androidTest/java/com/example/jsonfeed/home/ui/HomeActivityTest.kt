@@ -18,7 +18,7 @@ import com.example.jsonfeed.detail.ui.ItemDetailActivity
 import com.example.jsonfeed.extensions.toLocalItems
 import com.example.jsonfeed.extensions.toUiModels
 import com.example.jsonfeed.home.viewmodel.HomeVm
-import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
+import com.example.jsonfeed.mockprovider.*
 import com.example.jsonfeed.mockproviders.MockHomeVmProvider
 import com.example.jsonfeed.uimodel.UiModel
 import com.example.jsonfeed.utils.RecyclerViewItemCountAssertion
@@ -65,6 +65,68 @@ class HomeActivityTest : BaseTestSetup() {
             RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_ALL_FEED_IDS_VALID)
         )
         verifyViewHoldersShowCorrectData()
+    }
+
+    @Test
+    fun liveDataUpdatedFromFeedWithSomeIdsAbsent_homeListHasCorrectNumberOfItems() {
+        // given
+        mockUiModels = getMockFeedSomeIdsAbsent().toLocalItems().toUiModels()
+        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        launchActivityAndMockLiveData()
+
+        // then
+        onView(withId(R.id.home_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockUiModels.size))
+        onView(withId(R.id.home_list)).check(
+            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_SOME_FEED_IDS_ABSENT)
+        )
+        verifyViewHoldersShowCorrectData()
+    }
+
+    @Test
+    fun liveDataUpdatedFromFeedWithAllIdsAbsent_homeListHasNoItems() {
+        // given
+        mockUiModels = getMockFeedAllIdsAbsent().toLocalItems().toUiModels()
+        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        launchActivityAndMockLiveData()
+
+        // then
+        onView(withId(R.id.home_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockUiModels.size))
+        onView(withId(R.id.home_list)).check(
+            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_ALL_FEED_IDS_ABSENT)
+        )
+    }
+
+    @Test
+    fun liveDataUpdatedFromFeedWithSomeJsonItemsEmpty_homeListHasCorrectNumberOfItems() {
+        // given
+        mockUiModels = getMockFeedSomeItemsEmpty().toLocalItems().toUiModels()
+        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        launchActivityAndMockLiveData()
+
+        // then
+        onView(withId(R.id.home_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockUiModels.size))
+        onView(withId(R.id.home_list)).check(
+            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_SOME_FEED_ITEMS_EMPTY)
+        )
+        verifyViewHoldersShowCorrectData()
+    }
+
+    @Test
+    fun liveDataUpdatedFromEmptyJson_homeListHasNoItems() {
+        // given
+        mockUiModels = getMockFeedEmptyJson().toLocalItems().toUiModels()
+        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        launchActivityAndMockLiveData()
+
+        // then
+        onView(withId(R.id.home_list)).check(matches(isDisplayed()))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockUiModels.size))
+        onView(withId(R.id.home_list)).check(
+            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_EMPTY_JSON)
+        )
     }
 
     @Test
