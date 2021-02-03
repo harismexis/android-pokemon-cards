@@ -11,7 +11,7 @@
     <dimen name="toolbar_text_size">18sp</dimen>
 
     <!-- ITEM VH -->
-    <dimen name="vh_item_title_text_size">18sp</dimen>
+    <dimen name="vh_item_title_text_size">19sp</dimen>
     <dimen name="vh_item_meta_text_size">16sp</dimen>
     <dimen name="vh_item_padding_vertical">8dp</dimen>
     <dimen name="vh_item_padding_horizontal">16dp</dimen>
@@ -24,7 +24,7 @@
     <!-- ITEM DETAIL -->
     <dimen name="item_detail_title_text_size">20sp</dimen>
     <dimen name="item_detail_label_text_size">16sp</dimen>
-    <dimen name="item_detail_meta_text_size">16sp</dimen>
+    <dimen name="item_detail_meta_text_size">18sp</dimen>
     <dimen name="item_detail_img_margin_top">14dp</dimen>
     <dimen name="item_detail_img_height">400dp</dimen>
     <dimen name="item_detail_title_margin_top">40dp</dimen>

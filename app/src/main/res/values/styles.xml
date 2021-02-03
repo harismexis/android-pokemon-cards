@@ -11,6 +11,7 @@
 
     <style name="VhItemTitle" parent="BaseTxtv">
         <item name="android:textSize">@dimen/vh_item_title_text_size</item>
+        <item name="android:fontFamily">@font/ubuntu_bold</item>
     </style>
 
     <style name="VhItemMeta" parent="BaseTxtv">
