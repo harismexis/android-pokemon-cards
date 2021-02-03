@@ -24,7 +24,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <TextView
-                style="@style/BaseTxtv"
+                style="@style/ToolbarText"
                 android:layout_gravity="start"
                 android:text="@string/activity_item_detail_label"
                 tools:text="Toolbar title" />

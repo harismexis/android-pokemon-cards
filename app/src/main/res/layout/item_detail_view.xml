@@ -20,8 +20,8 @@
 
     <TextView
         android:id="@+id/txt_name"
-        style="@style/TitleTxtv"
-        android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
+        style="@style/ItemDetailTitle"
+        android:layout_marginTop="@dimen/item_detail_title_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/txt_supertype_label"
-        style="@style/MiniMetaTxtv"
+        style="@style/ItemDetailLabel"
         android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
         android:text="@string/label_supertype"
         app:layout_constrainedWidth="true"
@@ -45,7 +45,7 @@
 
     <TextView
         android:id="@+id/txt_supertype"
-        style="@style/MetaTxtv"
+        style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
 
     <TextView
         android:id="@+id/txt_subtype_label"
-        style="@style/MiniMetaTxtv"
+        style="@style/ItemDetailLabel"
         android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
         android:text="@string/label_subtype"
         app:layout_constrainedWidth="true"
@@ -70,7 +70,7 @@
 
     <TextView
         android:id="@+id/txt_subtype"
-        style="@style/MetaTxtv"
+        style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +83,7 @@
 
     <TextView
         android:id="@+id/txt_artist_label"
-        style="@style/MiniMetaTxtv"
+        style="@style/ItemDetailLabel"
         android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
         android:text="@string/label_artist"
         app:layout_constrainedWidth="true"
@@ -95,7 +95,7 @@
 
     <TextView
         android:id="@+id/txt_artist"
-        style="@style/MetaTxtv"
+        style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +108,7 @@
 
     <TextView
         android:id="@+id/txt_rarity_label"
-        style="@style/MiniMetaTxtv"
+        style="@style/ItemDetailLabel"
         android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
         android:text="@string/label_rarity"
         app:layout_constrainedWidth="true"
@@ -120,7 +120,7 @@
 
     <TextView
         android:id="@+id/txt_rarity"
-        style="@style/MetaTxtv"
+        style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +133,7 @@
 
     <TextView
         android:id="@+id/txt_series_label"
-        style="@style/MiniMetaTxtv"
+        style="@style/ItemDetailLabel"
         android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
         android:text="@string/label_series"
         app:layout_constrainedWidth="true"
@@ -145,7 +145,7 @@
 
     <TextView
         android:id="@+id/txt_series"
-        style="@style/MetaTxtv"
+        style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -158,7 +158,7 @@
 
     <TextView
         android:id="@+id/txt_set_label"
-        style="@style/MiniMetaTxtv"
+        style="@style/ItemDetailLabel"
         android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
         android:text="@string/label_set"
         app:layout_constrainedWidth="true"
@@ -170,7 +170,7 @@
 
     <TextView
         android:id="@+id/txt_set"
-        style="@style/MetaTxtv"
+        style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -183,7 +183,7 @@
 
     <TextView
         android:id="@+id/txt_set_code_label"
-        style="@style/MiniMetaTxtv"
+        style="@style/ItemDetailLabel"
         android:layout_marginTop="@dimen/item_detail_txt_label_margin_top"
         android:text="@string/label_set_code"
         app:layout_constrainedWidth="true"
@@ -195,7 +195,7 @@
 
     <TextView
         android:id="@+id/txt_set_code"
-        style="@style/MetaTxtv"
+        style="@style/ItemDetailMeta"
         android:layout_marginTop="@dimen/item_detail_txt_meta_margin_top"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
