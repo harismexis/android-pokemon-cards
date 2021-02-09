@@ -59,6 +59,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(':core')
+
     implementation libraries.values()
     implementation rxJavaDependencies.values()
     implementation daggerDependancies.values()
