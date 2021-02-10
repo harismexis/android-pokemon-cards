@@ -19,7 +19,11 @@ class HomeAdapter(
         viewType: Int
     ): FeedItemVh {
         return FeedItemVh(
-            VhFeedItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            VhFeedItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ),
             clickListener
         )
     }

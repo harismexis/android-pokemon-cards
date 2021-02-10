@@ -1,7 +1,6 @@
 package com.example.jsonfeed.framework.datasource.network
 
 import com.example.jsonfeed.BuildConfig
-import com.example.jsonfeed.framework.api.FeedApi
 import com.example.jsonfeed.framework.datamodel.Feed
 
 import com.google.gson.Gson

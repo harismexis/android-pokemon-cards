@@ -1,4 +1,4 @@
-package com.example.jsonfeed.framework.api
+package com.example.jsonfeed.framework.datasource.network
 
 import com.example.jsonfeed.framework.datamodel.Feed
 

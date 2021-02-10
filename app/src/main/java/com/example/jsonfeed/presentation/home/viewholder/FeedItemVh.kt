@@ -8,7 +8,7 @@ import com.example.jsonfeed.framework.extensions.populateWithGlide
 
 class FeedItemVh(
     private var binding: VhFeedItemBinding,
-    private var itemClickListener: FeedItemClickListener
+    private var itemClick: FeedItemClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
     interface FeedItemClickListener {
@@ -23,7 +23,7 @@ class FeedItemVh(
         binding.txtName.text = item.name
         binding.txtMeta.text = item.supertype
         itemView.setOnClickListener {
-            itemClickListener.onFeedItemClick(item, position)
+            itemClick.onFeedItemClick(item, position)
         }
     }
 
