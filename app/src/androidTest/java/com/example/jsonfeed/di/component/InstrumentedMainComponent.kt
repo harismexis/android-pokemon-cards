@@ -1,9 +1,10 @@
 package com.example.jsonfeed.di.component
 
 import com.example.jsonfeed.application.InstrumentedMainApplication
-import com.example.jsonfeed.di.ActivityBindingsModule
 import com.example.jsonfeed.di.module.InstrumentedApplicationModule
 import com.example.jsonfeed.factory.InstrumentedViewModelModule
+import com.example.jsonfeed.framework.di.ActivityBindingsModule
+import com.example.jsonfeed.framework.di.InteractorModule
 
 import dagger.BindsInstance
 import dagger.Component
@@ -26,7 +27,8 @@ interface InstrumentedMainComponent : AndroidInjector<InstrumentedMainApplicatio
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance application: InstrumentedMainApplication): InstrumentedMainComponent
+        fun create(@BindsInstance application: InstrumentedMainApplication)
+                : InstrumentedMainComponent
     }
 
 }

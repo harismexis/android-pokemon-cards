@@ -53,7 +53,7 @@ class LocalDaoTest {
         val savedItems = getMockFeedAllIdsValid().toLocalItems()
 
         // when
-        dao.insertItems(savedItems)
+        //dao.insertItems(savedItems)
         val retrievedItems = dao.getAllItems()
 
         // then
@@ -71,7 +71,7 @@ class LocalDaoTest {
         val savedItems = getMockFeedAllIdsAbsent().toLocalItems()
 
         // when
-        dao.insertItems(savedItems)
+        //dao.insertItems(savedItems)
         val retrievedItems = dao.getAllItems()
 
         // then

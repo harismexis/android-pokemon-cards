@@ -9,11 +9,12 @@ import androidx.test.rule.ActivityTestRule
 
 import com.example.jsonfeed.R
 import com.example.jsonfeed.base.BaseTestSetup
+import com.example.jsonfeed.domain.LocalFeedItem
 import com.example.jsonfeed.framework.extensions.toLocalItems
-import com.example.jsonfeed.framework.extensions.toUiModels
 import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
 import com.example.jsonfeed.mockproviders.MockItemDetailVmProvider
-import com.example.jsonfeed.uimodel.UiModel
+import com.example.jsonfeed.presentation.detail.ui.ItemDetailActivity
+import com.example.jsonfeed.presentation.detail.viewmodel.ItemDetailVm
 
 import io.mockk.every
 
@@ -33,13 +34,13 @@ class ItemDetailActivityTest : BaseTestSetup() {
         )
 
     lateinit var mockItemDetailVm: ItemDetailVm
-    lateinit var mockUiModel: UiModel
+    lateinit var mockUiModel: LocalFeedItem
 
     @Before
     fun setup() {
         mockItemDetailVm = MockItemDetailVmProvider.provideMockItemDetailVm()
         every { mockItemDetailVm.retrieveItemById(any()) } returns Unit
-        mockUiModel = getMockFeedAllIdsValid().toLocalItems().toUiModels()[0]
+        // mockUiModel = getMockFeedAllIdsValid().toLocalItems().toUiModels()[0]
     }
 
     @Test

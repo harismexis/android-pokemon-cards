@@ -1,8 +1,8 @@
 package com.example.jsonfeed.mockproviders
 
 import androidx.lifecycle.ViewModel
-
-import com.example.jsonfeed.home.viewmodel.HomeVm
+import com.example.jsonfeed.presentation.detail.viewmodel.ItemDetailVm
+import com.example.jsonfeed.presentation.home.viewmodel.HomeVm
 
 import javax.inject.Provider
 

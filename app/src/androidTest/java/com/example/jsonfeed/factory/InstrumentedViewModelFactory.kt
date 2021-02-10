@@ -33,5 +33,6 @@ internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
 abstract class InstrumentedViewModelModule {
 
     @Binds
-    internal abstract fun bindViewModelFactory(factory: InstrumentedViewModelFactory): ViewModelProvider.Factory
+    internal abstract fun bindViewModelFactory(factory: InstrumentedViewModelFactory)
+            : ViewModelProvider.Factory
 }

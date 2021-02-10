@@ -2,13 +2,16 @@ package com.example.jsonfeed.framework.di
 
 import com.example.jsonfeed.data.LocalFeedRepository
 import com.example.jsonfeed.data.RemoteFeedRepository
+
 import com.example.jsonfeed.framework.Interactors
 import com.example.jsonfeed.framework.db.RoomLocalFeedDataSource
 import com.example.jsonfeed.framework.remote.RetrofitRemoteFeedDataSource
+
 import com.example.jsonfeed.interactors.GetLocalFeedItem
 import com.example.jsonfeed.interactors.GetLocalFeedItems
 import com.example.jsonfeed.interactors.GetRemoteFeed
 import com.example.jsonfeed.interactors.InsertLocalFeedItems
+
 import dagger.Module
 import dagger.Provides
 
