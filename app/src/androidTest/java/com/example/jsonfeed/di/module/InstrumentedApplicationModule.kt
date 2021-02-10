@@ -3,8 +3,8 @@ package com.example.jsonfeed.di.module
 import android.content.Context
 
 import com.example.jsonfeed.application.InstrumentedMainApplication
-import com.example.jsonfeed.framework.datasource.db.RoomDao
-import com.example.jsonfeed.framework.datasource.db.LocalDatabase
+import com.example.jsonfeed.framework.datasource.db.PokemonLocalDao
+import com.example.jsonfeed.framework.datasource.db.PokemonDatabase
 
 import dagger.Module
 import dagger.Provides
@@ -18,8 +18,8 @@ class InstrumentedApplicationModule {
     }
 
     @Provides
-    fun provideLocalDao(app: InstrumentedMainApplication): RoomDao {
-        return LocalDatabase.getDatabase(app.applicationContext).getLocalDao()
+    fun provideLocalDao(app: InstrumentedMainApplication): PokemonLocalDao {
+        return PokemonDatabase.getDatabase(app.applicationContext).getLocalDao()
     }
 
 

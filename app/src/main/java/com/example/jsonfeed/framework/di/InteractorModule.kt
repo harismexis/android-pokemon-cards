@@ -4,8 +4,8 @@ import com.example.jsonfeed.data.LocalRepository
 import com.example.jsonfeed.data.RemoteRepository
 
 import com.example.jsonfeed.framework.Interactors
-import com.example.jsonfeed.framework.datasource.db.RoomDataSource
-import com.example.jsonfeed.framework.datasource.network.NetworkDataSource
+import com.example.jsonfeed.framework.datasource.db.PokemonLocalDataSource
+import com.example.jsonfeed.framework.datasource.network.PokemonRemoteDataSource
 
 import com.example.jsonfeed.interactors.GetLocalItem
 import com.example.jsonfeed.interactors.GetLocalItems
@@ -35,28 +35,28 @@ class InteractorModule {
 
     @Provides
     fun provideInteractorGetLocalFeedItem(
-        dataSource: RoomDataSource
+        dataSource: PokemonLocalDataSource
     ): GetLocalItem {
         return GetLocalItem(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorGetLocalFeedItems(
-        dataSource: RoomDataSource
+        dataSource: PokemonLocalDataSource
     ): GetLocalItems {
         return GetLocalItems(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorInsertLocalFeedItems(
-        dataSource: RoomDataSource
+        dataSource: PokemonLocalDataSource
     ): StoreItems {
         return StoreItems(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorGetRemoteFeed(
-        dataSource: NetworkDataSource
+        dataSource: PokemonRemoteDataSource
     ): GetRemoteItems {
         return GetRemoteItems(RemoteRepository(dataSource))
     }

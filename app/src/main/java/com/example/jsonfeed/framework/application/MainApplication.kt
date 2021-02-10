@@ -13,18 +13,18 @@ import javax.inject.Inject
 class MainApplication : DaggerApplication(), HasAndroidInjector {
 
     @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
+    lateinit var injector: DispatchingAndroidInjector<Any>
 
-    private lateinit var mainComponent: MainComponent
+    private lateinit var component: MainComponent
 
     override fun androidInjector(): AndroidInjector<Any> {
-        return dispatchingAndroidInjector
+        return injector
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        mainComponent = DaggerMainComponent.factory().create(this)
-        mainComponent.inject(this)
-        return mainComponent
+        component = DaggerMainComponent.factory().create(this)
+        component.inject(this)
+        return component
     }
 
 }

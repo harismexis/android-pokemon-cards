@@ -14,7 +14,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RetrofitDao @Inject constructor() {
+class PokemonRemoteDao @Inject constructor() {
 
     private val api: PokemonApi
 

@@ -6,8 +6,8 @@ import com.example.jsonfeed.framework.extensions.toItems
 
 import javax.inject.Inject
 
-class NetworkDataSource @Inject constructor(
-    private val dao: RetrofitDao
+class PokemonRemoteDataSource @Inject constructor(
+    private val dao: PokemonRemoteDao
 ) : RemoteDataSource {
 
     override suspend fun getItems(): List<Item>? {

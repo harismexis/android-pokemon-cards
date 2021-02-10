@@ -4,8 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "feed_table")
-data class LocalItemEntity(
+@Entity(tableName = "pokemon_table")
+data class PokemonEntity(
     @PrimaryKey @ColumnInfo(name = "id") val id: String,
     @ColumnInfo(name = "name") val name: String?,
     @ColumnInfo(name = "imageUrl") val imageUrl: String?,

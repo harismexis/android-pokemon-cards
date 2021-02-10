@@ -6,21 +6,22 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [LocalItemEntity::class], version = 1, exportSchema = false)
-abstract class LocalDatabase : RoomDatabase() {
+@Database(entities = [PokemonEntity::class], version = 1, exportSchema = false)
+abstract class PokemonDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
-        var INSTANCE: LocalDatabase? = null
+        var INSTANCE: PokemonDatabase? = null
+        private const val DATABASE_FILE_NAME = "pokemon_database"
 
         fun getDatabase(
             context: Context
-        ): LocalDatabase {
+        ): PokemonDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    LocalDatabase::class.java,
-                    "feed_table"
+                    PokemonDatabase::class.java,
+                    DATABASE_FILE_NAME
                 )
                     .fallbackToDestructiveMigration()
                     .build()
@@ -30,6 +31,6 @@ abstract class LocalDatabase : RoomDatabase() {
         }
     }
 
-    abstract fun getLocalDao(): RoomDao
+    abstract fun getLocalDao(): PokemonLocalDao
 
 }
