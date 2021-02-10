@@ -56,7 +56,7 @@ class HomeActivityTest : BaseTestSetup() {
     }
 
     @Test
-    fun liveDataUpdatedFromFeedWithAllItemsValid_homeListHasCorrectNumberOfItems() {
+    fun remoteFeedHasAllItemsValid_homeListHasCorrectNumberOfItems() {
         // given
         every { mockHomeVm.models } returns MockHomeVmProvider.models
         launchActivityAndMockLiveData()
@@ -71,7 +71,7 @@ class HomeActivityTest : BaseTestSetup() {
     }
 
     @Test
-    fun liveDataUpdatedFromFeedWithSomeIdsAbsent_homeListHasCorrectNumberOfItems() {
+    fun remoteFeedHasSomeIdsAbsent_homeListHasCorrectNumberOfItems() {
         // given
         mockUiModels = getMockFeedSomeIdsAbsent().toItems()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
@@ -87,7 +87,7 @@ class HomeActivityTest : BaseTestSetup() {
     }
 
     @Test
-    fun liveDataUpdatedFromFeedWithAllIdsAbsent_homeListHasNoItems() {
+    fun remoteFeedHasAllIdsAbsent_homeListHasNoItems() {
         // given
         mockUiModels = getMockFeedAllIdsAbsent().toItems()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
@@ -102,7 +102,7 @@ class HomeActivityTest : BaseTestSetup() {
     }
 
     @Test
-    fun liveDataUpdatedFromFeedWithSomeJsonItemsEmpty_homeListHasCorrectNumberOfItems() {
+    fun remoteFeedHasSomeJsonItemsEmpty_homeListHasCorrectNumberOfItems() {
         // given
         mockUiModels = getMockFeedSomeItemsEmpty().toItems()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
@@ -118,7 +118,7 @@ class HomeActivityTest : BaseTestSetup() {
     }
 
     @Test
-    fun liveDataUpdatedFromEmptyJson_homeListHasNoItems() {
+    fun remoteFeedHasEmptyJson_homeListHasNoItems() {
         // given
         mockUiModels = getMockFeedEmptyJson().toItems()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
