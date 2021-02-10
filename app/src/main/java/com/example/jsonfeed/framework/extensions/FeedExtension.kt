@@ -4,25 +4,18 @@ import com.example.jsonfeed.framework.datasource.network.PokemonFeed
 import com.example.jsonfeed.framework.datasource.network.PokemonCard
 import com.example.jsonfeed.domain.Item
 
-//fun PokemonFeed?.toLocalItems(): List<Item> {
-//    val items = mutableListOf<Item>()
-//    if (this == null) return localItems
-//    this.cards?.let { cards ->
-//        for (item in cards) {
-//            item?.let { currentItem ->
-//                currentItem.id?.let { id ->
-//                    if (id.isNotBlank()) {
-//                        val localItem = currentItem.toLocalItem(id)
-//                        localItems.add(localItem)
-//                    }
-//                }
-//            }
-//        }
-//    }
-//    return localItems
-//}
+fun PokemonFeed?.toItems(): List<Item>? {
+    val items = mutableListOf<Item>()
+    if (this == null) return null
+    val remoteItems = this.cards ?: return null
+    val validItems = remoteItems.filter { it != null && !it.id.isNullOrBlank() }
+    items.addAll(validItems.map {
+        it!!.toItem(it.id!!)
+    })
+    return items.toList()
+}
 
-private fun PokemonCard.toLocalItem(id: String): Item {
+private fun PokemonCard.toItem(id: String): Item {
     return Item(
         id,
         this.name,

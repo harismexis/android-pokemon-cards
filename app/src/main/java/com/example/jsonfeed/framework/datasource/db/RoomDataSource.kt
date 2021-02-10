@@ -28,8 +28,7 @@ class RoomDataSource @Inject constructor(
                 )
             )
         }
-        // localDao.insertItems(ImmutableList.copyOf(entities))
-        dao.insertItems(entities)
+        dao.insertItems(entities.toList())
     }
 
     override suspend fun getItem(itemId: String): Item? {
