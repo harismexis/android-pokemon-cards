@@ -1,23 +1,23 @@
-package com.example.jsonfeed.framework.remote
+package com.example.jsonfeed.framework.datasource.network
 
-import com.example.jsonfeed.data.RemoteFeedDataSource
+import com.example.jsonfeed.data.RemoteDataSource
 import com.example.jsonfeed.domain.RemoteFeed
-import com.example.jsonfeed.domain.RemoteFeedItem
+import com.example.jsonfeed.domain.RemoteItem
 
 import javax.inject.Inject
 
-class RetrofitRemoteFeedDataSource @Inject constructor(
-    val remoteDao: RemoteFeedDao
-) : RemoteFeedDataSource {
+class NetworkDataSource @Inject constructor(
+    private val dao: RetrofitDao
+) : RemoteDataSource {
 
     override suspend fun getFeedData(): RemoteFeed? {
-        val feed = remoteDao.getJsonFeed() ?: return null
+        val feed = dao.getJsonFeed() ?: return null
         val cards = feed.cards ?: return null
-        val remoteFeedItems = mutableListOf<RemoteFeedItem>()
+        val remoteFeedItems = mutableListOf<RemoteItem>()
         for (card in cards) {
             card?.let {
                 remoteFeedItems.add(
-                    RemoteFeedItem(
+                    RemoteItem(
                         it.id,
                         it.name,
                         it.imageUrl,

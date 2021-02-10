@@ -1,16 +1,16 @@
 package com.example.jsonfeed.framework.di
 
-import com.example.jsonfeed.data.LocalFeedRepository
-import com.example.jsonfeed.data.RemoteFeedRepository
+import com.example.jsonfeed.data.LocalRepository
+import com.example.jsonfeed.data.RemoteRepository
 
 import com.example.jsonfeed.framework.Interactors
-import com.example.jsonfeed.framework.db.RoomLocalFeedDataSource
-import com.example.jsonfeed.framework.remote.RetrofitRemoteFeedDataSource
+import com.example.jsonfeed.framework.datasource.db.LocalStorageDataSource
+import com.example.jsonfeed.framework.datasource.network.NetworkDataSource
 
-import com.example.jsonfeed.interactors.GetLocalFeedItem
-import com.example.jsonfeed.interactors.GetLocalFeedItems
+import com.example.jsonfeed.interactors.GetLocalItem
+import com.example.jsonfeed.interactors.GetLocalItems
 import com.example.jsonfeed.interactors.GetRemoteFeed
-import com.example.jsonfeed.interactors.InsertLocalFeedItems
+import com.example.jsonfeed.interactors.InsertLocalItems
 
 import dagger.Module
 import dagger.Provides
@@ -20,10 +20,10 @@ class InteractorModule {
 
     @Provides
     fun provideInteractors(
-        getLocalFeedItem: GetLocalFeedItem,
-        getLocalFeedItems: GetLocalFeedItems,
+        getLocalFeedItem: GetLocalItem,
+        getLocalFeedItems: GetLocalItems,
         getRemoteFeed: GetRemoteFeed,
-        insertLocalFeedItems: InsertLocalFeedItems
+        insertLocalFeedItems: InsertLocalItems
     ): Interactors {
         return Interactors(
             getLocalFeedItem,
@@ -35,30 +35,30 @@ class InteractorModule {
 
     @Provides
     fun provideInteractorGetLocalFeedItem(
-        dataSource: RoomLocalFeedDataSource
-    ): GetLocalFeedItem {
-        return GetLocalFeedItem(LocalFeedRepository(dataSource))
+        dataSource: LocalStorageDataSource
+    ): GetLocalItem {
+        return GetLocalItem(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorGetLocalFeedItems(
-        dataSource: RoomLocalFeedDataSource
-    ): GetLocalFeedItems {
-        return GetLocalFeedItems(LocalFeedRepository(dataSource))
+        dataSource: LocalStorageDataSource
+    ): GetLocalItems {
+        return GetLocalItems(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorInsertLocalFeedItems(
-        dataSource: RoomLocalFeedDataSource
-    ): InsertLocalFeedItems {
-        return InsertLocalFeedItems(LocalFeedRepository(dataSource))
+        dataSource: LocalStorageDataSource
+    ): InsertLocalItems {
+        return InsertLocalItems(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorGetRemoteFeed(
-        dataSource: RetrofitRemoteFeedDataSource
+        dataSource: NetworkDataSource
     ): GetRemoteFeed {
-        return GetRemoteFeed(RemoteFeedRepository(dataSource))
+        return GetRemoteFeed(RemoteRepository(dataSource))
     }
 
 }

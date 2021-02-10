@@ -1,10 +1,10 @@
 package com.example.jsonfeed.di.module
 
 import com.example.jsonfeed.framework.Interactors
-import com.example.jsonfeed.interactors.GetLocalFeedItem
-import com.example.jsonfeed.interactors.GetLocalFeedItems
+import com.example.jsonfeed.interactors.GetLocalItem
+import com.example.jsonfeed.interactors.GetLocalItems
 import com.example.jsonfeed.interactors.GetRemoteFeed
-import com.example.jsonfeed.interactors.InsertLocalFeedItems
+import com.example.jsonfeed.interactors.InsertLocalItems
 
 import dagger.Module
 import dagger.Provides
@@ -16,10 +16,10 @@ class InstrumentedInteractorModule {
 
     @Provides
     fun provideInteractors(
-        getLocalFeedItem: GetLocalFeedItem,
-        getLocalFeedItems: GetLocalFeedItems,
+        getLocalFeedItem: GetLocalItem,
+        getLocalFeedItems: GetLocalItems,
         getRemoteFeed: GetRemoteFeed,
-        insertLocalFeedItems: InsertLocalFeedItems
+        insertLocalFeedItems: InsertLocalItems
     ): Interactors {
 //        return Interactors(
 //            getLocalFeedItem,

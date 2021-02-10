@@ -1,4 +1,4 @@
-package com.example.jsonfeed.framework.remote
+package com.example.jsonfeed.framework.datasource.network
 
 import com.example.jsonfeed.BuildConfig
 import com.example.jsonfeed.framework.api.FeedApi
@@ -16,7 +16,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RemoteFeedDao @Inject constructor() {
+class RetrofitDao @Inject constructor() {
 
     private val api: FeedApi
 

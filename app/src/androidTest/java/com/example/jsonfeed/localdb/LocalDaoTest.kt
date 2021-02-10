@@ -10,8 +10,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.jsonfeed.base.BaseTestSetup.Companion.EXPECTED_NUM_MODELS_ALL_FEED_IDS_VALID
 
 import com.example.jsonfeed.framework.extensions.toLocalItems
-import com.example.jsonfeed.framework.db.LocalDao
-import com.example.jsonfeed.framework.db.LocalDatabase
+import com.example.jsonfeed.framework.datasource.db.RoomDao
+import com.example.jsonfeed.framework.datasource.db.LocalDatabase
 import com.example.jsonfeed.mockprovider.getMockFeedAllIdsAbsent
 import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
 
@@ -28,7 +28,7 @@ class LocalDaoTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var dao: LocalDao
+    private lateinit var dao: RoomDao
     private lateinit var database: LocalDatabase
 
     @Before

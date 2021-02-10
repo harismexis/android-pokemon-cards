@@ -2,10 +2,10 @@ package com.example.jsonfeed.framework.extensions
 
 import com.example.jsonfeed.framework.datamodel.Feed
 import com.example.jsonfeed.framework.datamodel.FeedItem
-import com.example.jsonfeed.domain.LocalFeedItem
+import com.example.jsonfeed.domain.LocalItem
 
-fun Feed?.toLocalItems(): List<LocalFeedItem> {
-    val localItems = mutableListOf<LocalFeedItem>()
+fun Feed?.toLocalItems(): List<LocalItem> {
+    val localItems = mutableListOf<LocalItem>()
     if (this == null) return localItems
     this.cards?.let { cards ->
         for (item in cards) {
@@ -22,8 +22,8 @@ fun Feed?.toLocalItems(): List<LocalFeedItem> {
     return localItems
 }
 
-private fun FeedItem.toLocalItem(id: String): LocalFeedItem {
-    return LocalFeedItem(
+private fun FeedItem.toLocalItem(id: String): LocalItem {
+    return LocalItem(
         id,
         this.name,
         this.imageUrl,

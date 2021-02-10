@@ -2,7 +2,7 @@ package com.example.jsonfeed.domain
 
 import java.io.Serializable
 
-data class RemoteFeedItem(
+data class RemoteItem(
     val id: String?,
     val name: String?,
     val imageUrl: String?,

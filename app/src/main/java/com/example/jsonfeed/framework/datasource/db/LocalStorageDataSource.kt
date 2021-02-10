@@ -1,15 +1,15 @@
-package com.example.jsonfeed.framework.db
+package com.example.jsonfeed.framework.datasource.db
 
-import com.example.jsonfeed.data.LocalFeedDataSource
-import com.example.jsonfeed.domain.LocalFeedItem
+import com.example.jsonfeed.data.LocalDataSource
+import com.example.jsonfeed.domain.LocalItem
 // import com.google.common.collect.ImmutableList
 import javax.inject.Inject
 
-class RoomLocalFeedDataSource @Inject constructor(
-    val localDao: LocalDao
-) : LocalFeedDataSource {
+class LocalStorageDataSource @Inject constructor(
+    private val dao: RoomDao
+) : LocalDataSource {
 
-    override suspend fun insert(items: List<LocalFeedItem>) {
+    override suspend fun insert(items: List<LocalItem>) {
         val entities = mutableListOf<LocalItemEntity>()
         for (item in items) {
             entities.add(
@@ -29,13 +29,13 @@ class RoomLocalFeedDataSource @Inject constructor(
             )
         }
         // localDao.insertItems(ImmutableList.copyOf(entities))
-        localDao.insertItems(entities)
+        dao.insertItems(entities)
     }
 
-    override suspend fun getItem(itemId: String): LocalFeedItem? {
-        val entity = localDao.getItemById(itemId)
+    override suspend fun getItem(itemId: String): LocalItem? {
+        val entity = dao.getItemById(itemId)
         entity?.let {
-            return LocalFeedItem(
+            return LocalItem(
                 entity.id,
                 entity.name,
                 entity.imageUrl,
@@ -52,11 +52,11 @@ class RoomLocalFeedDataSource @Inject constructor(
         return null
     }
 
-    override suspend fun getAll(): List<LocalFeedItem>? {
-        val entities = localDao.getAllItems()
+    override suspend fun getAll(): List<LocalItem>? {
+        val entities = dao.getAllItems()
         entities?.let { list ->
             return list.map {
-                LocalFeedItem(
+                LocalItem(
                     it.id,
                     it.name,
                     it.imageUrl,

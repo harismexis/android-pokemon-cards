@@ -1,9 +1,9 @@
-package com.example.jsonfeed.framework.db
+package com.example.jsonfeed.framework.datasource.db
 
 import androidx.room.*
 
 @Dao
-interface LocalDao {
+interface RoomDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItems(items: List<LocalItemEntity>)

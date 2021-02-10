@@ -2,7 +2,7 @@ package com.example.jsonfeed.data
 
 import com.example.jsonfeed.domain.RemoteFeed
 
-interface RemoteFeedDataSource {
+interface RemoteDataSource {
 
     suspend fun getFeedData(): RemoteFeed?
 

@@ -1,9 +1,9 @@
 package com.example.jsonfeed.interactors
 
-import com.example.jsonfeed.data.RemoteFeedRepository
+import com.example.jsonfeed.data.RemoteRepository
 
 class GetRemoteFeed(
-    private val remoteFeedRepository: RemoteFeedRepository
+    private val repository: RemoteRepository
 ) {
-    suspend operator fun invoke() = remoteFeedRepository.getFeed()
+    suspend operator fun invoke() = repository.getFeed()
 }

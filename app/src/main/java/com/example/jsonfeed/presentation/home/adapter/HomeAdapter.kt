@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.jsonfeed.databinding.VhFeedItemBinding
-import com.example.jsonfeed.domain.LocalFeedItem
+import com.example.jsonfeed.domain.LocalItem
 import com.example.jsonfeed.presentation.home.viewholder.FeedItemVh
 
 class HomeAdapter(
-    private var models: List<LocalFeedItem>,
+    private var models: List<LocalItem>,
     private var clickListener: FeedItemVh.FeedItemClickListener
 ) : RecyclerView.Adapter<FeedItemVh>() {
 

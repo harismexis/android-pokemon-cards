@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
-import com.example.jsonfeed.domain.LocalFeedItem
+import com.example.jsonfeed.domain.LocalItem
 import com.example.jsonfeed.framework.extensions.getErrorMessage
 import com.example.jsonfeed.framework.Interactors
 
@@ -20,8 +20,8 @@ class ItemDetailVm @Inject constructor(
 
     private val tag = ItemDetailVm::class.qualifiedName
 
-    private val mModel = MutableLiveData<LocalFeedItem>()
-    val model: LiveData<LocalFeedItem>
+    private val mModel = MutableLiveData<LocalItem>()
+    val model: LiveData<LocalItem>
         get() = mModel
 
     fun retrieveItemById(itemId: String) {

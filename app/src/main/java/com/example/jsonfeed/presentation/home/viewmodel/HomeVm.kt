@@ -1,7 +1,5 @@
 package com.example.jsonfeed.presentation.home.viewmodel
 
-import android.app.Application
-
 import android.util.Log
 
 import androidx.lifecycle.LiveData
@@ -9,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
-import com.example.jsonfeed.domain.LocalFeedItem
+import com.example.jsonfeed.domain.LocalItem
 import com.example.jsonfeed.framework.extensions.*
 import com.example.jsonfeed.framework.Interactors
 import com.example.jsonfeed.framework.util.functional.Action1
@@ -26,8 +24,8 @@ class HomeVm @Inject constructor(
 
     private val TAG = HomeVm::class.qualifiedName
 
-    private val mModels = MutableLiveData<List<LocalFeedItem>>()
-    val models: LiveData<List<LocalFeedItem>>
+    private val mModels = MutableLiveData<List<LocalItem>>()
+    val models: LiveData<List<LocalItem>>
         get() = mModels
 
     fun bind() {

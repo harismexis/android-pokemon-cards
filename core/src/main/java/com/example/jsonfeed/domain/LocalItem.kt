@@ -2,7 +2,7 @@ package com.example.jsonfeed.domain
 
 import java.io.Serializable
 
-data class LocalFeedItem(
+data class LocalItem(
     val id: String,
     val name: String?,
     val imageUrl: String?,

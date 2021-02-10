@@ -1,4 +1,4 @@
-package com.example.jsonfeed.framework.db
+package com.example.jsonfeed.framework.datasource.db
 
 import android.content.Context
 
@@ -30,6 +30,6 @@ abstract class LocalDatabase : RoomDatabase() {
         }
     }
 
-    abstract fun getLocalDao(): LocalDao
+    abstract fun getLocalDao(): RoomDao
 
 }
