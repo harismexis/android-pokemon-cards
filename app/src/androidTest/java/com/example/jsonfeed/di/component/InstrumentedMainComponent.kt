@@ -2,9 +2,9 @@ package com.example.jsonfeed.di.component
 
 import com.example.jsonfeed.application.InstrumentedMainApplication
 import com.example.jsonfeed.di.module.InstrumentedApplicationModule
+import com.example.jsonfeed.di.module.InstrumentedInteractorModule
 import com.example.jsonfeed.factory.InstrumentedViewModelModule
 import com.example.jsonfeed.framework.di.ActivityBindingsModule
-import com.example.jsonfeed.framework.di.InteractorModule
 
 import dagger.BindsInstance
 import dagger.Component
@@ -20,7 +20,7 @@ import javax.inject.Singleton
         ActivityBindingsModule::class,
         InstrumentedViewModelModule::class,
         InstrumentedApplicationModule::class,
-        InteractorModule::class
+        InstrumentedInteractorModule::class
     ]
 )
 interface InstrumentedMainComponent : AndroidInjector<InstrumentedMainApplication> {
