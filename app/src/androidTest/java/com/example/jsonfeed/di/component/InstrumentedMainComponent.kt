@@ -18,7 +18,8 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         ActivityBindingsModule::class,
         InstrumentedViewModelModule::class,
-        InstrumentedApplicationModule::class
+        InstrumentedApplicationModule::class,
+        InteractorModule::class
     ]
 )
 interface InstrumentedMainComponent : AndroidInjector<InstrumentedMainApplication> {

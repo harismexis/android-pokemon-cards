@@ -14,9 +14,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.example.jsonfeed.R
 import com.example.jsonfeed.base.BaseTestSetup
-import com.example.jsonfeed.detail.ui.ItemDetailActivity
-import com.example.jsonfeed.extensions.toLocalItems
-import com.example.jsonfeed.extensions.toUiModels
+import com.example.jsonfeed.framework.extensions.toLocalItems
+import com.example.jsonfeed.framework.extensions.toUiModels
 import com.example.jsonfeed.home.viewmodel.HomeVm
 import com.example.jsonfeed.mockprovider.*
 import com.example.jsonfeed.mockproviders.MockHomeVmProvider

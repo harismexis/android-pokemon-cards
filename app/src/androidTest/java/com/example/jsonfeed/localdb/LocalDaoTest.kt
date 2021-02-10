@@ -6,9 +6,12 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+
 import com.example.jsonfeed.base.BaseTestSetup.Companion.EXPECTED_NUM_MODELS_ALL_FEED_IDS_VALID
 
-import com.example.jsonfeed.extensions.toLocalItems
+import com.example.jsonfeed.framework.extensions.toLocalItems
+import com.example.jsonfeed.framework.db.LocalDao
+import com.example.jsonfeed.framework.db.LocalDatabase
 import com.example.jsonfeed.mockprovider.getMockFeedAllIdsAbsent
 import com.example.jsonfeed.mockprovider.getMockFeedAllIdsValid
 
@@ -34,7 +37,7 @@ class LocalDaoTest {
         database = Room.inMemoryDatabaseBuilder(context, LocalDatabase::class.java)
             .allowMainThreadQueries()
             .build()
-        dao = database.localDao()
+        dao = database.getLocalDao()
     }
 
     @After

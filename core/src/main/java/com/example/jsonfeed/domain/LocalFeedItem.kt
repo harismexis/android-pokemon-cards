@@ -14,22 +14,4 @@ data class LocalFeedItem(
     val series: String?,
     val set: String?,
     val setCode: String?
-) : Serializable {
-
-    companion object {
-        val EMPTY = LocalFeedItem(
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        )
-    }
-
-}
+) : Serializable

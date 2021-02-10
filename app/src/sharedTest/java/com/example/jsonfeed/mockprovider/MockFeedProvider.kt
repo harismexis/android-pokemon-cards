@@ -1,6 +1,6 @@
 package com.example.jsonfeed.mockprovider
 
-import com.example.jsonfeed.datamodel.Feed
+import com.example.jsonfeed.framework.datamodel.Feed
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

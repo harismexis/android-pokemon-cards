@@ -14,22 +14,4 @@ data class RemoteFeedItem(
     val series: String?,
     val set: String?,
     val setCode: String?
-) : Serializable {
-
-    companion object {
-        val EMPTY = RemoteFeedItem(
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        )
-    }
-
-}
+) : Serializable

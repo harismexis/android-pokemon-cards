@@ -3,7 +3,6 @@ package com.example.jsonfeed.mockproviders
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.uimodel.UiModel
 
 import io.mockk.mockk
