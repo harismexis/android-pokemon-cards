@@ -17,14 +17,14 @@ import javax.inject.Singleton
 @Singleton
 class RetrofitDao @Inject constructor() {
 
-    private val api: FeedApi
+    private val api: PokemonApi
 
     init {
         api = createApi()
     }
 
-    private fun createApi(): FeedApi {
-        return buildRetrofit().create(FeedApi::class.java)
+    private fun createApi(): PokemonApi {
+        return buildRetrofit().create(PokemonApi::class.java)
     }
 
     private fun buildRetrofit(): Retrofit {
@@ -43,7 +43,7 @@ class RetrofitDao @Inject constructor() {
         return GsonBuilder().setLenient().create()
     }
 
-    suspend fun getJsonFeed(): Feed? {
+    suspend fun getPokemonCards(): Feed? {
         return api.getPokemonCards()
     }
 }

@@ -11,7 +11,7 @@ class NetworkDataSource @Inject constructor(
 ) : RemoteDataSource {
 
     override suspend fun getFeedData(): RemoteFeed? {
-        val feed = dao.getJsonFeed() ?: return null
+        val feed = dao.getPokemonCards() ?: return null
         val cards = feed.cards ?: return null
         val remoteFeedItems = mutableListOf<RemoteItem>()
         for (card in cards) {

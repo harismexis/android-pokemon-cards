@@ -4,7 +4,7 @@ import com.example.jsonfeed.framework.datamodel.Feed
 
 import retrofit2.http.GET
 
-interface FeedApi {
+interface PokemonApi {
 
     @GET("cards")
     suspend fun getPokemonCards(): Feed?
