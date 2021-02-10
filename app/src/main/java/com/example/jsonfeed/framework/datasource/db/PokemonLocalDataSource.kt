@@ -3,6 +3,7 @@ package com.example.jsonfeed.framework.datasource.db
 import com.example.jsonfeed.data.LocalDataSource
 import com.example.jsonfeed.domain.Item
 import com.example.jsonfeed.framework.extensions.toItem
+import com.example.jsonfeed.framework.extensions.toItems
 import com.example.jsonfeed.framework.extensions.toPokemonEntity
 
 import javax.inject.Inject
@@ -28,9 +29,7 @@ class PokemonLocalDataSource @Inject constructor(
     }
 
     override suspend fun getAll(): List<Item>? {
-        val entities = dao.getAllItems() ?: return null
-        val filteredList = entities.filterNotNull()
-        return filteredList.map { it.toItem() }
+        return dao.getAllItems().toItems()
     }
 
 }
