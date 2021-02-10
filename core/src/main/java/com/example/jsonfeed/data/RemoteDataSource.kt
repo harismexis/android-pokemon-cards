@@ -1,9 +1,9 @@
 package com.example.jsonfeed.data
 
-import com.example.jsonfeed.domain.RemoteFeed
+import com.example.jsonfeed.domain.Item
 
 interface RemoteDataSource {
 
-    suspend fun getFeedData(): RemoteFeed?
+    suspend fun getItems(): List<Item>?
 
 }

@@ -1,6 +1,6 @@
 package com.example.jsonfeed.base//package com.example.jsonfeed.framework.extensions
 //
-//import com.example.jsonfeed.framework.datamodel.Feed
+//import com.example.jsonfeed.framework.datasource.network.Feed
 //
 //import org.junit.Test
 //

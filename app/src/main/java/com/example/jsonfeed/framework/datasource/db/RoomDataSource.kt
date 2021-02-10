@@ -1,15 +1,15 @@
 package com.example.jsonfeed.framework.datasource.db
 
 import com.example.jsonfeed.data.LocalDataSource
-import com.example.jsonfeed.domain.LocalItem
+import com.example.jsonfeed.domain.Item
 // import com.google.common.collect.ImmutableList
 import javax.inject.Inject
 
-class LocalStorageDataSource @Inject constructor(
+class RoomDataSource @Inject constructor(
     private val dao: RoomDao
 ) : LocalDataSource {
 
-    override suspend fun insert(items: List<LocalItem>) {
+    override suspend fun insert(items: List<Item>) {
         val entities = mutableListOf<LocalItemEntity>()
         for (item in items) {
             entities.add(
@@ -32,10 +32,10 @@ class LocalStorageDataSource @Inject constructor(
         dao.insertItems(entities)
     }
 
-    override suspend fun getItem(itemId: String): LocalItem? {
+    override suspend fun getItem(itemId: String): Item? {
         val entity = dao.getItemById(itemId)
         entity?.let {
-            return LocalItem(
+            return Item(
                 entity.id,
                 entity.name,
                 entity.imageUrl,
@@ -52,11 +52,11 @@ class LocalStorageDataSource @Inject constructor(
         return null
     }
 
-    override suspend fun getAll(): List<LocalItem>? {
+    override suspend fun getAll(): List<Item>? {
         val entities = dao.getAllItems()
         entities?.let { list ->
             return list.map {
-                LocalItem(
+                Item(
                     it.id,
                     it.name,
                     it.imageUrl,

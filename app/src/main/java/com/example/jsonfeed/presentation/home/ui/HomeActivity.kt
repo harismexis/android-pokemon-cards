@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.jsonfeed.databinding.ActivityHomeBinding
-import com.example.jsonfeed.domain.LocalItem
+import com.example.jsonfeed.domain.Item
 import com.example.jsonfeed.presentation.home.adapter.HomeAdapter
 import com.example.jsonfeed.presentation.home.viewholder.FeedItemVh
 import com.example.jsonfeed.framework.base.BaseActivity
@@ -19,7 +19,7 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
     private lateinit var viewModel: HomeVm
     private lateinit var binding: ActivityHomeBinding
     private lateinit var adapter: HomeAdapter
-    private var uiModels: MutableList<LocalItem> = mutableListOf()
+    private var uiModels: MutableList<Item> = mutableListOf()
 
     override fun initialise() {
         super.initialise()
@@ -43,7 +43,7 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
         return binding.root
     }
 
-    override fun onFeedItemClick(item: LocalItem, position: Int) {
+    override fun onFeedItemClick(item: Item, position: Int) {
         startItemDetailActivity(item.id)
     }
 
@@ -53,11 +53,11 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 
     override fun observeLiveData() {
         viewModel.models.observe(this, {
-            // populate(it)
+            populate(it)
         })
     }
 
-    private fun populate(models: List<LocalItem>) {
+    private fun populate(models: List<Item>) {
         binding.homeSwipeRefresh.isRefreshing = false
         binding.loadingProgressBar.visibility = View.GONE
         binding.homeList.visibility = View.VISIBLE

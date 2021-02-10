@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
-import com.example.jsonfeed.domain.LocalItem
+import com.example.jsonfeed.domain.Item
 import com.example.jsonfeed.framework.extensions.*
 import com.example.jsonfeed.framework.Interactors
 import com.example.jsonfeed.framework.util.functional.Action1
@@ -24,8 +24,8 @@ class HomeVm @Inject constructor(
 
     private val TAG = HomeVm::class.qualifiedName
 
-    private val mModels = MutableLiveData<List<LocalItem>>()
-    val models: LiveData<List<LocalItem>>
+    private val mModels = MutableLiveData<List<Item>>()
+    val models: LiveData<List<Item>>
         get() = mModels
 
     fun bind() {
@@ -47,12 +47,11 @@ class HomeVm @Inject constructor(
     private fun fetchRemoteFeed() {
         viewModelScope.launch {
             try {
-//                val response = feedRepo.getJsonFeed()
-//                val localItems = response.toLocalItems()
-//                val uiModels = localItems.toUiModels()
-//                val remoteFeed = interactors.getRemoteFeed
-//                mModels.value = uiModels
-//                localRepo.insertItems(localItems)
+                val items = interactors.getRemoteItems.invoke()
+                items?.let {
+                    mModels.value = it
+                    interactors.storeItems.invoke(items)
+                }
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }
@@ -62,10 +61,10 @@ class HomeVm @Inject constructor(
     private fun fetchLocalFeed() {
         viewModelScope.launch {
             try {
-                // val localItems = localRepo.getAllItems()
-                val localItems = interactors.getLocalFeedItems
-                // val uiModels = localItems.toUiModels()
-                // mModels.value = uiModels
+                val items = interactors.getLocalItems.invoke()
+                items?.let {
+                    mModels.value = it
+                }
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }

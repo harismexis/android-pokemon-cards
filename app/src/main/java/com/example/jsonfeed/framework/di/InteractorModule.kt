@@ -4,13 +4,13 @@ import com.example.jsonfeed.data.LocalRepository
 import com.example.jsonfeed.data.RemoteRepository
 
 import com.example.jsonfeed.framework.Interactors
-import com.example.jsonfeed.framework.datasource.db.LocalStorageDataSource
+import com.example.jsonfeed.framework.datasource.db.RoomDataSource
 import com.example.jsonfeed.framework.datasource.network.NetworkDataSource
 
 import com.example.jsonfeed.interactors.GetLocalItem
 import com.example.jsonfeed.interactors.GetLocalItems
-import com.example.jsonfeed.interactors.GetRemoteFeed
-import com.example.jsonfeed.interactors.InsertLocalItems
+import com.example.jsonfeed.interactors.GetRemoteItems
+import com.example.jsonfeed.interactors.StoreItems
 
 import dagger.Module
 import dagger.Provides
@@ -22,8 +22,8 @@ class InteractorModule {
     fun provideInteractors(
         getLocalFeedItem: GetLocalItem,
         getLocalFeedItems: GetLocalItems,
-        getRemoteFeed: GetRemoteFeed,
-        insertLocalFeedItems: InsertLocalItems
+        getRemoteFeed: GetRemoteItems,
+        insertLocalFeedItems: StoreItems
     ): Interactors {
         return Interactors(
             getLocalFeedItem,
@@ -35,30 +35,30 @@ class InteractorModule {
 
     @Provides
     fun provideInteractorGetLocalFeedItem(
-        dataSource: LocalStorageDataSource
+        dataSource: RoomDataSource
     ): GetLocalItem {
         return GetLocalItem(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorGetLocalFeedItems(
-        dataSource: LocalStorageDataSource
+        dataSource: RoomDataSource
     ): GetLocalItems {
         return GetLocalItems(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorInsertLocalFeedItems(
-        dataSource: LocalStorageDataSource
-    ): InsertLocalItems {
-        return InsertLocalItems(LocalRepository(dataSource))
+        dataSource: RoomDataSource
+    ): StoreItems {
+        return StoreItems(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorGetRemoteFeed(
         dataSource: NetworkDataSource
-    ): GetRemoteFeed {
-        return GetRemoteFeed(RemoteRepository(dataSource))
+    ): GetRemoteItems {
+        return GetRemoteItems(RemoteRepository(dataSource))
     }
 
 }

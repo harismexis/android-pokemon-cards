@@ -2,7 +2,7 @@
 //
 //import androidx.lifecycle.Observer
 //
-//import com.example.jsonfeed.framework.datamodel.Feed
+//import com.example.jsonfeed.framework.datasource.network.Feed
 //import com.example.jsonfeed.repository.FeedRepository
 //import com.example.jsonfeed.home.viewmodel.HomeVm
 //import com.example.jsonfeed.shared.ViewModelBaseTestSetup

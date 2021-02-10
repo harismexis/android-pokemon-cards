@@ -2,12 +2,12 @@ package com.example.jsonfeed.framework
 
 import com.example.jsonfeed.interactors.GetLocalItem
 import com.example.jsonfeed.interactors.GetLocalItems
-import com.example.jsonfeed.interactors.GetRemoteFeed
-import com.example.jsonfeed.interactors.InsertLocalItems
+import com.example.jsonfeed.interactors.GetRemoteItems
+import com.example.jsonfeed.interactors.StoreItems
 
 data class Interactors(
-    val getLocalFeedItem: GetLocalItem,
-    val getLocalFeedItems: GetLocalItems,
-    val getRemoteFeed: GetRemoteFeed,
-    val insertLocalFeedItems: InsertLocalItems
+    val getLocalItem: GetLocalItem,
+    val getLocalItems: GetLocalItems,
+    val getRemoteItems: GetRemoteItems,
+    val storeItems: StoreItems
 )

@@ -1,6 +1,6 @@
 //package com.example.jsonfeed.utils
 //
-//import com.example.jsonfeed.framework.datamodel.FeedItem
+//import com.example.jsonfeed.framework.datasource.network.FeedItem
 //
 //import org.junit.Assert
 //

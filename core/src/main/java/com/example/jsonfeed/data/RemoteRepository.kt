@@ -1,9 +1,9 @@
 package com.example.jsonfeed.data
 
-import com.example.jsonfeed.domain.RemoteFeed
+import com.example.jsonfeed.domain.Item
 
 data class RemoteRepository(
     private val dataSource: RemoteDataSource
 ) {
-    suspend fun getFeed(): RemoteFeed? = dataSource.getFeedData()
+    suspend fun getItems(): List<Item>? = dataSource.getItems()
 }

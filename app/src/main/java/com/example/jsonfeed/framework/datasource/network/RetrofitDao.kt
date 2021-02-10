@@ -1,7 +1,6 @@
 package com.example.jsonfeed.framework.datasource.network
 
 import com.example.jsonfeed.BuildConfig
-import com.example.jsonfeed.framework.datamodel.Feed
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -43,7 +42,7 @@ class RetrofitDao @Inject constructor() {
         return GsonBuilder().setLenient().create()
     }
 
-    suspend fun getPokemonCards(): Feed? {
+    suspend fun getPokemonCards(): PokemonFeed? {
         return api.getPokemonCards()
     }
 }

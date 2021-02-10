@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.jsonfeed.databinding.ActivityItemDetailBinding
 import com.example.jsonfeed.databinding.ItemDetailViewBinding
 import com.example.jsonfeed.framework.base.BaseActivity
-import com.example.jsonfeed.domain.LocalItem
+import com.example.jsonfeed.domain.Item
 import com.example.jsonfeed.framework.extensions.populateWithGlide
 import com.example.jsonfeed.framework.extensions.setTextOrUnknown
 import com.example.jsonfeed.presentation.detail.viewmodel.ItemDetailVm
@@ -78,7 +78,7 @@ class ItemDetailActivity : BaseActivity() {
         }
     }
 
-    private fun populate(model: LocalItem) {
+    private fun populate(model: Item) {
         model.imageUrlHiRes?.let {
             this.populateWithGlide(detailBinding.img, it)
         }

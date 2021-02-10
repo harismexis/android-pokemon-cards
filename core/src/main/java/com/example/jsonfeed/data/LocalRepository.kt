@@ -1,13 +1,13 @@
 package com.example.jsonfeed.data
 
-import com.example.jsonfeed.domain.LocalItem
+import com.example.jsonfeed.domain.Item
 
 class LocalRepository(
     private val dataSource: LocalDataSource
 ) {
-    suspend fun insertItems(items: List<LocalItem>) = dataSource.insert(items)
+    suspend fun insertItems(items: List<Item>) = dataSource.insert(items)
 
-    suspend fun getItem(itemId: String): LocalItem? = dataSource.getItem(itemId)
+    suspend fun getItem(itemId: String): Item? = dataSource.getItem(itemId)
 
-    suspend fun getItems(): List<LocalItem>? = dataSource.getAll()
+    suspend fun getItems(): List<Item>? = dataSource.getAll()
 }

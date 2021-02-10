@@ -14,7 +14,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.example.jsonfeed.R
 import com.example.jsonfeed.base.BaseTestSetup
-import com.example.jsonfeed.domain.LocalItem
+import com.example.jsonfeed.domain.Item
 
 
 import com.example.jsonfeed.mockproviders.MockHomeVmProvider
@@ -43,7 +43,7 @@ class HomeActivityTest : BaseTestSetup() {
         )
 
     lateinit var mockHomeVm: HomeVm
-    lateinit var mockUiModels: List<LocalItem>
+    lateinit var mockUiModels: List<Item>
 
     @Before
     fun doBeforeTest() {

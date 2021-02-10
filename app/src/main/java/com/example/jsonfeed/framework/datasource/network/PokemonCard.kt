@@ -1,6 +1,6 @@
-package com.example.jsonfeed.framework.datamodel
+package com.example.jsonfeed.framework.datasource.network
 
-data class FeedItem(
+data class PokemonCard(
     var id: String?,
     var name: String?,
     var imageUrl: String?,
