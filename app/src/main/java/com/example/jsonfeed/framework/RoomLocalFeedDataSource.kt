@@ -31,7 +31,7 @@ class RoomLocalFeedDataSource(val context: Context) : LocalFeedDataSource {
                 )
             )
         }
-        localDao.insertItems(entities)
+        localDao.insertItems(ImmutableList.copyOf(entities))
     }
 
     override suspend fun getItem(itemId: String): LocalFeedItem? {
