@@ -4,11 +4,11 @@ import com.example.jsonfeed.framework.datasource.network.PokemonFeed
 import com.example.jsonfeed.framework.datasource.network.PokemonCard
 import com.example.jsonfeed.domain.Item
 
-fun PokemonFeed?.toItems(): List<Item>? {
-    if (this == null) return null
-    val remoteItems = this.cards ?: return null
-    val filteredList = remoteItems.filter { it != null && !it.id.isNullOrBlank() }
+fun PokemonFeed?.toItems(): List<Item> {
     val items = mutableListOf<Item>()
+    if (this == null) return items.toList()
+    val remoteItems = this.cards ?: return items.toList()
+    val filteredList = remoteItems.filter { it != null && !it.id.isNullOrBlank() }
     items.addAll(filteredList.map {
         it!!.toItem(it.id!!)
     })

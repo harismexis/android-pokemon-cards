@@ -3,10 +3,10 @@ package com.example.jsonfeed.framework.extensions
 import com.example.jsonfeed.domain.Item
 import com.example.jsonfeed.framework.datasource.db.PokemonEntity
 
-fun List<PokemonEntity?>?.toItems(): List<Item>? {
-    if (this == null) return null
-    val filteredList = this.filterNotNull()
+fun List<PokemonEntity?>?.toItems(): List<Item> {
     val items = mutableListOf<Item>()
+    if (this == null) return items.toList()
+    val filteredList = this.filterNotNull()
     items.addAll(filteredList.map {
         it.toItem()
     })

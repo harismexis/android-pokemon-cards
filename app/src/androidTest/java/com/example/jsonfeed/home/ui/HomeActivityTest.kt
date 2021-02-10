@@ -12,19 +12,21 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
+
 import com.example.jsonfeed.R
 import com.example.jsonfeed.base.BaseTestSetup
 import com.example.jsonfeed.domain.Item
-
-
+import com.example.jsonfeed.framework.extensions.toItems
+import com.example.jsonfeed.mockprovider.*
 import com.example.jsonfeed.mockproviders.MockHomeVmProvider
 import com.example.jsonfeed.presentation.detail.ui.ItemDetailActivity
 import com.example.jsonfeed.presentation.home.ui.HomeActivity
 import com.example.jsonfeed.presentation.home.viewmodel.HomeVm
-
 import com.example.jsonfeed.utils.RecyclerViewItemCountAssertion
 import com.example.jsonfeed.utils.RecyclerViewMatcher
+
 import io.mockk.every
+
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -48,7 +50,7 @@ class HomeActivityTest : BaseTestSetup() {
     @Before
     fun doBeforeTest() {
         Intents.init()
-        //mockUiModels = getMockFeedAllIdsValid().toLocalItems().toUiModels()
+        mockUiModels = getMockFeedAllIdsValid().toItems()
         mockHomeVm = MockHomeVmProvider.provideMockHomeVm()
         every { mockHomeVm.bind() } returns Unit
     }
@@ -71,7 +73,7 @@ class HomeActivityTest : BaseTestSetup() {
     @Test
     fun liveDataUpdatedFromFeedWithSomeIdsAbsent_homeListHasCorrectNumberOfItems() {
         // given
-        //mockUiModels = getMockFeedSomeIdsAbsent().toLocalItems().toUiModels()
+        mockUiModels = getMockFeedSomeIdsAbsent().toItems()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
         launchActivityAndMockLiveData()
 
@@ -87,7 +89,7 @@ class HomeActivityTest : BaseTestSetup() {
     @Test
     fun liveDataUpdatedFromFeedWithAllIdsAbsent_homeListHasNoItems() {
         // given
-        //mockUiModels = getMockFeedAllIdsAbsent().toLocalItems().toUiModels()
+        mockUiModels = getMockFeedAllIdsAbsent().toItems()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
         launchActivityAndMockLiveData()
 
@@ -102,7 +104,7 @@ class HomeActivityTest : BaseTestSetup() {
     @Test
     fun liveDataUpdatedFromFeedWithSomeJsonItemsEmpty_homeListHasCorrectNumberOfItems() {
         // given
-        //mockUiModels = getMockFeedSomeItemsEmpty().toLocalItems().toUiModels()
+        mockUiModels = getMockFeedSomeItemsEmpty().toItems()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
         launchActivityAndMockLiveData()
 
@@ -118,7 +120,7 @@ class HomeActivityTest : BaseTestSetup() {
     @Test
     fun liveDataUpdatedFromEmptyJson_homeListHasNoItems() {
         // given
-        //mockUiModels = getMockFeedEmptyJson().toLocalItems().toUiModels()
+        mockUiModels = getMockFeedEmptyJson().toItems()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
         launchActivityAndMockLiveData()
 
