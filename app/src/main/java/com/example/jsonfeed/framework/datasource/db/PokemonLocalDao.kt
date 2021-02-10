@@ -12,7 +12,7 @@ interface PokemonLocalDao {
     suspend fun getItemById(itemId: String): PokemonEntity?
 
     @Query("SELECT * FROM pokemon_table")
-    suspend fun getAllItems(): List<PokemonEntity>?
+    suspend fun getAllItems(): List<PokemonEntity?>?
 
     @Query("DELETE FROM pokemon_table")
     suspend fun deleteAll()
