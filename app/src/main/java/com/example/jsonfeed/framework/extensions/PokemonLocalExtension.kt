@@ -29,6 +29,16 @@ fun PokemonEntity.toItem(): Item {
     )
 }
 
+fun List<Item?>?.toPokemonEntities(): List<PokemonEntity> {
+    val pokemonEntities = mutableListOf<PokemonEntity>()
+    if (this == null) return pokemonEntities.toList()
+    val filteredList = this.filterNotNull()
+    pokemonEntities.addAll(filteredList.map {
+        it.toPokemonEntity()
+    })
+    return pokemonEntities.toList()
+}
+
 fun Item.toPokemonEntity(): PokemonEntity {
     return PokemonEntity(
         this.id,

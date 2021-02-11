@@ -21,41 +21,7 @@ class InstrumentedInteractorModule {
         getRemoteFeed: GetRemoteItems,
         insertLocalFeedItems: StoreItems
     ): Interactors {
-//        return Interactors(
-//            getLocalFeedItem,
-//            getLocalFeedItems,
-//            getRemoteFeed,
-//            insertLocalFeedItems
-//        )
         return mockk(relaxed = true)
     }
-
-//    @Provides
-//    fun provideInteractorGetLocalFeedItem(
-//        dataSource: RoomLocalFeedDataSource
-//    ): GetLocalFeedItem {
-//        return GetLocalFeedItem(LocalFeedRepository(dataSource))
-//    }
-//
-//    @Provides
-//    fun provideInteractorGetLocalFeedItems(
-//        dataSource: RoomLocalFeedDataSource
-//    ): GetLocalFeedItems {
-//        return GetLocalFeedItems(LocalFeedRepository(dataSource))
-//    }
-//
-//    @Provides
-//    fun provideInteractorInsertLocalFeedItems(
-//        dataSource: RoomLocalFeedDataSource
-//    ): InsertLocalFeedItems {
-//        return InsertLocalFeedItems(LocalFeedRepository(dataSource))
-//    }
-//
-//    @Provides
-//    fun provideInteractorGetRemoteFeed(
-//        dataSource: RetrofitRemoteFeedDataSource
-//    ): GetRemoteFeed {
-//        return GetRemoteFeed(RemoteFeedRepository(dataSource))
-//    }
 
 }

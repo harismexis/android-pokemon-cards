@@ -12,30 +12,28 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-
 import com.example.jsonfeed.R
-import com.example.jsonfeed.base.BaseTestSetup
+import com.example.jsonfeed.base.InstrumentedTestSetup
 import com.example.jsonfeed.domain.Item
-import com.example.jsonfeed.framework.extensions.toItems
-import com.example.jsonfeed.mockprovider.*
 import com.example.jsonfeed.mockproviders.MockHomeVmProvider
+import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_ALL_IDS_VALID
+import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_FOR_NO_DATA
+import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_WHEN_TWO_EMPTY
+import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_WHEN_TWO_IDS_ABSENT
 import com.example.jsonfeed.presentation.detail.ui.ItemDetailActivity
 import com.example.jsonfeed.presentation.home.ui.HomeActivity
 import com.example.jsonfeed.presentation.home.viewmodel.HomeVm
 import com.example.jsonfeed.utils.RecyclerViewItemCountAssertion
 import com.example.jsonfeed.utils.RecyclerViewMatcher
-
 import io.mockk.every
-
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 @RunWith(AndroidJUnit4::class)
-class HomeActivityTest : BaseTestSetup() {
+class HomeActivityTest : InstrumentedTestSetup() {
 
     @get:Rule
     val testRule: ActivityTestRule<HomeActivity> =
@@ -44,13 +42,13 @@ class HomeActivityTest : BaseTestSetup() {
             false, false
         )
 
-    lateinit var mockHomeVm: HomeVm
-    lateinit var mockUiModels: List<Item>
+    private lateinit var mockHomeVm: HomeVm
+    private lateinit var mockItems: List<Item>
 
     @Before
     fun doBeforeTest() {
         Intents.init()
-        mockUiModels = getMockFeedAllIdsValid().toItems()
+        mockItems = mockParser.getMockItemsFromFeedWithAllItemsValid()
         mockHomeVm = MockHomeVmProvider.provideMockHomeVm()
         every { mockHomeVm.bind() } returns Unit
     }
@@ -63,9 +61,9 @@ class HomeActivityTest : BaseTestSetup() {
 
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockUiModels.size))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockItems.size))
         onView(withId(R.id.home_list)).check(
-            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_ALL_FEED_IDS_VALID)
+            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_ALL_IDS_VALID)
         )
         verifyViewHoldersShowCorrectData()
     }
@@ -73,15 +71,15 @@ class HomeActivityTest : BaseTestSetup() {
     @Test
     fun remoteFeedHasSomeIdsAbsent_homeListHasCorrectNumberOfItems() {
         // given
-        mockUiModels = getMockFeedSomeIdsAbsent().toItems()
+        mockItems = mockParser.getMockItemsFromFeedWithSomeIdsAbsent()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
         launchActivityAndMockLiveData()
 
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockUiModels.size))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockItems.size))
         onView(withId(R.id.home_list)).check(
-            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_SOME_FEED_IDS_ABSENT)
+            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_WHEN_TWO_IDS_ABSENT)
         )
         verifyViewHoldersShowCorrectData()
     }
@@ -89,30 +87,30 @@ class HomeActivityTest : BaseTestSetup() {
     @Test
     fun remoteFeedHasAllIdsAbsent_homeListHasNoItems() {
         // given
-        mockUiModels = getMockFeedAllIdsAbsent().toItems()
+        mockItems = mockParser.getMockItemsFromFeedWithAllIdsAbsent()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
         launchActivityAndMockLiveData()
 
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockUiModels.size))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockItems.size))
         onView(withId(R.id.home_list)).check(
-            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_ALL_FEED_IDS_ABSENT)
+            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_FOR_NO_DATA)
         )
     }
 
     @Test
     fun remoteFeedHasSomeJsonItemsEmpty_homeListHasCorrectNumberOfItems() {
         // given
-        mockUiModels = getMockFeedSomeItemsEmpty().toItems()
+        mockItems = mockParser.getMockItemsFromFeedWithSomeItemsEmpty()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
         launchActivityAndMockLiveData()
 
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockUiModels.size))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockItems.size))
         onView(withId(R.id.home_list)).check(
-            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_SOME_FEED_ITEMS_EMPTY)
+            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_WHEN_TWO_EMPTY)
         )
         verifyViewHoldersShowCorrectData()
     }
@@ -120,15 +118,15 @@ class HomeActivityTest : BaseTestSetup() {
     @Test
     fun remoteFeedHasEmptyJson_homeListHasNoItems() {
         // given
-        mockUiModels = getMockFeedEmptyJson().toItems()
+        mockItems = mockParser.getMockItemsFromFeedWithEmptyJson()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
         launchActivityAndMockLiveData()
 
         // then
         onView(withId(R.id.home_list)).check(matches(isDisplayed()))
-        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockUiModels.size))
+        onView(withId(R.id.home_list)).check(RecyclerViewItemCountAssertion(mockItems.size))
         onView(withId(R.id.home_list)).check(
-            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_EMPTY_JSON)
+            RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_FOR_NO_DATA)
         )
     }
 
@@ -155,7 +153,7 @@ class HomeActivityTest : BaseTestSetup() {
     }
 
     private fun verifyViewHoldersShowCorrectData() {
-        mockUiModels.forEachIndexed { index, uiModel ->
+        mockItems.forEachIndexed { index, uiModel ->
             // scroll to item to make sure it's visible
             onView(withId(R.id.home_list)).perform(scrollToPosition<RecyclerView.ViewHolder>(index))
             // check name text
@@ -174,7 +172,7 @@ class HomeActivityTest : BaseTestSetup() {
     private fun launchActivityAndMockLiveData() {
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
-            MockHomeVmProvider.mModels.value = mockUiModels
+            MockHomeVmProvider.mModels.value = mockItems
         }
     }
 
