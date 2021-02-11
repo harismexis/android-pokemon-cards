@@ -4,7 +4,7 @@ import androidx.lifecycle.Observer
 import com.example.jsonfeed.domain.Item
 import com.example.jsonfeed.framework.util.network.ConnectivityMonitor
 import com.example.jsonfeed.presentation.home.viewmodel.HomeVm
-import com.example.jsonfeed.shared.UnitTestSetup
+import com.example.jsonfeed.shared.VmTestSetup
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.verifyZeroInteractions
@@ -12,7 +12,7 @@ import kotlinx.coroutines.runBlocking
 import org.mockito.Mock
 import org.mockito.Mockito
 
-abstract class HomeVmTestSetup : UnitTestSetup() {
+abstract class HomeVmTestSetup : VmTestSetup() {
 
     @Mock
     protected lateinit var mockConnectivity: ConnectivityMonitor
@@ -22,12 +22,17 @@ abstract class HomeVmTestSetup : UnitTestSetup() {
     private val mockValidItems = mockParser.getMockItemsFromFeedWithAllItemsValid()
     protected lateinit var homeVm: HomeVm
 
-    override fun initialiseClassUnderTest() {
-        homeVm = HomeVm(mockInteractors, mockConnectivity)
-        homeVm.models.observeForever(mockObserver)
+    override fun initialise() {
+        super.initialise()
+        initialiseMockInteractors()
     }
 
-    override fun initialiseMockInteractors() {
+    override fun initialiseClassUnderTest() {
+        homeVm = HomeVm(mockInteractors, mockConnectivity)
+
+    }
+
+    private fun initialiseMockInteractors() {
         Mockito.`when`(mockInteractors.getRemoteItems).thenReturn(mockInteractorGetRemoteItems)
         Mockito.`when`(mockInteractors.getLocalItems).thenReturn(mockInteractorGetLocalItems)
         Mockito.`when`(mockInteractors.storeItems).thenReturn(mockInteractorStoreItems)
@@ -38,7 +43,7 @@ abstract class HomeVmTestSetup : UnitTestSetup() {
         }
     }
 
-    // ----------------------------------------------------
+    // Internet
 
     protected fun mockInternetOn() {
         mockInternetActive(true)
@@ -48,7 +53,7 @@ abstract class HomeVmTestSetup : UnitTestSetup() {
         mockInternetActive(false)
     }
 
-    protected fun mockInternetActive(active: Boolean) {
+    private fun mockInternetActive(active: Boolean) {
         Mockito.`when`(mockConnectivity.isOnline()).thenReturn(active)
     }
 
@@ -56,7 +61,7 @@ abstract class HomeVmTestSetup : UnitTestSetup() {
         verify(mockConnectivity, Mockito.times(1)).isOnline()
     }
 
-    // ----------------------------------------------------
+    // Remote Call
 
     protected fun mockRemoteCallReturnsAllItemsValid() {
         mockRemoteCall(mockValidItems)
@@ -79,12 +84,9 @@ abstract class HomeVmTestSetup : UnitTestSetup() {
 
     protected fun verifyRemoteCallNotDone() {
         runBlocking {
-            // verify(mockFeedRepo, Mockito.never()).getJsonFeed()
             verify(mockInteractorGetRemoteItems, Mockito.never()).invoke()
         }
     }
-
-    // ----------------------------------------------------
 
     protected fun mockRemoteCallThrowsError() {
         runBlocking {
@@ -92,6 +94,8 @@ abstract class HomeVmTestSetup : UnitTestSetup() {
                 .thenThrow(IllegalStateException("Error"))
         }
     }
+
+    // Local Call
 
     protected fun mockLocalCallReturnsAllItemsValid() {
         mockLocalCall(mockValidItems)
@@ -125,13 +129,17 @@ abstract class HomeVmTestSetup : UnitTestSetup() {
         }
     }
 
-    // ----------------------------------------------------
+    // LiveData
+
+    protected fun initialiseLiveData() {
+        homeVm.models.observeForever(mockObserver)
+    }
 
     protected fun verifyLiveDataChangedAsExpected() {
         verifyLiveDataChanged(mockValidItems)
     }
 
-    protected fun verifyLiveDataChanged(
+    private fun verifyLiveDataChanged(
         items: List<Item>
     ) {
         verify(mockObserver).onChanged(items)
@@ -141,7 +149,7 @@ abstract class HomeVmTestSetup : UnitTestSetup() {
         verifyZeroInteractions(mockObserver)
     }
 
-    // ----------------------------------------------------
+    // Store Data
 
     protected fun verifyDataStored(
     ) {
@@ -162,7 +170,5 @@ abstract class HomeVmTestSetup : UnitTestSetup() {
             verify(mockInteractorStoreItems, Mockito.never()).invoke(any())
         }
     }
-
-    // ----------------------------------------------------
 
 }

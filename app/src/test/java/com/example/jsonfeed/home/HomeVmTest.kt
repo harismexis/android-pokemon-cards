@@ -9,9 +9,13 @@ import org.junit.runners.JUnit4
 @RunWith(JUnit4::class)
 class HomeVmTest : HomeVmTestSetup() {
 
+    init {
+        initialise()
+    }
+
     @Before
     fun doBeforeEachTestCase() {
-        initialise()
+        initialiseLiveData()
     }
 
     @Test
@@ -45,7 +49,7 @@ class HomeVmTest : HomeVmTestSetup() {
     }
 
     @Test
-    fun internetOn_when_refresh_then_dataRefreshed() {
+    fun internetOn_when_viewModelRefreshes_then_dataRefreshed() {
         // given
         mockInternetOn()
         mockRemoteCallReturnsAllItemsValid()
@@ -58,7 +62,7 @@ class HomeVmTest : HomeVmTestSetup() {
     }
 
     @Test
-    fun internetOff_when_refresh_then_nothingHappens() {
+    fun internetOff_when_viewModelRefreshes_then_nothingHappens() {
         // given
         mockInternetOff()
 
@@ -73,7 +77,7 @@ class HomeVmTest : HomeVmTestSetup() {
     }
 
     @Test
-    fun remoteFeedCallThrowsError_nothingHappens() {
+    fun remoteCallThrowsError_when_viewModelBinds_nothingHappens() {
         // given
         mockInternetOn()
         mockRemoteCallThrowsError()
@@ -84,12 +88,12 @@ class HomeVmTest : HomeVmTestSetup() {
         // then
         verifyInternetChecked()
         verifyRemoteCallDone()
-        verifyLiveDataNotChanged()
+        verifyLocalCallNotDone()
         verifyLiveDataNotChanged()
     }
 
     @Test
-    fun localFeedCallThrowsError_nothingHappens() {
+    fun localCallThrowsError_when_viewModelBinds_nothingHappens() {
         // given
         mockInternetOff()
         mockLocalCallThrowsError()
@@ -101,7 +105,6 @@ class HomeVmTest : HomeVmTestSetup() {
         verifyInternetChecked()
         verifyRemoteCallNotDone()
         verifyLocalCallDone()
-        verifyLiveDataNotChanged()
         verifyLiveDataNotChanged()
     }
 
