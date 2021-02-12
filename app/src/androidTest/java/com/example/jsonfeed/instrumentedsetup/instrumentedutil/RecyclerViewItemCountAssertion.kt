@@ -1,4 +1,4 @@
-package com.example.jsonfeed.utils
+package com.example.jsonfeed.instrumentedsetup.instrumentedutil
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

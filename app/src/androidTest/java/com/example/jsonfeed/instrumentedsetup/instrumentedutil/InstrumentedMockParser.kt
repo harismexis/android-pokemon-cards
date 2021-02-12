@@ -1,4 +1,4 @@
-package com.example.jsonfeed.utils
+package com.example.jsonfeed.instrumentedsetup.instrumentedutil
 
 import androidx.test.platform.app.InstrumentationRegistry
 

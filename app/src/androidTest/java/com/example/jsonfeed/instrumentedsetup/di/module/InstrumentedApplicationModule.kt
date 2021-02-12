@@ -1,8 +1,8 @@
-package com.example.jsonfeed.di.module
+package com.example.jsonfeed.instrumentedsetup.di.module
 
 import android.content.Context
 
-import com.example.jsonfeed.application.InstrumentedMainApplication
+import com.example.jsonfeed.instrumentedsetup.application.InstrumentedMainApplication
 import com.example.jsonfeed.framework.datasource.db.PokemonLocalDao
 import com.example.jsonfeed.framework.datasource.db.PokemonDatabase
 

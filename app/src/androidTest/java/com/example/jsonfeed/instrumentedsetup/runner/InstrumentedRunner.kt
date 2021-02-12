@@ -1,11 +1,11 @@
-package com.example.jsonfeed.runner
+package com.example.jsonfeed.instrumentedsetup.runner
 
 import android.app.Application
 import android.content.Context
 
 import androidx.test.runner.AndroidJUnitRunner
 
-import com.example.jsonfeed.application.InstrumentedMainApplication
+import com.example.jsonfeed.instrumentedsetup.application.InstrumentedMainApplication
 
 open class InstrumentedRunner : AndroidJUnitRunner() {
 

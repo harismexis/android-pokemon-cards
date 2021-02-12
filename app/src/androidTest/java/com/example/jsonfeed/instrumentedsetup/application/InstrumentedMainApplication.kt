@@ -1,6 +1,6 @@
-package com.example.jsonfeed.application
+package com.example.jsonfeed.instrumentedsetup.application
 
-import com.example.jsonfeed.di.component.DaggerInstrumentedMainComponent
+import com.example.jsonfeed.instrumentedsetup.di.component.DaggerInstrumentedMainComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 

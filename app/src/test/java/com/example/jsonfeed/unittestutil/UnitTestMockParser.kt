@@ -1,4 +1,4 @@
-package com.example.jsonfeed.util
+package com.example.jsonfeed.unittestutil
 
 import com.example.jsonfeed.parser.BaseMockParser
 

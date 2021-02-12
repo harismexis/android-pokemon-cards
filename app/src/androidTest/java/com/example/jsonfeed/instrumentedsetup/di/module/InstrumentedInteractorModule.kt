@@ -1,4 +1,4 @@
-package com.example.jsonfeed.di.module
+package com.example.jsonfeed.instrumentedsetup.di.module
 
 import com.example.jsonfeed.framework.Interactors
 import com.example.jsonfeed.interactors.GetLocalItem

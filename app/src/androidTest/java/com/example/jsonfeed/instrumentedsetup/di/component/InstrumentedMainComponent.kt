@@ -1,9 +1,9 @@
-package com.example.jsonfeed.di.component
+package com.example.jsonfeed.instrumentedsetup.di.component
 
-import com.example.jsonfeed.application.InstrumentedMainApplication
-import com.example.jsonfeed.di.module.InstrumentedApplicationModule
-import com.example.jsonfeed.di.module.InstrumentedInteractorModule
-import com.example.jsonfeed.factory.InstrumentedViewModelModule
+import com.example.jsonfeed.instrumentedsetup.application.InstrumentedMainApplication
+import com.example.jsonfeed.instrumentedsetup.di.module.InstrumentedApplicationModule
+import com.example.jsonfeed.instrumentedsetup.di.module.InstrumentedInteractorModule
+import com.example.jsonfeed.instrumentedsetup.factory.InstrumentedViewModelModule
 import com.example.jsonfeed.framework.di.ActivityBindingsModule
 
 import dagger.BindsInstance

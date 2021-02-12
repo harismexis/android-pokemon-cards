@@ -1,4 +1,4 @@
-package com.example.jsonfeed.utils;
+package com.example.jsonfeed.instrumentedsetup.instrumentedutil;
 
 import android.content.res.Resources;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.example.jsonfeed.mockproviders
+package com.example.jsonfeed.instrumentedsetup.mockproviders
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
