@@ -1,4 +1,4 @@
-package com.example.jsonfeed.detail
+package com.example.jsonfeed.presentation.detail.ui
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -10,7 +10,6 @@ import com.example.jsonfeed.R
 import com.example.jsonfeed.base.InstrumentedTestSetup
 import com.example.jsonfeed.domain.Item
 import com.example.jsonfeed.mockproviders.MockItemDetailVmProvider
-import com.example.jsonfeed.presentation.detail.ui.ItemDetailActivity
 import com.example.jsonfeed.presentation.detail.viewmodel.ItemDetailVm
 import io.mockk.every
 import org.junit.Before

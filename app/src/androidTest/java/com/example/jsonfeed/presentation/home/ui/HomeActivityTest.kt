@@ -1,4 +1,4 @@
-package com.example.jsonfeed.home.ui
+package com.example.jsonfeed.presentation.home.ui
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
@@ -21,7 +21,6 @@ import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_
 import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_WHEN_TWO_EMPTY
 import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_WHEN_TWO_IDS_ABSENT
 import com.example.jsonfeed.presentation.detail.ui.ItemDetailActivity
-import com.example.jsonfeed.presentation.home.ui.HomeActivity
 import com.example.jsonfeed.presentation.home.viewmodel.HomeVm
 import com.example.jsonfeed.utils.RecyclerViewItemCountAssertion
 import com.example.jsonfeed.utils.RecyclerViewMatcher

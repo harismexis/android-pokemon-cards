@@ -1,12 +1,10 @@
-package com.example.jsonfeed.localdb
+package com.example.jsonfeed.framework.datasource.db
 
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.jsonfeed.base.InstrumentedTestSetup
-import com.example.jsonfeed.framework.datasource.db.PokemonLocalDao
-import com.example.jsonfeed.framework.datasource.db.PokemonDatabase
 import com.example.jsonfeed.framework.extensions.toPokemonEntities
 import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_ALL_IDS_VALID
 import kotlinx.coroutines.runBlocking
@@ -15,7 +13,7 @@ import org.junit.runner.RunWith
 import java.io.IOException
 
 @RunWith(AndroidJUnit4::class)
-class LocalDaoTest: InstrumentedTestSetup() {
+class PokemonLocalDaoTest: InstrumentedTestSetup() {
 
     private lateinit var dao: PokemonLocalDao
     private lateinit var database: PokemonDatabase
