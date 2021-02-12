@@ -16,10 +16,11 @@ abstract class HomeVmTestSetup : VmTestSetup() {
 
     @Mock
     protected lateinit var mockConnectivity: ConnectivityMonitor
+
     @Mock
     lateinit var mockObserver: Observer<List<Item>>
 
-    private val mockValidItems = mockParser.getMockItemsFromFeedWithAllItemsValid()
+    private val mockItems = mockParser.getMockItemsFromFeedWithAllItemsValid()
     protected lateinit var homeVm: HomeVm
 
     override fun initialise() {
@@ -29,17 +30,15 @@ abstract class HomeVmTestSetup : VmTestSetup() {
 
     override fun initialiseClassUnderTest() {
         homeVm = HomeVm(mockInteractors, mockConnectivity)
-
     }
 
     private fun initialiseMockInteractors() {
-        Mockito.`when`(mockInteractors.getRemoteItems).thenReturn(mockInteractorGetRemoteItems)
-        Mockito.`when`(mockInteractors.getLocalItems).thenReturn(mockInteractorGetLocalItems)
-        Mockito.`when`(mockInteractors.storeItems).thenReturn(mockInteractorStoreItems)
-        val mockValidItems = mockParser.getMockItemsFromFeedWithAllItemsValid()
+        Mockito.`when`(mockInteractors.getRemoteItems).thenReturn(mockIRRGetRemoteItems)
+        Mockito.`when`(mockInteractors.getLocalItems).thenReturn(mockIRRGetLocalItems)
+        Mockito.`when`(mockInteractors.storeItems).thenReturn(mockIRRStoreItems)
         runBlocking {
-            Mockito.`when`(mockInteractorGetLocalItems.invoke()).thenReturn(mockValidItems)
-            Mockito.`when`(mockInteractorGetRemoteItems.invoke()).thenReturn(mockValidItems)
+            Mockito.`when`(mockIRRGetLocalItems.invoke()).thenReturn(mockItems)
+            Mockito.`when`(mockIRRGetRemoteItems.invoke()).thenReturn(mockItems)
         }
     }
 
@@ -64,68 +63,62 @@ abstract class HomeVmTestSetup : VmTestSetup() {
     // Remote Call
 
     protected fun mockRemoteCallReturnsAllItemsValid() {
-        mockRemoteCall(mockValidItems)
+        mockRemoteCall(mockItems)
     }
 
-    private fun mockRemoteCall(
-        items: List<Item>
-    ) {
+    private fun mockRemoteCall(items: List<Item>) {
         runBlocking {
-            Mockito.`when`(mockInteractorGetRemoteItems.invoke()).thenReturn(items)
-        }
-    }
-
-    protected fun verifyRemoteCallDone() {
-        runBlocking {
-            verify(mockInteractorGetRemoteItems,
-                Mockito.times(1)).invoke()
-        }
-    }
-
-    protected fun verifyRemoteCallNotDone() {
-        runBlocking {
-            verify(mockInteractorGetRemoteItems, Mockito.never()).invoke()
+            Mockito.`when`(mockIRRGetRemoteItems.invoke()).thenReturn(items)
         }
     }
 
     protected fun mockRemoteCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockInteractorGetRemoteItems.invoke())
+            Mockito.`when`(mockIRRGetRemoteItems.invoke())
                 .thenThrow(IllegalStateException("Error"))
+        }
+    }
+
+    protected fun verifyRemoteCallDone() {
+        runBlocking {
+            verify(mockIRRGetRemoteItems, Mockito.times(1)).invoke()
+        }
+    }
+
+    protected fun verifyRemoteCallNotDone() {
+        runBlocking {
+            verify(mockIRRGetRemoteItems, Mockito.never()).invoke()
         }
     }
 
     // Local Call
 
     protected fun mockLocalCallReturnsAllItemsValid() {
-        mockLocalCall(mockValidItems)
+        mockLocalCall(mockItems)
     }
 
-    private fun mockLocalCall(
-        items: List<Item>
-    ) {
+    private fun mockLocalCall(items: List<Item>) {
         runBlocking {
-            Mockito.`when`(mockInteractorGetLocalItems.invoke()).thenReturn(items)
+            Mockito.`when`(mockIRRGetLocalItems.invoke()).thenReturn(items)
         }
     }
 
     protected fun mockLocalCallThrowsError() {
         runBlocking {
-            Mockito.`when`(mockInteractorGetLocalItems.invoke())
+            Mockito.`when`(mockIRRGetLocalItems.invoke())
                 .thenThrow(IllegalStateException("Error"))
         }
     }
 
     protected fun verifyLocalCallDone() {
         runBlocking {
-            verify(mockInteractorGetLocalItems,
-                Mockito.times(1)).invoke()
+            verify(mockIRRGetLocalItems, Mockito.times(1)).invoke()
         }
     }
 
     protected fun verifyLocalCallNotDone() {
         runBlocking {
-            verify(mockInteractorGetLocalItems, Mockito.never()).invoke()
+            verify(mockIRRGetLocalItems, Mockito.never()).invoke()
         }
     }
 
@@ -136,12 +129,10 @@ abstract class HomeVmTestSetup : VmTestSetup() {
     }
 
     protected fun verifyLiveDataChangedAsExpected() {
-        verifyLiveDataChanged(mockValidItems)
+        verifyLiveDataChanged(mockItems)
     }
 
-    private fun verifyLiveDataChanged(
-        items: List<Item>
-    ) {
+    private fun verifyLiveDataChanged(items: List<Item>) {
         verify(mockObserver).onChanged(items)
     }
 
@@ -151,23 +142,19 @@ abstract class HomeVmTestSetup : VmTestSetup() {
 
     // Store Data
 
-    protected fun verifyDataStored(
-    ) {
-        verifyDataStored(mockValidItems)
+    protected fun verifyDataStored() {
+        verifyDataStored(mockItems)
     }
 
-    private fun verifyDataStored(
-        items: List<Item>
-    ) {
+    private fun verifyDataStored(items: List<Item>) {
         runBlocking {
-            verify(mockInteractorStoreItems,
-                Mockito.times(1)).invoke(items)
+            verify(mockIRRStoreItems, Mockito.times(1)).invoke(items)
         }
     }
 
     protected fun verifyDataNotStored() {
         runBlocking {
-            verify(mockInteractorStoreItems, Mockito.never()).invoke(any())
+            verify(mockIRRStoreItems, Mockito.never()).invoke(any())
         }
     }
 

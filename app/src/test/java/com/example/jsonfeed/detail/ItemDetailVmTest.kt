@@ -1,50 +1,46 @@
-//package com.example.jsonfeed.detail
-//
-//import com.example.jsonfeed.framework.extensions.toUiModel
-//import com.example.jsonfeed.mockprovider.getMockLocalItemsFromFeedAllIdsValid
-//
-//import org.junit.Before
-//import org.junit.Test
-//import org.junit.runner.RunWith
-//import org.junit.runners.JUnit4
-//
-//@RunWith(JUnit4::class)
-//class ItemDetailVmTest : ItemDetailVmTestSetup() {
-//
-//    @Before
-//    fun setup() {
-//        doBeforeTest()
-//    }
-//
-//    @Test
-//    fun retrievingLocalItem_localItemRetrievedAndLiveDataUpdated() {
-//        // given
-//        val mockItem = getMockLocalItemsFromFeedAllIdsValid()[0]
-//        val mockId = mockItem.id
-//        val mockUiModel = mockItem.toUiModel()
-//        mockLocalItemCall(mockId, mockItem)
-//
-//        // when
-//        detailVm.retrieveItemById(mockId)
-//
-//        // then
-//        verifyLocalItemRetrieved(mockId)
-//        verifyLiveDataChanged(mockUiModel)
-//    }
-//
-//    @Test
-//    fun retrievingLocalItemThrowsError_nothingHappens() {
-//        // given
-//        val mockItem = getMockLocalItemsFromFeedAllIdsValid()[0]
-//        val mockId = mockItem.id
-//        mockLocalItemCallThrowsError()
-//
-//        // when
-//        detailVm.retrieveItemById(mockId)
-//
-//        // then
-//        verifyLocalItemRetrieved(mockId)
-//        verifyLiveDataNotChanged()
-//    }
-//
-//}
+package com.example.jsonfeed.detail
+
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
+
+@RunWith(JUnit4::class)
+class ItemDetailVmTest : ItemDetailVmTestSetup() {
+
+    init {
+        initialise()
+    }
+
+    @Before
+    fun doBeforeEachTestCase() {
+        initialiseLiveData()
+    }
+
+    @Test
+    fun retrievingLocalItem_localItemRetrievedAndLiveDataUpdated() {
+        // given
+        mockLocalCall()
+
+        // when
+        detailVm.retrieveItemById(mockId)
+
+        // then
+        verifyLocalCallDone()
+        verifyLiveDataChanged()
+    }
+
+    @Test
+    fun retrievingLocalItemThrowsError_nothingHappens() {
+        // given
+        mockLocalCallThrowsError()
+
+        // when
+        detailVm.retrieveItemById(mockId)
+
+        // then
+        verifyLocalCallDone()
+        verifyLiveDataNotChanged()
+    }
+
+}

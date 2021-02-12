@@ -71,8 +71,8 @@ class HomeVmTest : HomeVmTestSetup() {
 
         // then
         verifyInternetChecked()
-        verifyZeroInteractions(mockInteractorGetRemoteItems)
-        verifyZeroInteractions(mockInteractorGetLocalItems)
+        verifyZeroInteractions(mockIRRGetRemoteItems)
+        verifyZeroInteractions(mockIRRGetLocalItems)
         verifyLiveDataNotChanged()
     }
 

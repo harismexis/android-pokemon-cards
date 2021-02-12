@@ -10,13 +10,13 @@ import org.mockito.Mock
 abstract class VmTestSetup : UnitTestSetup() {
 
     @Mock
-    protected lateinit var mockInteractorGetLocalItem: GetLocalItem
+    protected lateinit var mockIRRGetLocalItem: GetLocalItem
     @Mock
-    protected lateinit var mockInteractorGetLocalItems: GetLocalItems
+    protected lateinit var mockIRRGetLocalItems: GetLocalItems
     @Mock
-    protected lateinit var mockInteractorGetRemoteItems: GetRemoteItems
+    protected lateinit var mockIRRGetRemoteItems: GetRemoteItems
     @Mock
-    protected lateinit var mockInteractorStoreItems: StoreItems
+    protected lateinit var mockIRRStoreItems: StoreItems
     @Mock
     protected lateinit var mockInteractors: Interactors
 
