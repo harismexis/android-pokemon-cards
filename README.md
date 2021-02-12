@@ -1,6 +1,6 @@
 ### Overview:
 
-The project is written in Kotlin and uses MVVM Architecture.
+The project is written in Kotlin and uses Clean Architecture.
 Popular Frameworks have been used i.e. JetPack (Coroutines, LiveData, Room, ViewModel), 
 Retrofit, Glide, Dagger, Mockito-kotlin, Mockk.
 The application fetches a json feed of items from internet and shows the items in a list.
