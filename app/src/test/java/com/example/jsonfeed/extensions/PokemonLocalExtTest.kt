@@ -11,6 +11,8 @@ import org.junit.runners.JUnit4
 @RunWith(JUnit4::class)
 class PokemonLocalExtTest : UnitTestSetup() {
 
+    private val verificator = PokemonItemVerificator()
+
     @Test
     fun itemsAreConvertedToEntities_then_entityListIsAsExpected() {
         // given
@@ -26,7 +28,7 @@ class PokemonLocalExtTest : UnitTestSetup() {
 
         items.forEachIndexed { index, item ->
             val entity = entities[index]
-            verifyPokemonEntityAgainstItem(entity, item)
+            verificator.verifyEntityAgainstItem(entity, item)
         }
     }
 
@@ -45,7 +47,7 @@ class PokemonLocalExtTest : UnitTestSetup() {
 
         entities.forEachIndexed { index, entity ->
             val item = items[index]
-            verifyItemAgainstPokemonEntity(item, entity)
+            verificator.verifyItemAgainstEntity(item, entity)
         }
     }
 

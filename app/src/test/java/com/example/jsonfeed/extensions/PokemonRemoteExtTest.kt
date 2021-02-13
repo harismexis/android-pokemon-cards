@@ -10,6 +10,8 @@ import org.junit.runners.JUnit4
 @RunWith(JUnit4::class)
 class PokemonRemoteExtTest : UnitTestSetup() {
 
+    private val verificator = PokemonItemVerificator()
+
     @Test
     fun feedHasAllItemsValid_then_conversionToItemsIsCorrect() {
         // given
@@ -23,10 +25,7 @@ class PokemonRemoteExtTest : UnitTestSetup() {
         verifyListSizeWhenAllIdsValid(feed.cards!!)
         verifyListSizeWhenAllIdsValid(items)
 
-        feed.cards!!.forEachIndexed { index, feedItem ->
-            val item = items[index]
-            verifyItemAgainstPokemonCard(item, feedItem!!)
-        }
+        verificator.verifyItemsAgainstRemoteFeed(feed, items)
     }
 
     @Test
@@ -39,7 +38,7 @@ class PokemonRemoteExtTest : UnitTestSetup() {
 
         // then
         verifyListSizeWhenSomeIdsAbsent(items)
-        verifyItemsAgainstRemoteFeed(feed, items)
+        verificator.verifyItemsAgainstRemoteFeed(feed, items)
     }
 
     @Test
@@ -52,7 +51,7 @@ class PokemonRemoteExtTest : UnitTestSetup() {
 
         // then
         verifyListSizeWhenSomeItemsEmpty(items)
-        verifyItemsAgainstRemoteFeed(feed, items)
+        verificator.verifyItemsAgainstRemoteFeed(feed, items)
     }
 
     @Test
