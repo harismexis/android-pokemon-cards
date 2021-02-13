@@ -4,7 +4,7 @@ import com.example.jsonfeed.data.LocalDataSource
 import com.example.jsonfeed.domain.Item
 import com.example.jsonfeed.framework.extensions.toItem
 import com.example.jsonfeed.framework.extensions.toItems
-import com.example.jsonfeed.framework.extensions.toPokemonEntity
+import com.example.jsonfeed.framework.extensions.toPokemonEntities
 
 import javax.inject.Inject
 
@@ -13,11 +13,7 @@ class PokemonLocalDataSource @Inject constructor(
 ) : LocalDataSource {
 
     override suspend fun insert(items: List<Item>) {
-        val entities = mutableListOf<PokemonEntity>()
-        for (item in items) {
-            entities.add(item.toPokemonEntity())
-        }
-        dao.insertItems(entities.toList())
+        dao.insertItems(items.toPokemonEntities())
     }
 
     override suspend fun getItem(itemId: String): Item? {

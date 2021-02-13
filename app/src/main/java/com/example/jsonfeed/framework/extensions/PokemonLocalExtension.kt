@@ -39,7 +39,7 @@ fun List<Item?>?.toPokemonEntities(): List<PokemonEntity> {
     return pokemonEntities.toList()
 }
 
-fun Item.toPokemonEntity(): PokemonEntity {
+private fun Item.toPokemonEntity(): PokemonEntity {
     return PokemonEntity(
         this.id,
         this.name,
