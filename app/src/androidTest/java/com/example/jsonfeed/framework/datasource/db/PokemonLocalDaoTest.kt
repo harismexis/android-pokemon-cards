@@ -37,7 +37,7 @@ class PokemonLocalDaoTest: InstrumentedTestSetup() {
     @Throws(Exception::class)
     fun savingItems_correctItemsAreRetrieved() = runBlocking {
         // given
-        val savedItems = mockParser.getMockItemsFromFeedWithAllItemsValid().toPokemonEntities()
+        val savedItems = mockParser.getMockPokemonEntitiesFromFeedWithAllItemsValid()
 
         // when
         dao.insertItems(savedItems)
@@ -53,9 +53,9 @@ class PokemonLocalDaoTest: InstrumentedTestSetup() {
 
     @Test
     @Throws(Exception::class)
-    fun savingFeedItemsWithNoIds_noLocalItemsRetrieved() = runBlocking {
+    fun savingFeedItemsWithAllIdsAbsent_noLocalItemsRetrieved() = runBlocking {
         // given
-        val savedItems = mockParser.getMockItemsFromFeedWithAllIdsAbsent().toPokemonEntities()
+        val savedItems = mockParser.getMockPokemonEntitiesFromFeedWithAllIdsAbsent()
 
         // when
         dao.insertItems(savedItems)

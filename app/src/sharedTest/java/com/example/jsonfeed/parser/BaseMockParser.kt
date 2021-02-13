@@ -1,8 +1,10 @@
 package com.example.jsonfeed.parser
 
 import com.example.jsonfeed.domain.Item
+import com.example.jsonfeed.framework.datasource.db.PokemonEntity
 import com.example.jsonfeed.framework.datasource.network.PokemonFeed
 import com.example.jsonfeed.framework.extensions.toItems
+import com.example.jsonfeed.framework.extensions.toPokemonEntities
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
@@ -29,6 +31,11 @@ abstract class BaseMockParser {
     abstract fun getFileAsString(filePath: String): String
 
     fun getMockItemValid(): Item = getMockFeedAllIdsValid().toItems()[0]
+
+    fun getMockPokemonEntitiesFromFeedWithAllItemsValid(): List<PokemonEntity> = getMockFeedAllIdsValid()
+        .toItems().toPokemonEntities()
+    fun getMockPokemonEntitiesFromFeedWithAllIdsAbsent(): List<PokemonEntity> = getMockFeedAllIdsAbsent()
+        .toItems().toPokemonEntities()
 
     fun getMockItemsFromFeedWithAllItemsValid(): List<Item> = getMockFeedAllIdsValid().toItems()
     fun getMockItemsFromFeedWithSomeIdsAbsent(): List<Item> = getMockFeedSomeIdsAbsent().toItems()
