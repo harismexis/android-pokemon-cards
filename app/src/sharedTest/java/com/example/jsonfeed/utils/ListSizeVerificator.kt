@@ -25,14 +25,10 @@ fun <T> verifyListSizeWhenSomeIdsAbsent(items: List<T>) {
     verifyListSize(BaseMockParser.EXPECTED_NUM_MODELS_WHEN_TWO_IDS_ABSENT, items)
 }
 
-fun <T> verifyListSizeWhenAllIdsAbsent(items: List<T>) {
-    verifyListSize(BaseMockParser.EXPECTED_NUM_MODELS_FOR_NO_DATA, items)
-}
-
-fun <T> verifyListSizeWhenJsonEmpty(items: List<T>) {
-    verifyListSize(BaseMockParser.EXPECTED_NUM_MODELS_FOR_NO_DATA, items)
-}
-
 fun <T> verifyListSizeWhenSomeItemsEmpty(items: List<T>) {
     verifyListSize(BaseMockParser.EXPECTED_NUM_MODELS_WHEN_TWO_EMPTY, items)
+}
+
+fun <T> verifyListSizeForNoData(items: List<T>) {
+    verifyListSize(BaseMockParser.EXPECTED_NUM_MODELS_FOR_NO_DATA, items)
 }
