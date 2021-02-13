@@ -15,14 +15,13 @@ import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 
 @RunWith(JUnit4::class)
-class IRRGetLocalItemTest : UnitTestSetup() {
+class IRRStoreItemsTest : UnitTestSetup() {
 
     @Mock
     private lateinit var mockRepository: LocalRepository
 
-    private lateinit var mockItem: Item
-    private lateinit var mockItemId: String
-    private lateinit var iRRGetLocalItem: IRRGetLocalItem
+    private lateinit var mockItems: List<Item>
+    private lateinit var iRRStoreItems: IRRStoreItems
 
     init {
         initialise()
@@ -30,26 +29,21 @@ class IRRGetLocalItemTest : UnitTestSetup() {
 
     override fun initialiseClassUnderTest() {
         setupMocks()
-        iRRGetLocalItem = IRRGetLocalItem(mockRepository)
+        iRRStoreItems = IRRStoreItems(mockRepository)
     }
 
     private fun setupMocks() {
-        mockItem = mockParser.getMockItemValid()
-        mockItemId = mockItem.id
-        runBlocking {
-            Mockito.`when`(mockRepository.getItem(mockItemId)).thenReturn(mockItem)
-        }
+        mockItems = mockParser.getMockItemsFromFeedWithAllItemsValid()
     }
 
     @Test
     fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
-            val item = iRRGetLocalItem.invoke(mockItemId)
+            iRRStoreItems.invoke(mockItems)
 
             // then
-            verify(mockRepository, times(1)).getItem(mockItemId)
-            Assert.assertEquals(mockItem.id, item!!.id)
+            verify(mockRepository, times(1)).insertItems(mockItems)
         }
 
 }

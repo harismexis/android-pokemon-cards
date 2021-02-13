@@ -28,9 +28,8 @@ class IRRGetLocalItemsTest : UnitTestSetup() {
     }
 
     override fun initialiseClassUnderTest() {
-        MockitoAnnotations.initMocks(this)
         setupMocks()
-        iRRGetLocalItems = IRRGetLocalItems((mockRepository))
+        iRRGetLocalItems = IRRGetLocalItems(mockRepository)
     }
 
     private fun setupMocks() {
