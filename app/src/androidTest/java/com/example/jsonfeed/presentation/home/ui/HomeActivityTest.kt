@@ -53,7 +53,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     }
 
     @Test
-    fun remoteFeedHasAllItemsValid_homeListHasCorrectNumberOfItems() {
+    fun remoteFeedHasAllItemsValid_then_homeListHasExpectedItems() {
         // given
         every { mockHomeVm.models } returns MockHomeVmProvider.models
         launchActivityAndMockLiveData()
@@ -64,11 +64,11 @@ class HomeActivityTest : InstrumentedTestSetup() {
         onView(withId(R.id.home_list)).check(
             RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_ALL_IDS_VALID)
         )
-        verifyViewHoldersShowCorrectData()
+        verifyRecyclerViewShowsExpectedData()
     }
 
     @Test
-    fun remoteFeedHasSomeIdsAbsent_homeListHasCorrectNumberOfItems() {
+    fun remoteFeedHasSomeIdsAbsent_homeListHasExpectedNumberOfItems() {
         // given
         mockItems = mockParser.getMockItemsFromFeedWithSomeIdsAbsent()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
@@ -80,7 +80,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
         onView(withId(R.id.home_list)).check(
             RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_WHEN_TWO_IDS_ABSENT)
         )
-        verifyViewHoldersShowCorrectData()
+        verifyRecyclerViewShowsExpectedData()
     }
 
     @Test
@@ -99,7 +99,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     }
 
     @Test
-    fun remoteFeedHasSomeJsonItemsEmpty_homeListHasCorrectNumberOfItems() {
+    fun remoteFeedHasSomeJsonItemsEmpty_homeListHasExpectedNumberOfItems() {
         // given
         mockItems = mockParser.getMockItemsFromFeedWithSomeItemsEmpty()
         every { mockHomeVm.models } returns MockHomeVmProvider.models
@@ -111,7 +111,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
         onView(withId(R.id.home_list)).check(
             RecyclerViewItemCountAssertion(EXPECTED_NUM_MODELS_WHEN_TWO_EMPTY)
         )
-        verifyViewHoldersShowCorrectData()
+        verifyRecyclerViewShowsExpectedData()
     }
 
     @Test
@@ -151,7 +151,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
         )
     }
 
-    private fun verifyViewHoldersShowCorrectData() {
+    private fun verifyRecyclerViewShowsExpectedData() {
         mockItems.forEachIndexed { index, uiModel ->
             // scroll to item to make sure it's visible
             onView(withId(R.id.home_list)).perform(scrollToPosition<RecyclerView.ViewHolder>(index))

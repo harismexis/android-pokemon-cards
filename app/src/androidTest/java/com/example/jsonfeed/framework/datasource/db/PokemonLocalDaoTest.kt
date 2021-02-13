@@ -52,7 +52,7 @@ class PokemonLocalDaoTest: InstrumentedTestSetup() {
 
     @Test
     @Throws(Exception::class)
-    fun savingItemsFromFeedWithAllIdsAbsent_noItemsRetrieved() = runBlocking {
+    fun savingItemsFromFeedWithAllIdsAbsent_then_noItemsRetrieved() = runBlocking {
         // given
         val entities = mockParser.getMockPokemonEntitiesFromFeedWithAllIdsAbsent()
 

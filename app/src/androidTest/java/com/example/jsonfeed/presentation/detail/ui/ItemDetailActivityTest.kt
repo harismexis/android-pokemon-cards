@@ -38,7 +38,7 @@ class ItemDetailActivityTest : InstrumentedTestSetup() {
     }
 
     @Test
-    fun liveDataChanges_uiIsUpdatedWithCorrectData() {
+    fun liveDataChanges_then_uiUpdatedWithExpectedData() {
         // given
         every { mockItemDetailVm.model } returns MockItemDetailVmProvider.model
         launchActivityAndMockLiveData()
