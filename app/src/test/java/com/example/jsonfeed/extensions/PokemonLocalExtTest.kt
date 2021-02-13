@@ -25,11 +25,7 @@ class PokemonLocalExtTest : UnitTestSetup() {
         verifyListsHaveSameSize(items, entities)
         verifyListSizeWhenAllIdsValid(items)
         verifyListSizeWhenAllIdsValid(entities)
-
-        items.forEachIndexed { index, item ->
-            val entity = entities[index]
-            verificator.verifyEntityAgainstItem(entity, item)
-        }
+        verificator.verifyEntitiesAgainstItems(entities, items)
     }
 
     @Test
@@ -44,11 +40,7 @@ class PokemonLocalExtTest : UnitTestSetup() {
         verifyListsHaveSameSize(items, entities)
         verifyListSizeWhenAllIdsValid(entities)
         verifyListSizeWhenAllIdsValid(items)
-
-        entities.forEachIndexed { index, entity ->
-            val item = items[index]
-            verificator.verifyItemAgainstEntity(item, entity)
-        }
+        verificator.verifyItemsAgainstEntities(items, entities)
     }
 
     override fun initialiseClassUnderTest() {

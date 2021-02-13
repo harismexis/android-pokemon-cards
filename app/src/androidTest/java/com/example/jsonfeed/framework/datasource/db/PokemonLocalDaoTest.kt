@@ -5,7 +5,6 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.jsonfeed.instrumentedsetup.base.InstrumentedTestSetup
-import com.example.jsonfeed.framework.extensions.toPokemonEntities
 import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_ALL_IDS_VALID
 import kotlinx.coroutines.runBlocking
 import org.junit.*
@@ -35,37 +34,37 @@ class PokemonLocalDaoTest: InstrumentedTestSetup() {
 
     @Test
     @Throws(Exception::class)
-    fun savingItems_correctItemsAreRetrieved() = runBlocking {
+    fun savingItemsFromRemoteFeedWithAllItemsValid_then_expectedItemsRetrieved() = runBlocking {
         // given
-        val savedItems = mockParser.getMockPokemonEntitiesFromFeedWithAllItemsValid()
+        val entities = mockParser.getMockPokemonEntitiesFromFeedWithAllItemsValid()
 
         // when
-        dao.insertItems(savedItems)
-        val retrievedItems = dao.getAllItems()
+        dao.insertItems(entities)
+        val retrievedEntities = dao.getAllItems()
 
         // then
-        Assert.assertNotNull(retrievedItems)
-        Assert.assertNotEquals(0, retrievedItems!!.size)
-        Assert.assertEquals(savedItems.size, retrievedItems.size)
-        Assert.assertEquals(savedItems, retrievedItems)
-        Assert.assertEquals(EXPECTED_NUM_MODELS_ALL_IDS_VALID, retrievedItems.size)
+        Assert.assertNotNull(retrievedEntities)
+        Assert.assertNotEquals(0, retrievedEntities!!.size)
+        Assert.assertEquals(entities.size, retrievedEntities.size)
+        Assert.assertEquals(entities, retrievedEntities)
+        Assert.assertEquals(EXPECTED_NUM_MODELS_ALL_IDS_VALID, retrievedEntities.size)
     }
 
     @Test
     @Throws(Exception::class)
-    fun savingFeedItemsWithAllIdsAbsent_noLocalItemsRetrieved() = runBlocking {
+    fun savingItemsFromFeedWithAllIdsAbsent_noItemsRetrieved() = runBlocking {
         // given
-        val savedItems = mockParser.getMockPokemonEntitiesFromFeedWithAllIdsAbsent()
+        val entities = mockParser.getMockPokemonEntitiesFromFeedWithAllIdsAbsent()
 
         // when
-        dao.insertItems(savedItems)
-        val retrievedItems = dao.getAllItems()
+        dao.insertItems(entities)
+        val retrievedEntities = dao.getAllItems()
 
         // then
-        Assert.assertNotNull(retrievedItems)
-        Assert.assertEquals(0, retrievedItems!!.size)
-        Assert.assertEquals(savedItems.size, retrievedItems.size)
-        Assert.assertEquals(savedItems, retrievedItems)
+        Assert.assertNotNull(retrievedEntities)
+        Assert.assertEquals(0, retrievedEntities!!.size)
+        Assert.assertEquals(entities.size, retrievedEntities.size)
+        Assert.assertEquals(entities, retrievedEntities)
     }
 
 }

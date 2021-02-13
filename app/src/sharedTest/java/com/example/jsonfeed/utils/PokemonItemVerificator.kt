@@ -8,7 +8,44 @@ import org.junit.Assert
 
 class PokemonItemVerificator {
 
-    fun verifyItemAgainstRemoteItem(
+    fun verifyItemsAgainstRemoteFeed(
+        feed: PokemonFeed,
+        items: List<Item>
+    ) {
+        feed.cards!!.forEachIndexed lit@{ _, card ->
+            if (card == null) return@lit
+            items.forEachIndexed { _, item ->
+                card.id?.let {
+                    if (it == item.id) {
+                        verifyItemAgainstRemoteItem(item, card)
+                        return@lit
+                    }
+                }
+            }
+        }
+    }
+
+    fun verifyEntitiesAgainstItems(
+        entities: List<PokemonEntity>,
+        items: List<Item>
+    ) {
+        items.forEachIndexed { index, item ->
+            val entity = entities[index]
+            verifyEntityAgainstItem(entity, item)
+        }
+    }
+
+    fun verifyItemsAgainstEntities(
+        items: List<Item>,
+        entities: List<PokemonEntity>
+    ) {
+        entities.forEachIndexed { index, entity ->
+            val item = items[index]
+            verifyItemAgainstEntity(item, entity)
+        }
+    }
+
+    private fun verifyItemAgainstRemoteItem(
         actual: Item,
         expected: PokemonCard
     ) {
@@ -25,7 +62,7 @@ class PokemonItemVerificator {
         Assert.assertEquals(expected.setCode, actual.setCode)
     }
 
-    fun verifyItemAgainstEntity(
+    private fun verifyItemAgainstEntity(
         actual: Item,
         expected: PokemonEntity
     ) {
@@ -42,7 +79,7 @@ class PokemonItemVerificator {
         Assert.assertEquals(expected.setCode, actual.setCode)
     }
 
-    fun verifyEntityAgainstItem(
+    private fun verifyEntityAgainstItem(
         actual: PokemonEntity,
         expected: Item
     ) {
@@ -57,23 +94,6 @@ class PokemonItemVerificator {
         Assert.assertEquals(expected.series, actual.series)
         Assert.assertEquals(expected.set, actual.set)
         Assert.assertEquals(expected.setCode, actual.setCode)
-    }
-
-    fun verifyItemsAgainstRemoteFeed(
-        feed: PokemonFeed,
-        items: List<Item>
-    ) {
-        feed.cards!!.forEachIndexed lit@{ _, card ->
-            if (card == null) return@lit
-            items.forEachIndexed { _, item ->
-                card.id?.let {
-                    if (it == item.id) {
-                        verifyItemAgainstRemoteItem(item, card)
-                        return@lit
-                    }
-                }
-            }
-        }
     }
 
 }
