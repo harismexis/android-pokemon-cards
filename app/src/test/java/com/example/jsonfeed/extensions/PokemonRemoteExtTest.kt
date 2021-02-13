@@ -11,7 +11,7 @@ import org.junit.runners.JUnit4
 class PokemonRemoteExtTest : UnitTestSetup() {
 
     @Test
-    fun feedHasAllItemsValid_conversionToItemsIsCorrect() {
+    fun feedHasAllItemsValid_then_conversionToItemsIsCorrect() {
         // given
         val feed = mockParser.getMockFeedAllIdsValid()
 
@@ -24,13 +24,13 @@ class PokemonRemoteExtTest : UnitTestSetup() {
         verifyListSizeWhenAllIdsValid(items)
 
         feed.cards!!.forEachIndexed { index, feedItem ->
-            val localItem = items[index]
-            verifyPokemonCardAgainstRemoteItem(feedItem!!, localItem)
+            val item = items[index]
+            verifyItemAgainstPokemonCard(item, feedItem!!)
         }
     }
 
     @Test
-    fun feedHasSomeIdsAbsent_conversionToLocalItemsIsCorrect() {
+    fun feedHasSomeIdsAbsent_then_conversionToItemsIsCorrect() {
         // given
         val feed = mockParser.getMockFeedSomeIdsAbsent()
 
@@ -43,7 +43,7 @@ class PokemonRemoteExtTest : UnitTestSetup() {
     }
 
     @Test
-    fun feedHasSomeEmptyItems_conversionToLocalItemsIsCorrect() {
+    fun feedHasSomeEmptyItems_then_conversionToItemsIsCorrect() {
         // given
         val feed = mockParser.getMockFeedSomeItemsEmpty()
 
@@ -56,7 +56,7 @@ class PokemonRemoteExtTest : UnitTestSetup() {
     }
 
     @Test
-    fun feedHasAllIdsAbsent_localItemsAreEmpty() {
+    fun feedHasAllIdsAbsent_then_itemListIsEmpty() {
         // given
         val feed = mockParser.getMockFeedAllIdsAbsent()
 
@@ -68,7 +68,7 @@ class PokemonRemoteExtTest : UnitTestSetup() {
     }
 
     @Test
-    fun feedIsEmptyJson_conversionToLocalItemsIsCorrect() {
+    fun feedIsAnEmptyJson_then_itemListIsEmpty() {
         // given
         val feed = mockParser.getMockFeedEmptyJson()
 
