@@ -34,6 +34,8 @@ abstract class BaseMockParser {
 
     fun getMockPokemonEntitiesFromFeedWithAllItemsValid(): List<PokemonEntity> = getMockFeedAllIdsValid()
         .toItems().toPokemonEntities()
+    fun getMockPokemonEntitiesFromFeedWithSomeIdsAbsent(): List<PokemonEntity> = getMockFeedSomeIdsAbsent()
+        .toItems().toPokemonEntities()
     fun getMockPokemonEntitiesFromFeedWithAllIdsAbsent(): List<PokemonEntity> = getMockFeedAllIdsAbsent()
         .toItems().toPokemonEntities()
 

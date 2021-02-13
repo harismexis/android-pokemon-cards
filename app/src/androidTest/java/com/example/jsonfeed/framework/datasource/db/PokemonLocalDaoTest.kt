@@ -6,6 +6,8 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.jsonfeed.instrumentedsetup.base.InstrumentedTestSetup
 import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_ALL_IDS_VALID
+import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_FOR_NO_DATA
+import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_WHEN_TWO_IDS_ABSENT
 import kotlinx.coroutines.runBlocking
 import org.junit.*
 import org.junit.runner.RunWith
@@ -43,12 +45,23 @@ class PokemonLocalDaoTest: InstrumentedTestSetup() {
         val retrievedEntities = dao.getAllItems()
 
         // then
-        Assert.assertNotNull(retrievedEntities)
-        Assert.assertNotEquals(0, retrievedEntities!!.size)
-        Assert.assertEquals(entities.size, retrievedEntities.size)
-        Assert.assertEquals(entities, retrievedEntities)
-        Assert.assertEquals(EXPECTED_NUM_MODELS_ALL_IDS_VALID, retrievedEntities.size)
+        verifyActualAgainstExpected(retrievedEntities!!, entities, EXPECTED_NUM_MODELS_ALL_IDS_VALID)
     }
+
+    @Test
+    @Throws(Exception::class)
+    fun savingItemsFromRemoteFeedWithSomeIdsAbsent_then_expectedItemsRetrieved() = runBlocking {
+        // given
+        val entities = mockParser.getMockPokemonEntitiesFromFeedWithSomeIdsAbsent()
+
+        // when
+        dao.insertItems(entities)
+        val retrievedEntities = dao.getAllItems()
+
+        // then
+        verifyActualAgainstExpected(retrievedEntities!!, entities, EXPECTED_NUM_MODELS_WHEN_TWO_IDS_ABSENT)
+    }
+
 
     @Test
     @Throws(Exception::class)
@@ -61,10 +74,20 @@ class PokemonLocalDaoTest: InstrumentedTestSetup() {
         val retrievedEntities = dao.getAllItems()
 
         // then
-        Assert.assertNotNull(retrievedEntities)
-        Assert.assertEquals(0, retrievedEntities!!.size)
-        Assert.assertEquals(entities.size, retrievedEntities.size)
-        Assert.assertEquals(entities, retrievedEntities)
+        verifyActualAgainstExpected(retrievedEntities!!, entities, EXPECTED_NUM_MODELS_FOR_NO_DATA)
+    }
+
+    private fun verifyActualAgainstExpected(
+        actual: List<PokemonEntity?>,
+        expected: List<PokemonEntity>,
+        expectedNumberOfItems: Int
+    ) {
+        Assert.assertNotNull(actual)
+        Assert.assertNotNull(expected)
+        Assert.assertEquals(expected.size, actual.size)
+        Assert.assertEquals(expected, actual)
+        Assert.assertEquals(expectedNumberOfItems, actual.size)
+        Assert.assertEquals(expectedNumberOfItems, expected.size)
     }
 
 }
