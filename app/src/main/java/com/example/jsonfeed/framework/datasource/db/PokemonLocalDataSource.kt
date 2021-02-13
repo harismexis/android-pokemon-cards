@@ -24,7 +24,7 @@ class PokemonLocalDataSource @Inject constructor(
         return null
     }
 
-    override suspend fun getAll(): List<Item>? {
+    override suspend fun getAll(): List<Item> {
         return dao.getAllItems().toItems()
     }
 
