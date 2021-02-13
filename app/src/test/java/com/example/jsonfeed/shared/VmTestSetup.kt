@@ -1,22 +1,19 @@
 package com.example.jsonfeed.shared
 
 import com.example.jsonfeed.framework.Interactors
-import com.example.jsonfeed.interactors.GetLocalItem
-import com.example.jsonfeed.interactors.GetLocalItems
-import com.example.jsonfeed.interactors.GetRemoteItems
-import com.example.jsonfeed.interactors.StoreItems
+import com.example.jsonfeed.interactors.*
 import org.mockito.Mock
 
 abstract class VmTestSetup : UnitTestSetup() {
 
     @Mock
-    protected lateinit var mockIRRGetLocalItem: GetLocalItem
+    protected lateinit var mockIRRGetLocalItem: IRRGetLocalItem
     @Mock
-    protected lateinit var mockIRRGetLocalItems: GetLocalItems
+    protected lateinit var mockIRRGetLocalItems: IRRGetLocalItems
     @Mock
-    protected lateinit var mockIRRGetRemoteItems: GetRemoteItems
+    protected lateinit var mockIRRGetRemoteItems: IRRGetRemoteItems
     @Mock
-    protected lateinit var mockIRRStoreItems: StoreItems
+    protected lateinit var mockIRRStoreItems: IRRStoreItems
     @Mock
     protected lateinit var mockInteractors: Interactors
 

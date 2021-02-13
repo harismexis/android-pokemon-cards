@@ -33,7 +33,7 @@ abstract class ItemDetailVmTestSetup : VmTestSetup() {
     }
 
     private fun initialiseMockInteractors() {
-        Mockito.`when`(mockInteractors.getLocalItem).thenReturn(mockIRRGetLocalItem)
+        Mockito.`when`(mockInteractors.iRRGetLocalItem).thenReturn(mockIRRGetLocalItem)
         runBlocking {
             Mockito.`when`(mockIRRGetLocalItem.invoke(mockId)).thenReturn(mockItem)
         }

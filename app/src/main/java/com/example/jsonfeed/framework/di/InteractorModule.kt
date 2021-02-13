@@ -6,11 +6,7 @@ import com.example.jsonfeed.data.RemoteRepository
 import com.example.jsonfeed.framework.Interactors
 import com.example.jsonfeed.framework.datasource.db.PokemonLocalDataSource
 import com.example.jsonfeed.framework.datasource.network.PokemonRemoteDataSource
-
-import com.example.jsonfeed.interactors.GetLocalItem
-import com.example.jsonfeed.interactors.GetLocalItems
-import com.example.jsonfeed.interactors.GetRemoteItems
-import com.example.jsonfeed.interactors.StoreItems
+import com.example.jsonfeed.interactors.*
 
 import dagger.Module
 import dagger.Provides
@@ -20,45 +16,45 @@ class InteractorModule {
 
     @Provides
     fun provideInteractors(
-        getLocalFeedItem: GetLocalItem,
-        getLocalFeedItems: GetLocalItems,
-        getRemoteFeed: GetRemoteItems,
-        insertLocalFeedItems: StoreItems
+        iRRGetLocalFeedItem: IRRGetLocalItem,
+        iRRGetLocalFeedItems: IRRGetLocalItems,
+        iRRGetRemoteItems: IRRGetRemoteItems,
+        iRRStoreItems: IRRStoreItems
     ): Interactors {
         return Interactors(
-            getLocalFeedItem,
-            getLocalFeedItems,
-            getRemoteFeed,
-            insertLocalFeedItems
+            iRRGetLocalFeedItem,
+            iRRGetLocalFeedItems,
+            iRRGetRemoteItems,
+            iRRStoreItems
         )
     }
 
     @Provides
     fun provideInteractorGetLocalFeedItem(
         dataSource: PokemonLocalDataSource
-    ): GetLocalItem {
-        return GetLocalItem(LocalRepository(dataSource))
+    ): IRRGetLocalItem {
+        return IRRGetLocalItem(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorGetLocalFeedItems(
         dataSource: PokemonLocalDataSource
-    ): GetLocalItems {
-        return GetLocalItems(LocalRepository(dataSource))
+    ): IRRGetLocalItems {
+        return IRRGetLocalItems(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorInsertLocalFeedItems(
         dataSource: PokemonLocalDataSource
-    ): StoreItems {
-        return StoreItems(LocalRepository(dataSource))
+    ): IRRStoreItems {
+        return IRRStoreItems(LocalRepository(dataSource))
     }
 
     @Provides
     fun provideInteractorGetRemoteFeed(
         dataSource: PokemonRemoteDataSource
-    ): GetRemoteItems {
-        return GetRemoteItems(RemoteRepository(dataSource))
+    ): IRRGetRemoteItems {
+        return IRRGetRemoteItems(RemoteRepository(dataSource))
     }
 
 }

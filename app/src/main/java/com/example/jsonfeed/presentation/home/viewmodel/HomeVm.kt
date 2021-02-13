@@ -47,10 +47,10 @@ class HomeVm @Inject constructor(
     private fun fetchRemoteFeed() {
         viewModelScope.launch {
             try {
-                val items = interactors.getRemoteItems.invoke()
+                val items = interactors.iRRGetRemoteItems.invoke()
                 items?.let {
                     mModels.value = it
-                    interactors.storeItems.invoke(items)
+                    interactors.iRRStoreItems.invoke(items)
                 }
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
@@ -61,7 +61,7 @@ class HomeVm @Inject constructor(
     private fun fetchLocalFeed() {
         viewModelScope.launch {
             try {
-                val items = interactors.getLocalItems.invoke()
+                val items = interactors.iRRGetLocalItems.invoke()
                 items?.let {
                     mModels.value = it
                 }

@@ -1,10 +1,7 @@
 package com.example.jsonfeed.instrumentedsetup.di.module
 
 import com.example.jsonfeed.framework.Interactors
-import com.example.jsonfeed.interactors.GetLocalItem
-import com.example.jsonfeed.interactors.GetLocalItems
-import com.example.jsonfeed.interactors.GetRemoteItems
-import com.example.jsonfeed.interactors.StoreItems
+import com.example.jsonfeed.interactors.*
 
 import dagger.Module
 import dagger.Provides
@@ -16,10 +13,10 @@ class InstrumentedInteractorModule {
 
     @Provides
     fun provideInteractors(
-        getLocalFeedItem: GetLocalItem,
-        getLocalFeedItems: GetLocalItems,
-        getRemoteFeed: GetRemoteItems,
-        insertLocalFeedItems: StoreItems
+        iRRGetLocalFeedItem: IRRGetLocalItem,
+        iRRGetLocalFeedItems: IRRGetLocalItems,
+        iRRGetRemoteFeed: IRRGetRemoteItems,
+        iRRStoreItems: IRRStoreItems
     ): Interactors {
         return mockk(relaxed = true)
     }

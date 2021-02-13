@@ -9,7 +9,7 @@ import androidx.test.rule.ActivityTestRule
 import com.example.jsonfeed.R
 import com.example.jsonfeed.instrumentedsetup.base.InstrumentedTestSetup
 import com.example.jsonfeed.domain.Item
-import com.example.jsonfeed.instrumentedsetup.mockproviders.MockItemDetailVmProvider
+import com.example.jsonfeed.instrumentedsetup.mockvm.MockItemDetailVmProvider
 import com.example.jsonfeed.presentation.detail.viewmodel.ItemDetailVm
 import io.mockk.every
 import org.junit.Before

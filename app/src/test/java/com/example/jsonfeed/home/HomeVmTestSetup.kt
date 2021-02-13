@@ -33,9 +33,9 @@ abstract class HomeVmTestSetup : VmTestSetup() {
     }
 
     private fun initialiseMockInteractors() {
-        Mockito.`when`(mockInteractors.getRemoteItems).thenReturn(mockIRRGetRemoteItems)
-        Mockito.`when`(mockInteractors.getLocalItems).thenReturn(mockIRRGetLocalItems)
-        Mockito.`when`(mockInteractors.storeItems).thenReturn(mockIRRStoreItems)
+        Mockito.`when`(mockInteractors.iRRGetRemoteItems).thenReturn(mockIRRGetRemoteItems)
+        Mockito.`when`(mockInteractors.iRRGetLocalItems).thenReturn(mockIRRGetLocalItems)
+        Mockito.`when`(mockInteractors.iRRStoreItems).thenReturn(mockIRRStoreItems)
         runBlocking {
             Mockito.`when`(mockIRRGetLocalItems.invoke()).thenReturn(mockItems)
             Mockito.`when`(mockIRRGetRemoteItems.invoke()).thenReturn(mockItems)

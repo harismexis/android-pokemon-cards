@@ -27,7 +27,7 @@ class ItemDetailVm @Inject constructor(
     fun retrieveItemById(itemId: String) {
         viewModelScope.launch {
             try {
-                val item = interactors.getLocalItem(itemId)
+                val item = interactors.iRRGetLocalItem(itemId)
                 item?.let {
                     mModel.value = it
                 }

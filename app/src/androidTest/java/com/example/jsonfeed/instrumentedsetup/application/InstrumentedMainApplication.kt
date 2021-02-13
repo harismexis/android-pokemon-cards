@@ -11,4 +11,5 @@ class InstrumentedMainApplication : DaggerApplication() {
         mainComponent.inject(this)
         return mainComponent
     }
+
 }

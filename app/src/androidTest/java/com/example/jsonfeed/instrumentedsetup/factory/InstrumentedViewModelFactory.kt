@@ -3,7 +3,7 @@ package com.example.jsonfeed.instrumentedsetup.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-import com.example.jsonfeed.instrumentedsetup.mockproviders.provideMockVmMap
+import com.example.jsonfeed.instrumentedsetup.mockvm.provideMockVmMap
 
 import dagger.Binds
 import dagger.MapKey

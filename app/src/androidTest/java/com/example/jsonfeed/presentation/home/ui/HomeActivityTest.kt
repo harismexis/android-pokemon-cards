@@ -15,7 +15,7 @@ import androidx.test.rule.ActivityTestRule
 import com.example.jsonfeed.R
 import com.example.jsonfeed.instrumentedsetup.base.InstrumentedTestSetup
 import com.example.jsonfeed.domain.Item
-import com.example.jsonfeed.instrumentedsetup.mockproviders.MockHomeVmProvider
+import com.example.jsonfeed.instrumentedsetup.mockvm.MockHomeVmProvider
 import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_ALL_IDS_VALID
 import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_FOR_NO_DATA
 import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_WHEN_TWO_EMPTY
