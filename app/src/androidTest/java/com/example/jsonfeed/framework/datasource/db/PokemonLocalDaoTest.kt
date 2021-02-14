@@ -62,7 +62,6 @@ class PokemonLocalDaoTest: InstrumentedTestSetup() {
         verifyActualAgainstExpected(retrievedEntities!!, entities, EXPECTED_NUM_MODELS_WHEN_TWO_IDS_ABSENT)
     }
 
-
     @Test
     @Throws(Exception::class)
     fun savingItemsFromFeedWithAllIdsAbsent_then_noItemsRetrieved() = runBlocking {

@@ -30,28 +30,28 @@ class InteractorModule {
     }
 
     @Provides
-    fun provideInteractorGetLocalFeedItem(
+    fun provideIRRGetLocalFeedItem(
         dataSource: PokemonLocalDataSource
     ): IRRGetLocalItem {
         return IRRGetLocalItem(LocalRepository(dataSource))
     }
 
     @Provides
-    fun provideInteractorGetLocalFeedItems(
+    fun provideIRRGetLocalFeedItems(
         dataSource: PokemonLocalDataSource
     ): IRRGetLocalItems {
         return IRRGetLocalItems(LocalRepository(dataSource))
     }
 
     @Provides
-    fun provideInteractorInsertLocalFeedItems(
+    fun provideIRRInsertLocalFeedItems(
         dataSource: PokemonLocalDataSource
     ): IRRStoreItems {
         return IRRStoreItems(LocalRepository(dataSource))
     }
 
     @Provides
-    fun provideInteractorGetRemoteFeed(
+    fun provideIRRGetRemoteItems(
         dataSource: PokemonRemoteDataSource
     ): IRRGetRemoteItems {
         return IRRGetRemoteItems(RemoteRepository(dataSource))
