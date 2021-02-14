@@ -36,10 +36,6 @@ abstract class HomeVmTestSetup : VmTestSetup() {
         Mockito.`when`(mockInteractors.iRRGetRemoteItems).thenReturn(mockIRRGetRemoteItems)
         Mockito.`when`(mockInteractors.iRRGetLocalItems).thenReturn(mockIRRGetLocalItems)
         Mockito.`when`(mockInteractors.iRRStoreItems).thenReturn(mockIRRStoreItems)
-        runBlocking {
-            Mockito.`when`(mockIRRGetLocalItems.invoke()).thenReturn(mockItems)
-            Mockito.`when`(mockIRRGetRemoteItems.invoke()).thenReturn(mockItems)
-        }
     }
 
     // Internet

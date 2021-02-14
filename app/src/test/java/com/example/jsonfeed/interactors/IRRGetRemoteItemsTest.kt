@@ -21,7 +21,7 @@ class IRRGetRemoteItemsTest : UnitTestSetup() {
     private lateinit var mockRepository: RemoteRepository
 
     private lateinit var mockItems: List<Item>
-    private lateinit var iRRGetRemoteItems: IRRGetRemoteItems
+    private lateinit var subject: IRRGetRemoteItems
 
     init {
         initialise()
@@ -30,7 +30,7 @@ class IRRGetRemoteItemsTest : UnitTestSetup() {
     override fun initialiseClassUnderTest() {
         MockitoAnnotations.initMocks(this)
         setupMocks()
-        iRRGetRemoteItems = IRRGetRemoteItems(mockRepository)
+        subject = IRRGetRemoteItems(mockRepository)
     }
 
     private fun setupMocks() {
@@ -44,7 +44,7 @@ class IRRGetRemoteItemsTest : UnitTestSetup() {
     fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
-            val items = iRRGetRemoteItems.invoke()
+            val items = subject.invoke()
 
             // then
             verify(mockRepository, times(1)).getItems()

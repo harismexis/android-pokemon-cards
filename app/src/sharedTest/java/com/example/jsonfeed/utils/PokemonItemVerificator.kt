@@ -8,11 +8,17 @@ import org.junit.Assert
 
 class PokemonItemVerificator {
 
+    // TODO: Check Again here
     fun verifyItemsAgainstRemoteFeed(
-        feed: PokemonFeed,
-        items: List<Item>
+        items: List<Item>,
+        feed: PokemonFeed
     ) {
-        feed.cards!!.forEachIndexed lit@{ _, card ->
+        if (feed == null || feed.cards.isNullOrEmpty()) {
+            verifyListSizeForNoData(items)
+            return
+        }
+        val cards = feed.cards!!
+        cards.forEachIndexed lit@{ _, card ->
             if (card == null) return@lit
             items.forEachIndexed { _, item ->
                 card.id?.let {
@@ -29,6 +35,7 @@ class PokemonItemVerificator {
         entities: List<PokemonEntity>,
         items: List<Item>
     ) {
+        verifyListsHaveSameSize(entities, items)
         items.forEachIndexed { index, item ->
             val entity = entities[index]
             verifyEntityAgainstItem(entity, item)
@@ -39,6 +46,7 @@ class PokemonItemVerificator {
         items: List<Item>,
         entities: List<PokemonEntity>
     ) {
+        verifyListsHaveSameSize(items, entities)
         entities.forEachIndexed { index, entity ->
             val item = items[index]
             verifyItemAgainstEntity(item, entity)

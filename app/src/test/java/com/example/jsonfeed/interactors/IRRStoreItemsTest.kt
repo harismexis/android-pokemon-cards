@@ -6,13 +6,10 @@ import com.example.jsonfeed.shared.UnitTestSetup
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.MockitoAnnotations
 
 @RunWith(JUnit4::class)
 class IRRStoreItemsTest : UnitTestSetup() {
@@ -21,7 +18,7 @@ class IRRStoreItemsTest : UnitTestSetup() {
     private lateinit var mockRepository: LocalRepository
 
     private lateinit var mockItems: List<Item>
-    private lateinit var iRRStoreItems: IRRStoreItems
+    private lateinit var subject: IRRStoreItems
 
     init {
         initialise()
@@ -29,7 +26,7 @@ class IRRStoreItemsTest : UnitTestSetup() {
 
     override fun initialiseClassUnderTest() {
         setupMocks()
-        iRRStoreItems = IRRStoreItems(mockRepository)
+        subject = IRRStoreItems(mockRepository)
     }
 
     private fun setupMocks() {
@@ -40,7 +37,7 @@ class IRRStoreItemsTest : UnitTestSetup() {
     fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
-            iRRStoreItems.invoke(mockItems)
+            subject.invoke(mockItems)
 
             // then
             verify(mockRepository, times(1)).insertItems(mockItems)

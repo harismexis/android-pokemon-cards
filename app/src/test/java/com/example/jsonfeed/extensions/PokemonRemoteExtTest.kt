@@ -24,8 +24,7 @@ class PokemonRemoteExtTest : UnitTestSetup() {
         verifyListsHaveSameSize(feed.cards!!, items)
         verifyListSizeWhenAllIdsValid(feed.cards!!)
         verifyListSizeWhenAllIdsValid(items)
-
-        verificator.verifyItemsAgainstRemoteFeed(feed, items)
+        verificator.verifyItemsAgainstRemoteFeed(items, feed)
     }
 
     @Test
@@ -38,7 +37,7 @@ class PokemonRemoteExtTest : UnitTestSetup() {
 
         // then
         verifyListSizeWhenSomeIdsAbsent(items)
-        verificator.verifyItemsAgainstRemoteFeed(feed, items)
+        verificator.verifyItemsAgainstRemoteFeed(items, feed)
     }
 
     @Test
@@ -51,7 +50,7 @@ class PokemonRemoteExtTest : UnitTestSetup() {
 
         // then
         verifyListSizeWhenSomeItemsEmpty(items)
-        verificator.verifyItemsAgainstRemoteFeed(feed, items)
+        verificator.verifyItemsAgainstRemoteFeed(items, feed)
     }
 
     @Test

@@ -12,7 +12,6 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.MockitoAnnotations
 
 @RunWith(JUnit4::class)
 class IRRGetLocalItemsTest : UnitTestSetup() {
@@ -21,7 +20,7 @@ class IRRGetLocalItemsTest : UnitTestSetup() {
     private lateinit var mockRepository: LocalRepository
 
     private lateinit var mockItems: List<Item>
-    private lateinit var iRRGetLocalItems: IRRGetLocalItems
+    private lateinit var subject: IRRGetLocalItems
 
     init {
         initialise()
@@ -29,7 +28,7 @@ class IRRGetLocalItemsTest : UnitTestSetup() {
 
     override fun initialiseClassUnderTest() {
         setupMocks()
-        iRRGetLocalItems = IRRGetLocalItems(mockRepository)
+        subject = IRRGetLocalItems(mockRepository)
     }
 
     private fun setupMocks() {
@@ -43,7 +42,7 @@ class IRRGetLocalItemsTest : UnitTestSetup() {
     fun interactorInvoked_then_repositoryCallsExpectedMethodWithExpectedArgAndResult() =
         runBlocking {
             // when
-            val items = iRRGetLocalItems.invoke()
+            val items = subject.invoke()
 
             // then
             verify(mockRepository, times(1)).getItems()
