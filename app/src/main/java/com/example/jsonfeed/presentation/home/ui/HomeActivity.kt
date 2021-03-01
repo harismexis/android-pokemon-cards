@@ -36,6 +36,7 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
     }
 
     override fun initialiseView() {
+        super.initialiseView()
         initialiseRecycler()
     }
 
