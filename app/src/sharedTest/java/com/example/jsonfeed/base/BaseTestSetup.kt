@@ -10,8 +10,4 @@ abstract class BaseTestSetup {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @ExperimentalCoroutinesApi
-    @get:Rule
-    val coroutineScope = MainCoroutineScopeRule()
-
 }
