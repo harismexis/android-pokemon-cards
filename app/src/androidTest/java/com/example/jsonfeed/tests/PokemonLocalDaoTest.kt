@@ -1,9 +1,12 @@
-package com.example.jsonfeed.framework.datasource.db
+package com.example.jsonfeed.tests
 
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.jsonfeed.framework.datasource.db.PokemonDatabase
+import com.example.jsonfeed.framework.datasource.db.PokemonEntity
+import com.example.jsonfeed.framework.datasource.db.PokemonLocalDao
 import com.example.jsonfeed.instrumentedsetup.base.InstrumentedTestSetup
 import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_ALL_IDS_VALID
 import com.example.jsonfeed.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_FOR_NO_DATA

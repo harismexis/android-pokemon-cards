@@ -1,4 +1,4 @@
-package com.example.jsonfeed.presentation.home.ui
+package com.example.jsonfeed.tests
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
@@ -24,6 +24,7 @@ import com.example.jsonfeed.presentation.detail.ui.ItemDetailActivity
 import com.example.jsonfeed.presentation.home.viewmodel.HomeVm
 import com.example.jsonfeed.instrumentedsetup.instrumentedutil.RecyclerViewItemCountAssertion
 import com.example.jsonfeed.instrumentedsetup.instrumentedutil.RecyclerViewMatcher
+import com.example.jsonfeed.presentation.home.ui.HomeActivity
 import io.mockk.every
 import org.junit.After
 import org.junit.Before
