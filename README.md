@@ -25,5 +25,5 @@ the sharedTest folder.
 #### Home
 ![Alt text](screenshots/home/home-poco-f1.png?raw=true "app screenshot")
 
-#### Picture of the day - photo
+#### Item Detail
 ![Alt text](screenshots/detail/item-detail-poco-f1.png?raw=true "app screenshot")
