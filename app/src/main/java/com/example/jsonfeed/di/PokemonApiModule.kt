@@ -1,7 +1,7 @@
 package com.example.jsonfeed.di
 
 import com.example.jsonfeed.BuildConfig
-import com.example.jsonfeed.api.FeedApi
+import com.example.jsonfeed.api.PokemonApi
 import com.example.jsonfeed.application.MainApplication
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -15,8 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class PokemonApiModule {
 
     @Provides
-    fun providePokemonApi(retrofit: Retrofit): FeedApi {
-        return retrofit.create(FeedApi::class.java)
+    fun providePokemonApi(retrofit: Retrofit): PokemonApi {
+        return retrofit.create(PokemonApi::class.java)
     }
 
     @Provides

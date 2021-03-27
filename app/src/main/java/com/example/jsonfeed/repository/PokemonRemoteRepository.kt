@@ -4,14 +4,14 @@ import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.jsonfeed.api.FeedApi
-import com.example.jsonfeed.datamodel.PokemonItem
+import com.example.jsonfeed.api.PokemonApi
+import com.example.jsonfeed.datamodel.remote.PokemonItem
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PokemonRemoteRepository @Inject constructor(private val api: FeedApi) {
+class PokemonRemoteRepository @Inject constructor(private val api: PokemonApi) {
 
     fun getPokemonCardsStream(): Flow<PagingData<PokemonItem>> {
         Log.d("PokemonRepository", "New call")

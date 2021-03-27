@@ -14,9 +14,13 @@ abstract class BaseActivity : AppCompatActivity() {
     protected lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
+        inject()
         super.onCreate(savedInstanceState)
         initialise()
+    }
+
+    open fun inject() {
+        AndroidInjection.inject(this)
     }
 
     open fun initialise() {

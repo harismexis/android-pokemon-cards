@@ -2,15 +2,15 @@ package com.example.jsonfeed.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.jsonfeed.api.FeedApi
-import com.example.jsonfeed.datamodel.PokemonItem
+import com.example.jsonfeed.api.PokemonApi
+import com.example.jsonfeed.datamodel.remote.PokemonItem
 import com.example.jsonfeed.repository.PokemonRemoteRepository.Companion.NETWORK_PAGE_SIZE
 import retrofit2.HttpException
 import java.io.IOException
 
 private const val GITHUB_STARTING_PAGE_INDEX = 1
 
-class PokemonPagingSource(private val service: FeedApi) : PagingSource<Int, PokemonItem>() {
+class PokemonPagingSource(private val service: PokemonApi) : PagingSource<Int, PokemonItem>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonItem> {
         val page = params.key ?: GITHUB_STARTING_PAGE_INDEX

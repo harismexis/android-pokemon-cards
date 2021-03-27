@@ -3,7 +3,7 @@ package com.example.jsonfeed.di.component
 import com.example.jsonfeed.application.InstrumentedMainApplication
 import com.example.jsonfeed.di.ActivityBindingsModule
 import com.example.jsonfeed.di.module.InstrumentedApplicationModule
-import com.example.jsonfeed.factory.InstrumentedViewModelModule
+import com.example.jsonfeed.mockviewmodel.factory.InstrumentedViewModelModule
 
 import dagger.BindsInstance
 import dagger.Component
