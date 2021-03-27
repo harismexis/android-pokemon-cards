@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.jsonfeed.base.BaseActivity
 import com.example.jsonfeed.databinding.ActivityHomeBinding
 import com.example.jsonfeed.datamodel.remote.PokemonItem
-import com.example.jsonfeed.ui.detail.ui.ItemDetailActivity.Companion.startItemDetailActivity
+import com.example.jsonfeed.ui.detail.ui.PokemonDetailActivity.Companion.startItemDetailActivity
 import com.example.jsonfeed.ui.home.adapter.PokemonAdapter
 import com.example.jsonfeed.ui.home.viewholder.PokemonItemVh
 import com.example.jsonfeed.ui.home.viewmodel.HomeVm

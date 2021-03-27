@@ -11,7 +11,7 @@ import com.example.jsonfeed.datamodel.remote.PokemonItem
 import com.example.jsonfeed.extensions.populateWithGlide
 import com.example.jsonfeed.extensions.setTextOrUnknown
 
-class ItemDetailActivity : BaseActivity() {
+class PokemonDetailActivity : BaseActivity() {
 
     private lateinit var binding: ActivityItemDetailBinding
     private lateinit var detailBinding: ItemDetailViewBinding
@@ -27,7 +27,7 @@ class ItemDetailActivity : BaseActivity() {
             context: Context,
             item: PokemonItem
         ): Intent {
-            return Intent(context, ItemDetailActivity::class.java)
+            return Intent(context, PokemonDetailActivity::class.java)
                 .apply { putExtra(EXTRA_POKEMON_ITEM, item) }
         }
     }
