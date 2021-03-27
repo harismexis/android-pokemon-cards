@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -32,4 +33,16 @@ fun Context.populateWithGlide(
         .placeholder(R.drawable.loading_animation)
         .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
         .into(imageView)
+}
+
+fun Context.showToast(msg: String) {
+    Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+}
+
+fun Context.showErrorToast(msg: String) {
+    this.showToast(formatErrorMessage(msg))
+}
+
+fun formatErrorMessage(msg: String): String {
+    return "\uD83D\uDE28 Wooops $msg"
 }
