@@ -37,10 +37,6 @@ class HomeActivity : BaseActivity(), PokemonItemVh.PokemonItemClickListener {
         }
     }
 
-    override fun observeLiveData() {
-       //
-    }
-
     private fun initialiseRecycler() {
         adapter = PokemonAdapter(this)
         binding.homeList.layoutManager = LinearLayoutManager(this)
@@ -73,4 +69,5 @@ class HomeActivity : BaseActivity(), PokemonItemVh.PokemonItemClickListener {
         return binding.homeToolbar
     }
 
+    override fun observeLiveData() {}
 }
