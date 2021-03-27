@@ -1,13 +1,13 @@
 package com.example.jsonfeed.utils
 
-import com.example.jsonfeed.datamodel.FeedItem
+import com.example.jsonfeed.datamodel.PokemonItem
 import com.example.jsonfeed.localdb.LocalItem
 import com.example.jsonfeed.uimodel.UiModel
 
 import org.junit.Assert
 
 fun verifyLocalItemAgainstFeedItem(
-    expected: FeedItem,
+    expected: PokemonItem,
     actual: LocalItem
 ) {
     Assert.assertEquals(expected.id, actual.id)

@@ -1,34 +1,60 @@
 package com.example.jsonfeed.home.ui
 
 import android.view.View
-
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-
-import com.example.jsonfeed.databinding.ActivityHomeBinding
-import com.example.jsonfeed.detail.ui.ItemDetailActivity.Companion.startItemDetailActivity
-import com.example.jsonfeed.home.adapter.HomeAdapter
-import com.example.jsonfeed.home.viewholder.FeedItemVh
-import com.example.jsonfeed.home.viewmodel.HomeVm
 import com.example.jsonfeed.base.BaseActivity
-import com.example.jsonfeed.uimodel.UiModel
+import com.example.jsonfeed.databinding.ActivityHomeBinding
+import com.example.jsonfeed.datamodel.PokemonItem
+import com.example.jsonfeed.detail.ui.ItemDetailActivity.Companion.startItemDetailActivity
+import com.example.jsonfeed.home.adapter.PokemonAdapter
+import com.example.jsonfeed.home.viewholder.PokemonItemVh
+import com.example.jsonfeed.home.viewmodel.PokemonViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
-class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
+class HomeActivity : BaseActivity(), PokemonItemVh.PokemonItemClickListener {
 
-    private lateinit var viewModel: HomeVm
+    private lateinit var viewModel: PokemonViewModel
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var adapter: HomeAdapter
-    private var uiModels: MutableList<UiModel> = mutableListOf()
+    private lateinit var adapter: PokemonAdapter
+    private var searchJob: Job? = null
 
     override fun initialise() {
         super.initialise()
-        setupSwipeToRefresh()
-        viewModel.bind()
+        fetchPokemon()
+    }
+
+    private fun fetchPokemon() {
+        searchJob?.cancel()
+        searchJob = lifecycleScope.launch {
+            viewModel.getPokemonCardsStream().collectLatest {
+                adapter.submitData(it)
+            }
+        }
+    }
+
+    override fun observeLiveData() {
+       //
+    }
+
+    private fun initialiseRecycler() {
+        adapter = PokemonAdapter(this)
+        binding.homeList.layoutManager = LinearLayoutManager(this)
+        binding.homeList.adapter = adapter
+    }
+
+    override fun onPokemonItemClick(item: PokemonItem, position: Int) {
+        item.id?.let {
+            startItemDetailActivity(it)
+        }
     }
 
     override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[HomeVm::class.java]
+        viewModel = ViewModelProviders.of(this, viewModelFactory)[PokemonViewModel::class.java]
     }
 
     override fun initialiseViewBinding() {
@@ -43,45 +69,8 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
         return binding.root
     }
 
-    override fun onFeedItemClick(item: UiModel, position: Int) {
-        startItemDetailActivity(item.id)
-    }
-
     override fun getToolbar(): Toolbar {
         return binding.homeToolbar
-    }
-
-    override fun observeLiveData() {
-        viewModel.models.observe(this, {
-            populate(it)
-        })
-    }
-
-    private fun populate(models: List<UiModel>) {
-        binding.homeSwipeRefresh.isRefreshing = false
-        binding.loadingProgressBar.visibility = View.GONE
-        binding.homeList.visibility = View.VISIBLE
-        uiModels.clear()
-        uiModels.addAll(models)
-        adapter.notifyDataSetChanged()
-    }
-
-    private fun initialiseRecycler() {
-        adapter = HomeAdapter(uiModels, this)
-        adapter.setHasStableIds(true)
-        binding.homeList.layoutManager = LinearLayoutManager(this)
-        binding.homeList.adapter = adapter
-    }
-
-    private fun setupSwipeToRefresh() {
-        binding.homeSwipeRefresh.setOnRefreshListener {
-            binding.homeSwipeRefresh.isRefreshing = true
-            viewModel.refresh { canRefresh ->
-                if (!canRefresh) {
-                    binding.homeSwipeRefresh.isRefreshing = false
-                }
-            }
-        }
     }
 
 }

@@ -1,6 +1,6 @@
 package com.example.jsonfeed.datamodel
 
-data class FeedItem(
+data class PokemonItem(
     var id: String?,
     var name: String?,
     var imageUrl: String?,

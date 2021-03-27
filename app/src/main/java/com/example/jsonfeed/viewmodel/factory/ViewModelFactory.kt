@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.jsonfeed.detail.viewmodel.ItemDetailVm
 import com.example.jsonfeed.home.viewmodel.HomeVm
+import com.example.jsonfeed.home.viewmodel.PokemonViewModel
 
 import dagger.Binds
 import dagger.MapKey
@@ -44,6 +45,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(HomeVm::class)
     internal abstract fun homeViewModel(viewModel: HomeVm): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(PokemonViewModel::class)
+    internal abstract fun pokemonViewModel(viewModel: PokemonViewModel): ViewModel
 
     @Binds
     @IntoMap

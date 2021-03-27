@@ -1,25 +1,22 @@
 package com.example.jsonfeed.home.viewmodel
 
 import android.util.Log
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-
-import com.example.jsonfeed.extensions.*
+import com.example.jsonfeed.extensions.getErrorMessage
+import com.example.jsonfeed.extensions.toUiModels
 import com.example.jsonfeed.localdb.repository.LocalRepository
-import com.example.jsonfeed.repository.FeedRepository
+import com.example.jsonfeed.repository.PokemonRemoteRepository
 import com.example.jsonfeed.uimodel.UiModel
 import com.example.jsonfeed.util.functional.Action1
 import com.example.jsonfeed.util.network.ConnectivityMonitor
-
 import kotlinx.coroutines.launch
-
 import javax.inject.Inject
 
 class HomeVm @Inject constructor(
-    var feedRepo: FeedRepository,
+    var pokemonRemote: PokemonRemoteRepository,
     var localRepo: LocalRepository,
     var connectivity: ConnectivityMonitor,
 ) : ViewModel() {
@@ -49,11 +46,11 @@ class HomeVm @Inject constructor(
     private fun fetchRemoteFeed() {
         viewModelScope.launch {
             try {
-                val response = feedRepo.getJsonFeed()
-                val localItems = response.toLocalItems()
-                val uiModels = localItems.toUiModels()
-                mModels.value = uiModels
-                localRepo.insertItems(localItems)
+//                val response = pokemonRemote.getJsonFeed()
+//                val localItems = response.toLocalItems()
+//                val uiModels = localItems.toUiModels()
+//                mModels.value = uiModels
+//                localRepo.insertItems(localItems)
             } catch (e: Exception) {
                 Log.d(TAG, e.getErrorMessage())
             }

@@ -39,6 +39,7 @@ ext {
     def mockk_android = '1.9.3' // 1.10.3-jdk8
     def swipe_refresh_layout = '1.1.0'
     def google_truth = '0.42'
+    def paging = '3.0.0-beta01'
 
     libraries = [
             kotlin             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
@@ -64,7 +65,9 @@ ext {
             retrofit_gson      : "com.squareup.retrofit2:converter-gson:$retrofit_gson",
             retrofit           : "com.squareup.retrofit2:retrofit:$retrofit",
 
-            swiperefreshlayout : "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout"
+            swiperefreshlayout : "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout",
+
+            paging             : "androidx.paging:paging-runtime-ktx:$paging"
     ]
 
     librariesKapt = [

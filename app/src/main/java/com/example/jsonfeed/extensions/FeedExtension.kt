@@ -1,7 +1,7 @@
 package com.example.jsonfeed.extensions
 
 import com.example.jsonfeed.datamodel.Feed
-import com.example.jsonfeed.datamodel.FeedItem
+import com.example.jsonfeed.datamodel.PokemonItem
 import com.example.jsonfeed.localdb.LocalItem
 
 fun Feed?.toLocalItems(): List<LocalItem> {
@@ -22,7 +22,7 @@ fun Feed?.toLocalItems(): List<LocalItem> {
     return localItems
 }
 
-private fun FeedItem.toLocalItem(id: String): LocalItem {
+private fun PokemonItem.toLocalItem(id: String): LocalItem {
     return LocalItem(
         id,
         this.name,
