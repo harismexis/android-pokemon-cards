@@ -3,23 +3,21 @@ package com.example.jsonfeed.presentation.detail.ui
 import android.content.Context
 import android.content.Intent
 import android.view.View
-
+import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProviders
-
 import com.example.jsonfeed.databinding.ActivityItemDetailBinding
 import com.example.jsonfeed.databinding.ItemDetailViewBinding
-import com.example.jsonfeed.framework.base.BaseActivity
 import com.example.jsonfeed.domain.Item
+import com.example.jsonfeed.framework.base.BaseActivity
 import com.example.jsonfeed.framework.extensions.populateWithGlide
 import com.example.jsonfeed.framework.extensions.setTextOrUnknown
 import com.example.jsonfeed.presentation.detail.viewmodel.ItemDetailVm
 
 class ItemDetailActivity : BaseActivity() {
 
+    private val viewModel: ItemDetailVm by viewModels { viewModelFactory }
     private lateinit var binding: ActivityItemDetailBinding
     private lateinit var detailBinding: ItemDetailViewBinding
-    private lateinit var viewModel: ItemDetailVm
 
     companion object {
         private const val EXTRA_ITEM_ID = "item_id"
@@ -46,11 +44,6 @@ class ItemDetailActivity : BaseActivity() {
         viewModel.model.observe(this, {
             populate(it)
         })
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = ViewModelProviders
-            .of(this, viewModelFactory)[ItemDetailVm::class.java]
     }
 
     override fun initialiseViewBinding() {
