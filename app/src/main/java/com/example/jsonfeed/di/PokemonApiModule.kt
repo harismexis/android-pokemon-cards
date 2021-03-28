@@ -25,7 +25,7 @@ class PokemonApiModule {
         gson: Gson
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.FEED_BASE_URL)
+            .baseUrl(BuildConfig.POKEMON_BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

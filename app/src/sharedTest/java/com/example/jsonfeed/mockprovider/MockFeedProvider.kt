@@ -1,34 +1,34 @@
 package com.example.jsonfeed.mockprovider
 
-import com.example.jsonfeed.datamodel.remote.Feed
+import com.example.jsonfeed.model.PokemonFeed
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 
-private fun convertToFeed(jsonString: String?): Feed {
+private fun convertToFeed(jsonString: String?): PokemonFeed {
     val gson = GsonBuilder().setLenient().create()
     val json: JsonObject = gson.fromJson(jsonString, JsonObject::class.java)
-    return Gson().fromJson(json, Feed::class.java)
+    return Gson().fromJson(json, PokemonFeed::class.java)
 }
 
-fun getMockFeedAllIdsValid(): Feed {
+fun getMockFeedAllIdsValid(): PokemonFeed {
     return convertToFeed(mockFeedAllIdsValid())
 }
 
-fun getMockFeedSomeIdsAbsent(): Feed {
+fun getMockFeedSomeIdsAbsent(): PokemonFeed {
     return convertToFeed(mockFeedSomeIdsAbsent())
 }
 
-fun getMockFeedAllIdsAbsent(): Feed {
+fun getMockFeedAllIdsAbsent(): PokemonFeed {
     return convertToFeed(mockFeedAllIdsAbsent())
 }
 
-fun getMockFeedSomeItemsEmpty(): Feed {
+fun getMockFeedSomeItemsEmpty(): PokemonFeed {
     return convertToFeed(mockFeedSomeItemsEmpty())
 }
 
-fun getMockFeedEmptyJson(): Feed {
+fun getMockFeedEmptyJson(): PokemonFeed {
     return convertToFeed(mockFeedEmptyJson())
 }
 

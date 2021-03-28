@@ -3,8 +3,8 @@ package com.example.jsonfeed.ui.home.viewholder
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jsonfeed.R
 import com.example.jsonfeed.databinding.VhPokemonItemBinding
-import com.example.jsonfeed.datamodel.remote.PokemonItem
 import com.example.jsonfeed.extensions.populateWithGlide
+import com.example.jsonfeed.model.PokemonItem
 
 class PokemonItemVh(
     private var binding: VhPokemonItemBinding,

@@ -1,7 +1,7 @@
 ext {
 
     common = [
-            FEED_BASE_URL : '\"' + "https://api.pokemontcg.io/v1/" + '\"'
+            POKEMON_BASE_URL : '\"' + "https://api.pokemontcg.io/v1/" + '\"'
     ]
 
 }

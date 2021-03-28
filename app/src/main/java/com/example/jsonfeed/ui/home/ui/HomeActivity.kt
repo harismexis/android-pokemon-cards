@@ -9,9 +9,9 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import com.example.jsonfeed.base.BaseActivity
 import com.example.jsonfeed.databinding.ActivityHomeBinding
-import com.example.jsonfeed.datamodel.remote.PokemonItem
 import com.example.jsonfeed.extensions.getErrorMessage
 import com.example.jsonfeed.extensions.showErrorToast
+import com.example.jsonfeed.model.PokemonItem
 import com.example.jsonfeed.ui.detail.ui.PokemonDetailActivity.Companion.startItemDetailActivity
 import com.example.jsonfeed.ui.home.adapter.PokemonAdapter
 import com.example.jsonfeed.ui.home.adapter.PokemonLoadStateAdapter
@@ -55,12 +55,14 @@ class HomeActivity : BaseActivity(), PokemonItemVh.PokemonItemClickListener {
         adapter.addLoadStateListener { loadState ->
             val isListEmpty = loadState.refresh is LoadState.NotLoading && adapter.itemCount == 0
             showEmptyList(isListEmpty)
+
             // Only show the list if refresh succeeds.
-            binding.homeList.isVisible = loadState.source.refresh is LoadState.NotLoading
+            binding.homeList.isVisible = loadState.mediator?.refresh is LoadState.NotLoading
             // Show loading spinner during initial load or refresh.
-            binding.progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+            binding.progressBar.isVisible = loadState.mediator?.refresh is LoadState.Loading
             // Show the retry state if initial load or refresh fails.
-            binding.retryButton.isVisible = loadState.source.refresh is LoadState.Error
+            binding.retryButton.isVisible = loadState.mediator?.refresh is LoadState.Error
+
             showToastOnErrorAppendOrPrepend(loadState)
         }
     }
@@ -88,7 +90,7 @@ class HomeActivity : BaseActivity(), PokemonItemVh.PokemonItemClickListener {
 
     override fun onPokemonItemClick(item: PokemonItem, position: Int) {
         item.id?.let {
-            startItemDetailActivity(item)
+            startItemDetailActivity(it)
         }
     }
 

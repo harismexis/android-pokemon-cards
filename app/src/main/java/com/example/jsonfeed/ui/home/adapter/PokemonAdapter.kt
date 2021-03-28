@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.jsonfeed.databinding.VhPokemonItemBinding
-import com.example.jsonfeed.datamodel.remote.PokemonItem
+import com.example.jsonfeed.model.PokemonItem
 import com.example.jsonfeed.ui.home.viewholder.PokemonItemVh
 
 class PokemonAdapter(

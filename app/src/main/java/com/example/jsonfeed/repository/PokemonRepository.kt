@@ -1,23 +1,33 @@
 package com.example.jsonfeed.repository
 
-import android.util.Log
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.jsonfeed.api.PokemonApi
-import com.example.jsonfeed.datamodel.remote.PokemonItem
+import com.example.jsonfeed.db.PokemonDatabase
+import com.example.jsonfeed.model.PokemonItem
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PokemonRemoteRepository @Inject constructor(private val api: PokemonApi) {
+class PokemonRepository @Inject constructor(
+    private val api: PokemonApi,
+    private val database: PokemonDatabase) {
 
     fun getPokemonCardsStream(): Flow<PagingData<PokemonItem>> {
-        Log.d("PokemonRepository", "New call")
+
+        val pagingSourceFactory = { database.getPokemonDao().getAllItems() }
+
+        @OptIn(ExperimentalPagingApi::class)
         return Pager(
             config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
-            pagingSourceFactory = { PokemonPagingSource(api) }
+            remoteMediator = PokemonRemoteMediator(
+                api,
+                database
+            ),
+            pagingSourceFactory = pagingSourceFactory
         ).flow
     }
 

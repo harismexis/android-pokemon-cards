@@ -4,17 +4,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.jsonfeed.datamodel.remote.PokemonItem
-import com.example.jsonfeed.repository.PokemonRemoteRepository
+import com.example.jsonfeed.model.PokemonItem
+import com.example.jsonfeed.repository.PokemonRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class HomeVm @Inject constructor(
-    var pokemonRemote: PokemonRemoteRepository
+    var pokemonRepository: PokemonRepository
 ) : ViewModel() {
 
     fun getPokemonCardsStream(): Flow<PagingData<PokemonItem>> {
-        return pokemonRemote.getPokemonCardsStream()
+        return pokemonRepository.getPokemonCardsStream()
             .cachedIn(viewModelScope)
     }
 
