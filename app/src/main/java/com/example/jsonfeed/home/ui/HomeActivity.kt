@@ -1,22 +1,20 @@
 package com.example.jsonfeed.home.ui
 
 import android.view.View
-
+import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-
+import com.example.jsonfeed.base.BaseActivity
 import com.example.jsonfeed.databinding.ActivityHomeBinding
 import com.example.jsonfeed.detail.ui.ItemDetailActivity.Companion.startItemDetailActivity
 import com.example.jsonfeed.home.adapter.HomeAdapter
 import com.example.jsonfeed.home.viewholder.FeedItemVh
 import com.example.jsonfeed.home.viewmodel.HomeVm
-import com.example.jsonfeed.base.BaseActivity
 import com.example.jsonfeed.uimodel.UiModel
 
 class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
 
-    private lateinit var viewModel: HomeVm
+    private val viewModel: HomeVm by viewModels { viewModelFactory }
     private lateinit var binding: ActivityHomeBinding
     private lateinit var adapter: HomeAdapter
     private var uiModels: MutableList<UiModel> = mutableListOf()
@@ -25,10 +23,6 @@ class HomeActivity : BaseActivity(), FeedItemVh.FeedItemClickListener {
         super.initialise()
         setupSwipeToRefresh()
         viewModel.bind()
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[HomeVm::class.java]
     }
 
     override fun initialiseViewBinding() {
