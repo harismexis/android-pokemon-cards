@@ -16,7 +16,6 @@ ext {
     def espresso = '3.2.0'
     def gson = '2.8.6'
     def androidx_junit = '1.1.2'
-    def lifecycle = '2.1.0'
     def arch_core = '2.1.0'
     def viewmodel_ktx = '2.3.1'
     def livedata_ktx = '2.3.1'
@@ -52,7 +51,6 @@ ext {
             material           : "com.google.android.material:material:$material",
             constraint_layout  : "androidx.constraintlayout:constraintlayout:$constraint_layout",
 
-            extensions         : "androidx.lifecycle:lifecycle-extensions:$lifecycle",
             livedata           : "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_ktx",
             viewmodel          : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodel_ktx",
 

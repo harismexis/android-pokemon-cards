@@ -1,9 +1,9 @@
 package com.example.jsonfeed.ui.home.ui
 
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 
 class HomeActivity : BaseActivity(), PokemonItemVh.PokemonItemClickListener {
 
-    private lateinit var viewModel: HomeVm
+    private val viewModel: HomeVm by viewModels { viewModelFactory }
     private lateinit var binding: ActivityHomeBinding
     private lateinit var adapter: PokemonAdapter
     private var searchJob: Job? = null
@@ -92,10 +92,6 @@ class HomeActivity : BaseActivity(), PokemonItemVh.PokemonItemClickListener {
         item.id?.let {
             startItemDetailActivity(it)
         }
-    }
-
-    override fun initialiseViewModel() {
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[HomeVm::class.java]
     }
 
     override fun initialiseViewBinding() {
