@@ -78,8 +78,6 @@ class PokemonDetailActivity : BaseActivity() {
 
     override fun observeLiveData() {}
 
-    override fun initialiseViewModel() {}
-
     override fun inject() {}
 
 }
