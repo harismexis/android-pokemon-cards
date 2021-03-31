@@ -11,12 +11,12 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.jsonfeed"
+        applicationId "com.harismexis.pokemon"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "com.example.jsonfeed.instrumentedsetup.runner.InstrumentedRunner"
+        testInstrumentationRunner "com.harismexis.pokemon.instrumentedsetup.runner.InstrumentedRunner"
         buildConfigField "String", "FEED_BASE_URL", commonValues.FEED_BASE_URL
     }
 
