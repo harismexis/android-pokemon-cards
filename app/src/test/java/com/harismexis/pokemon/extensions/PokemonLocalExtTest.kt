@@ -1,5 +1,6 @@
 package com.harismexis.pokemon.extensions
 
+import com.harismexis.pokemon.framework.extensions.toItems
 import com.harismexis.pokemon.framework.extensions.toPokemonEntities
 import com.harismexis.pokemon.shared.UnitTestSetup
 import com.harismexis.pokemon.utils.PokemonItemVerificator
