@@ -30,10 +30,10 @@ class HomeActivity : BaseActivity(), PokemonItemVh.PokemonItemClickListener {
 
     override fun initialise() {
         super.initialise()
-        fetchPokemon()
+        fetchPokemons()
     }
 
-    private fun fetchPokemon() {
+    private fun fetchPokemons() {
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
             viewModel.getPokemonCardsStream().collectLatest {
@@ -89,9 +89,7 @@ class HomeActivity : BaseActivity(), PokemonItemVh.PokemonItemClickListener {
     }
 
     override fun onPokemonItemClick(item: PokemonItem, position: Int) {
-        item.id?.let {
-            startItemDetailActivity(it)
-        }
+        startItemDetailActivity(item.id)
     }
 
     override fun initialiseViewBinding() {
@@ -111,5 +109,4 @@ class HomeActivity : BaseActivity(), PokemonItemVh.PokemonItemClickListener {
         return binding.homeToolbar
     }
 
-    override fun observeLiveData() {}
 }

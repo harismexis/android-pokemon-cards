@@ -3,6 +3,7 @@ package com.harismexis.pokemon.viewmodel.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.harismexis.pokemon.ui.home.viewmodel.HomeVm
+import com.harismexis.pokemon.ui.home.viewmodel.ItemDetailVm
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -39,4 +40,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(HomeVm::class)
     internal abstract fun homeViewModel(viewModel: HomeVm): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ItemDetailVm::class)
+    internal abstract fun itemDetailVm(viewModel: ItemDetailVm): ViewModel
 }

@@ -14,29 +14,16 @@ abstract class BaseActivity : AppCompatActivity() {
     protected lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        inject()
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         initialise()
-    }
-
-    open fun inject() {
-        AndroidInjection.inject(this)
     }
 
     open fun initialise() {
         initialiseViewBinding()
         setContentView(getRootView())
         initialiseView()
-        observeLiveData()
     }
-
-    abstract fun initialiseViewBinding()
-
-    abstract fun getRootView(): View
-
-    abstract fun getToolbar(): Toolbar?
-
-    abstract fun observeLiveData()
 
     open fun initialiseView() {
         setupActionBar()
@@ -46,5 +33,11 @@ abstract class BaseActivity : AppCompatActivity() {
         setSupportActionBar(getToolbar())
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
+
+    abstract fun initialiseViewBinding()
+
+    abstract fun getRootView(): View
+
+    abstract fun getToolbar(): Toolbar?
 
 }

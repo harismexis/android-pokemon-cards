@@ -3,14 +3,19 @@ package com.harismexis.pokemon.ui.detail.ui
 import android.content.Context
 import android.content.Intent
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import com.harismexis.pokemon.base.BaseActivity
-import com.harismexis.pokemon.model.PokemonItem
 import com.harismexis.pokemon.databinding.ActivityItemDetailBinding
 import com.harismexis.pokemon.databinding.ItemDetailViewBinding
+import com.harismexis.pokemon.extensions.populateWithGlide
+import com.harismexis.pokemon.extensions.setTextOrUnknown
+import com.harismexis.pokemon.model.PokemonItem
+import com.harismexis.pokemon.ui.home.viewmodel.ItemDetailVm
 
 class PokemonDetailActivity : BaseActivity() {
 
+    private val viewModel: ItemDetailVm by viewModels { viewModelFactory }
     private lateinit var binding: ActivityItemDetailBinding
     private lateinit var detailBinding: ItemDetailViewBinding
 
@@ -33,11 +38,39 @@ class PokemonDetailActivity : BaseActivity() {
     override fun initialise() {
         super.initialise()
         retrievePokemon()
+        observeLiveData()
     }
 
     override fun initialiseViewBinding() {
         binding = ActivityItemDetailBinding.inflate(layoutInflater)
         detailBinding = binding.itemDetailContainer
+    }
+
+    private fun observeLiveData() {
+        viewModel.model.observe(this, {
+            populate(it)
+        })
+    }
+
+    private fun retrievePokemon() {
+        val pokemonId = intent.getStringExtra(EXTRA_POKEMON_ITEM)
+        pokemonId?.let {
+            viewModel.retrieveItemById(it)
+        }
+    }
+
+    private fun populate(model: PokemonItem) {
+        model.imageUrlHiRes?.let {
+            this.populateWithGlide(detailBinding.img, it)
+        }
+        detailBinding.txtName.setTextOrUnknown(model.name)
+        detailBinding.txtSupertype.setTextOrUnknown(model.supertype)
+        detailBinding.txtSubtype.setTextOrUnknown(model.subtype)
+        detailBinding.txtArtist.setTextOrUnknown(model.artist)
+        detailBinding.txtRarity.setTextOrUnknown(model.rarity)
+        detailBinding.txtSeries.setTextOrUnknown(model.series)
+        detailBinding.txtSet.setTextOrUnknown(model.set)
+        detailBinding.txtSetCode.setTextOrUnknown(model.setCode)
     }
 
     override fun getRootView(): View {
@@ -52,30 +85,5 @@ class PokemonDetailActivity : BaseActivity() {
         onBackPressed()
         return true
     }
-
-    private fun retrievePokemon() {
-//        val pokemon = intent.getParcelableExtra<PokemonItem>(EXTRA_POKEMON_ITEM)
-//        pokemon?.let {
-//            populate(it)
-//        }
-    }
-
-    private fun populate(model: PokemonItem) {
-//        model.imageUrlHiRes?.let {
-//            this.populateWithGlide(detailBinding.img, it)
-//        }
-//        detailBinding.txtName.setTextOrUnknown(model.name)
-//        detailBinding.txtSupertype.setTextOrUnknown(model.supertype)
-//        detailBinding.txtSubtype.setTextOrUnknown(model.subtype)
-//        detailBinding.txtArtist.setTextOrUnknown(model.artist)
-//        detailBinding.txtRarity.setTextOrUnknown(model.rarity)
-//        detailBinding.txtSeries.setTextOrUnknown(model.series)
-//        detailBinding.txtSet.setTextOrUnknown(model.set)
-//        detailBinding.txtSetCode.setTextOrUnknown(model.setCode)
-    }
-
-    override fun observeLiveData() {}
-
-    override fun inject() {}
 
 }

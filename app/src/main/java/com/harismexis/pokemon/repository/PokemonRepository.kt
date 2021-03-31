@@ -4,9 +4,9 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.harismexis.pokemon.api.PokemonApi
 import com.harismexis.pokemon.db.PokemonDatabase
 import com.harismexis.pokemon.model.PokemonItem
-import com.harismexis.pokemon.api.PokemonApi
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -16,6 +16,10 @@ class PokemonRepository @Inject constructor(
     private val api: PokemonApi,
     private val database: PokemonDatabase
 ) {
+
+    companion object {
+        const val NETWORK_PAGE_SIZE = 50
+    }
 
     fun getPokemonCardsStream(): Flow<PagingData<PokemonItem>> {
 
@@ -32,7 +36,7 @@ class PokemonRepository @Inject constructor(
         ).flow
     }
 
-    companion object {
-        const val NETWORK_PAGE_SIZE = 50
+    suspend fun getItemById(itemId: String): PokemonItem? {
+        return database.getPokemonDao().getItemById(itemId)
     }
 }
