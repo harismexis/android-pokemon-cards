@@ -1,4 +1,4 @@
-package com.harismexis.pokemon.home.ui
+package com.harismexis.pokemon.tests
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
@@ -17,6 +17,7 @@ import com.harismexis.pokemon.base.BaseTestSetup
 import com.harismexis.pokemon.detail.ui.ItemDetailActivity
 import com.harismexis.pokemon.extensions.toLocalItems
 import com.harismexis.pokemon.extensions.toUiModels
+import com.harismexis.pokemon.home.ui.HomeActivity
 import com.harismexis.pokemon.home.viewmodel.HomeVm
 import com.harismexis.pokemon.mockprovider.*
 import com.harismexis.pokemon.mockproviders.MockHomeVmProvider
@@ -29,7 +30,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-
 
 @RunWith(AndroidJUnit4::class)
 class HomeActivityTest : BaseTestSetup() {

@@ -1,22 +1,19 @@
-package com.harismexis.pokemon.localdb
+package com.harismexis.pokemon.tests
 
 import android.content.Context
-
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.harismexis.pokemon.base.BaseTestSetup.Companion.EXPECTED_NUM_MODELS_ALL_FEED_IDS_VALID
-
 import com.harismexis.pokemon.extensions.toLocalItems
+import com.harismexis.pokemon.localdb.LocalDao
+import com.harismexis.pokemon.localdb.LocalDatabase
 import com.harismexis.pokemon.mockprovider.getMockFeedAllIdsAbsent
 import com.harismexis.pokemon.mockprovider.getMockFeedAllIdsValid
-
 import kotlinx.coroutines.runBlocking
-
 import org.junit.*
 import org.junit.runner.RunWith
-
 import java.io.IOException
 
 @RunWith(AndroidJUnit4::class)

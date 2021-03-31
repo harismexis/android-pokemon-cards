@@ -1,4 +1,4 @@
-package com.harismexis.pokemon.detail
+package com.harismexis.pokemon.tests
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -6,15 +6,15 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
+import com.harismexis.pokemon.R
 import com.harismexis.pokemon.base.BaseTestSetup
 import com.harismexis.pokemon.detail.ui.ItemDetailActivity
 import com.harismexis.pokemon.detail.viewmodel.ItemDetailVm
 import com.harismexis.pokemon.extensions.toLocalItems
 import com.harismexis.pokemon.extensions.toUiModels
 import com.harismexis.pokemon.mockprovider.getMockFeedAllIdsValid
-import com.harismexis.pokemon.uimodel.UiModel
-import com.harismexis.pokemon.R
 import com.harismexis.pokemon.mockproviders.MockItemDetailVmProvider
+import com.harismexis.pokemon.uimodel.UiModel
 import io.mockk.every
 import org.junit.Before
 import org.junit.Rule
