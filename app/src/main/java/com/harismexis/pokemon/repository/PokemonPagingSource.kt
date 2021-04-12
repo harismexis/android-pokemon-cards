@@ -8,12 +8,12 @@ import com.harismexis.pokemon.repository.PokemonRemoteRepository.Companion.NETWO
 import retrofit2.HttpException
 import java.io.IOException
 
-private const val GITHUB_STARTING_PAGE_INDEX = 1
+private const val START_PAGE_INDEX = 1
 
 class PokemonPagingSource(private val service: PokemonApi) : PagingSource<Int, PokemonItem>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonItem> {
-        val page = params.key ?: GITHUB_STARTING_PAGE_INDEX
+        val page = params.key ?: START_PAGE_INDEX
         return try {
             val response = service.getPokemonCards(page, params.loadSize)
             val cards = response.cards
@@ -24,7 +24,7 @@ class PokemonPagingSource(private val service: PokemonApi) : PagingSource<Int, P
             }
             LoadResult.Page(
                 data = cards,
-                prevKey = if (page == GITHUB_STARTING_PAGE_INDEX) null else page - 1,
+                prevKey = if (page == START_PAGE_INDEX) null else page - 1,
                 nextKey = nextKey
             )
         } catch (exception: IOException) {
