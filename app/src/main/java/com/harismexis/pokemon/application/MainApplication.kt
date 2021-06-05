@@ -6,7 +6,6 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import dagger.android.support.DaggerApplication
-import io.reactivex.plugins.RxJavaPlugins
 import javax.inject.Inject
 
 class MainApplication : DaggerApplication(), HasAndroidInjector {
@@ -16,11 +15,6 @@ class MainApplication : DaggerApplication(), HasAndroidInjector {
 
     private lateinit var mainComponent: MainComponent
 
-    override fun onCreate() {
-        super.onCreate()
-        initRxErrorHandler()
-    }
-
     override fun androidInjector(): AndroidInjector<Any> {
         return dispatchingAndroidInjector
     }
@@ -29,12 +23,6 @@ class MainApplication : DaggerApplication(), HasAndroidInjector {
         mainComponent = DaggerMainComponent.factory().create(this)
         mainComponent.inject(this)
         return mainComponent
-    }
-
-    private fun initRxErrorHandler() {
-        RxJavaPlugins.setErrorHandler {
-            // Do nothing
-        }
     }
 
 }
