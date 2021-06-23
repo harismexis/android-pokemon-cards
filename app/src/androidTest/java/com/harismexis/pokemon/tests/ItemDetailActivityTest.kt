@@ -1,5 +1,6 @@
 package com.harismexis.pokemon.tests
 
+import androidx.lifecycle.MutableLiveData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -9,9 +10,8 @@ import androidx.test.rule.ActivityTestRule
 import com.harismexis.pokemon.R
 import com.harismexis.pokemon.domain.Item
 import com.harismexis.pokemon.instrumentedsetup.base.InstrumentedTestSetup
-import com.harismexis.pokemon.instrumentedsetup.mockvm.MockItemDetailVmProvider
+import com.harismexis.pokemon.instrumentedsetup.factory.mockItemDetailVm
 import com.harismexis.pokemon.presentation.detail.ui.ItemDetailActivity
-import com.harismexis.pokemon.presentation.detail.viewmodel.ItemDetailVm
 import io.mockk.every
 import org.junit.Before
 import org.junit.Rule
@@ -28,12 +28,11 @@ class ItemDetailActivityTest : InstrumentedTestSetup() {
             false, false
         )
 
-    private lateinit var mockItemDetailVm: ItemDetailVm
+    private var mockModel = MutableLiveData<Item>()
     private lateinit var mockItem: Item
 
     @Before
     fun setup() {
-        mockItemDetailVm = MockItemDetailVmProvider.provideMockItemDetailVm()
         every { mockItemDetailVm.retrieveItemById(any()) } returns Unit
         mockItem = mockParser.getMockItemValid()
     }
@@ -41,7 +40,7 @@ class ItemDetailActivityTest : InstrumentedTestSetup() {
     @Test
     fun liveDataChanges_then_uiUpdatedWithExpectedData() {
         // given
-        every { mockItemDetailVm.model } returns MockItemDetailVmProvider.model
+        every { mockItemDetailVm.model } returns mockModel
         launchActivityAndMockLiveData()
 
         // then
@@ -66,7 +65,7 @@ class ItemDetailActivityTest : InstrumentedTestSetup() {
     private fun launchActivityAndMockLiveData() {
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
-            MockItemDetailVmProvider.mModel.value = mockItem
+            mockModel.value = mockItem
         }
     }
 

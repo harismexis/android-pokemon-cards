@@ -1,5 +1,6 @@
 package com.harismexis.pokemon.tests
 
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -15,16 +16,15 @@ import androidx.test.rule.ActivityTestRule
 import com.harismexis.pokemon.R
 import com.harismexis.pokemon.domain.Item
 import com.harismexis.pokemon.instrumentedsetup.base.InstrumentedTestSetup
+import com.harismexis.pokemon.instrumentedsetup.factory.mockHomeVm
 import com.harismexis.pokemon.instrumentedsetup.instrumentedutil.RecyclerViewItemCountAssertion
 import com.harismexis.pokemon.instrumentedsetup.instrumentedutil.RecyclerViewMatcher
-import com.harismexis.pokemon.instrumentedsetup.mockvm.MockHomeVmProvider
 import com.harismexis.pokemon.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_ALL_IDS_VALID
 import com.harismexis.pokemon.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_FOR_NO_DATA
 import com.harismexis.pokemon.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_WHEN_TWO_EMPTY
 import com.harismexis.pokemon.parser.BaseMockParser.Companion.EXPECTED_NUM_MODELS_WHEN_TWO_IDS_ABSENT
 import com.harismexis.pokemon.presentation.detail.ui.ItemDetailActivity
 import com.harismexis.pokemon.presentation.home.ui.HomeActivity
-import com.harismexis.pokemon.presentation.home.viewmodel.HomeVm
 import io.mockk.every
 import org.junit.After
 import org.junit.Before
@@ -42,21 +42,20 @@ class HomeActivityTest : InstrumentedTestSetup() {
             false, false
         )
 
-    private lateinit var mockHomeVm: HomeVm
+    private var mockModels = MutableLiveData<List<Item>>()
     private lateinit var mockItems: List<Item>
 
     @Before
     fun doBeforeTest() {
         Intents.init()
         mockItems = mockParser.getMockItemsFromFeedWithAllItemsValid()
-        mockHomeVm = MockHomeVmProvider.provideMockHomeVm()
         every { mockHomeVm.bind() } returns Unit
     }
 
     @Test
     fun remoteFeedHasAllItemsValid_then_homeListHasExpectedItems() {
         // given
-        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        every { mockHomeVm.models } returns mockModels
         launchActivityAndMockLiveData()
 
         // then
@@ -72,7 +71,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     fun remoteFeedHasSomeIdsAbsent_homeListHasExpectedNumberOfItems() {
         // given
         mockItems = mockParser.getMockItemsFromFeedWithSomeIdsAbsent()
-        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        every { mockHomeVm.models } returns mockModels
         launchActivityAndMockLiveData()
 
         // then
@@ -88,7 +87,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     fun remoteFeedHasAllIdsAbsent_homeListHasNoItems() {
         // given
         mockItems = mockParser.getMockItemsFromFeedWithAllIdsAbsent()
-        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        every { mockHomeVm.models } returns mockModels
         launchActivityAndMockLiveData()
 
         // then
@@ -103,7 +102,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     fun remoteFeedHasSomeJsonItemsEmpty_homeListHasExpectedNumberOfItems() {
         // given
         mockItems = mockParser.getMockItemsFromFeedWithSomeItemsEmpty()
-        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        every { mockHomeVm.models } returns mockModels
         launchActivityAndMockLiveData()
 
         // then
@@ -119,7 +118,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     fun remoteFeedHasEmptyJson_homeListHasNoItems() {
         // given
         mockItems = mockParser.getMockItemsFromFeedWithEmptyJson()
-        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        every { mockHomeVm.models } returns mockModels
         launchActivityAndMockLiveData()
 
         // then
@@ -133,7 +132,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     @Test
     fun clickOnHomeListItem_opensItemDetailActivity() {
         // given
-        every { mockHomeVm.models } returns MockHomeVmProvider.models
+        every { mockHomeVm.models } returns mockModels
         launchActivityAndMockLiveData()
 
         // when
@@ -172,7 +171,7 @@ class HomeActivityTest : InstrumentedTestSetup() {
     private fun launchActivityAndMockLiveData() {
         testRule.launchActivity(null)
         testRule.activity.runOnUiThread {
-            MockHomeVmProvider.mModels.value = mockItems
+            mockModels.value = mockItems
         }
     }
 
